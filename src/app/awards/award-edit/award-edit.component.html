@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="formationForm" (ngSubmit)="onSubmitFormation()">
+
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-success" [disabled]="!formationForm.valid">Enregistrer</button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Formation:</label>
+            <input type="text" formControlName="nomFormation">
+            <br>
+            <span *ngIf="!formationForm.get('nomFormation').valid &&
+  formationForm.get('nomFormation').touched">S'il vous plaît entrer une formation valide!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Société:</label>
+            <input type="text" formControlName="societe">
+            <br>
+            <span *ngIf="!formationForm.get('societe').valid &&
+  formationForm.get('societe').touched">S'il vous plaît entrer une société valide!</span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Date de début:</label>
+            <input type="date" formControlName="dateDebut">
+            <br>
+            <span *ngIf="!formationForm.get('dateDebut').valid &&
+  formationForm.get('dateDebut').touched">S'il vous plaît entrer une date de début valide!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Date de fin:</label>
+            <input type="date" formControlName="dateFin">
+            <br>
+            <span *ngIf="!formationForm.get('dateFin').valid &&
+  formationForm.get('dateFin').touched">S'il vous plaît entrer une date de fin valide!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Adresse:</label>
+            <input type="text" formControlName="adresse">
+            <br>
+            <span *ngIf="!formationForm.get('adresse').valid &&
+  formationForm.get('adresse').touched">S'il vous plaît entrer une adresse valide!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Site web:</label>
+            <input type="text" formControlName="siteWeb">
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="tab-content" id="nav-tabContentExperience">
+  <div class="tab-pane fade show active" id="list-experience" role="tabpanel" aria-labelledby="list-experience-list">
+    <div class="row">
+      <div class="col-xs-12">
+        <h4>{{ experience.nomExperience }}</h4>
+        <p class="mb-1">{{ experience.description }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="btn-group" appDropdown>
+          <button type="button" class="btn btn-primary dropdown-toggle">
+            Gérer l'expérience <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a style="cursor: pointer;" (click)="onEditExperience()">Modifier l'éxperience</a></li>
+            <li><a style="cursor: pointer;" (click)="onDeleteExperience()">Supprimer l'éxperience</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

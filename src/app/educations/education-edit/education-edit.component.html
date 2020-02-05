@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="educationForm" (ngSubmit)="onSubmitEducation()">
+
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-success" [disabled]="!educationForm.valid">Enregistrer</button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Institut:</label>
+            <input type="text" formControlName="nom">
+            <br>
+            <span *ngIf="!educationForm.get('nom').valid &&
+	  educationForm.get('nom').touched">S'il vous plaît entrer un nom d'institut valide!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Diplome:</label>
+            <input type="text" formControlName="diplome">
+            <br>
+            <span *ngIf="!educationForm.get('diplome').valid &&
+	  educationForm.get('diplome').touched">S'il vous plaît entrer un nom de diplome valide!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Date de début:</label>
+            <input type="date" formControlName="dateDebut">
+            <br>
+            <span *ngIf="!educationForm.get('dateDebut').valid &&
+	  educationForm.get('dateDebut').touched">S'il vous plaît entrer une date de début valide!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Date de fin:</label>
+            <input type="date" formControlName="dateFin">
+            <br>
+            <span *ngIf="!educationForm.get('dateFin').valid &&
+	  educationForm.get('dateFin').touched">S'il vous plaît entrer une date de fin valide!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Adresse:</label>
+            <input type="text" formControlName="adresse">
+            <br>
+            <span *ngIf="!educationForm.get('adresse').valid &&
+	  educationForm.get('adresse').touched">S'il vous plaît entrer une adresse valide!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Details:</label>
+            <input type="text" formControlName="details">
+            <br>
+            <span *ngIf="!educationForm.get('details').valid &&
+	  educationForm.get('details').touched">S'il vous plaît entrer une details valide!</span>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

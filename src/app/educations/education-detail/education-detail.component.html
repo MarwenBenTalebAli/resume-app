@@ -1,0 +1,23 @@
+<div class="tab-content" id="nav-tabContentEducation">
+  <div class="tab-pane fade show active" id="list-education" role="tabpanel" aria-labelledby="list-education-list">
+    <div class="row">
+      <div class="col-xs-12">
+        <h4>{{ institut.diplome }}</h4>
+        <p class="mb-1">{{ institut.details }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="btn-group" appDropdown>
+          <button type="button" class="btn btn-primary dropdown-toggle">
+            Gérer l'éducation <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a style="cursor: pointer;" (click)="onEditEducation()">Modifier l'éducation</a></li>
+            <li><a style="cursor: pointer;" (click)="onDeleteEducation()">Supprimer l'éducation</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

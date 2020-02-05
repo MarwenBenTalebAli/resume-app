@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="competenceForm" (ngSubmit)="onSubmitCompetence()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-success" [disabled]="!competenceForm.valid">Enregistrer</button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Compétence:</label>
+            <input type="text" formControlName="nomCompetence">
+            <br>
+            <span *ngIf="!competenceForm.get('nomCompetence').valid &&
+  competenceForm.get('nomCompetence').touched">S'il vous plaît entrer une compétence valide!</span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Niveau:</label>
+            <input type="text" formControlName="niveau">
+            <br>
+            <span *ngIf="!competenceForm.get('niveau').valid &&
+  competenceForm.get('niveau').touched">S'il vous plaît entrer un niveau valide!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Description:</label>
+            <input type="text" formControlName="description">
+            <br>
+            <span *ngIf="!competenceForm.get('description').valid &&
+  competenceForm.get('description').touched">S'il vous plaît entrer une description valide!</span>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

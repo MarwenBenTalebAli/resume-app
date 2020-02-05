@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+	<div class="card">
+		<div class="card-body">
+		<h3 class="text-center default-text py-3"><i class="fa fa-lock"></i> Login:</h3>
+		<!--Body-->
+		<form (ngSubmit)="onSignin(f)" #f="ngForm">
+			<div class="md-form">
+				<i class="fa fa-envelope prefix grey-text"></i>
+				<input type="email" id="defaultForm-email" name="email" ngModel class="form-control">
+				<label for="defaultForm-email">Your email</label>
+			</div>
+			<div class="md-form">
+				<i class="fa fa-lock prefix grey-text"></i>
+				<input type="password" id="defaultForm-pass" name="password" ngModel class="form-control">
+				<label for="defaultForm-pass">Your password</label>
+			</div>
+			<div class="text-center">
+					<div *ngIf="errorAlert" class="alert alert-danger alert-dismissible fade show">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<strong>{{ getErrorMsg() }}</strong> 
+					</div>
+					<button class="btn btn-default waves-effect waves-light" type="submit" [disabled]="!f.valid">Sign In</button>
+			</div>
+		</form>
+		</div>
+	</div>
+  </div>
+</div>
+

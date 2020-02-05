@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "award-detail.component.scss"
+    ],
+    "names": [],
+    "file": "award-detail.component.css"
+}

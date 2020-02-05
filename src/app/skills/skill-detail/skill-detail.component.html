@@ -1,0 +1,24 @@
+<div class="tab-content" id="nav-tabContentExperience">
+  <div class="tab-pane fade show active" id="list-experience" role="tabpanel" aria-labelledby="list-experience-list">
+    <div class="row">
+      <div class="col-xs-12">
+        <h4>{{ competence.nomCompetence }}</h4>
+        <p class="mb-1">{{ competence.niveau }}</p>
+        <p class="mb-1">{{ competence.description }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="btn-group" appDropdown>
+          <button type="button" class="btn btn-primary dropdown-toggle">
+            Gérer la competence <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a style="cursor: pointer;" (click)="onEditCompetence()">Modifier la competence</a></li>
+            <li><a style="cursor: pointer;" (click)="onDeleteCompetence()">Supprimer la competence</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

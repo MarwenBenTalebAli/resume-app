@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="mb-0">
+      Gestion des experiences
+    </h5>
+  </div>
+  <div class="card-body">
+    <button type="button" class="btn btn-success" (click)="onNewExperience()">New Experience</button>
+    <button type="button" class="btn btn-primary" (click)="onSaveExperiencesData()">Save Data</button>
+    <button type="button" class="btn btn-primary" (click)="onFetchExperiencesData()">Fetch Data</button>
+  </div>
+  <div class="row">
+    <div class="col-xl-7">
+      <div class="list-group" id="list-tab" role="tablist">
+        <app-experience-item *ngFor="let experienceEl of experiences; let i=index" [experience]="experienceEl"
+          [index]="i">
+        </app-experience-item>
+      </div>
+    </div>
+
+    <div class="col-xl-5">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

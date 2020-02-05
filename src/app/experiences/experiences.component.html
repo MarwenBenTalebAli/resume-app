@@ -1,0 +1,26 @@
+<ng-container *ngIf="isAdmin; else defaultExperienceTemplate">
+  <app-experience-list></app-experience-list>
+</ng-container>
+<ng-template #defaultExperienceTemplate>
+  <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="experience">
+    <div class="w-100">
+      <h2 class="mb-5">Experience</h2>
+      <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5"
+        *ngFor="let experience of experiences">
+        <div class="resume-content">
+          <h3 class="mb-0">{{ experience.nomExperience }}</h3>
+          <div class="subheading mb-3">{{ experience.societe }}</div>
+          <p style="white-space: pre-line;text-align: justify;text-justify: inter-word;">
+            {{ experience.description }}
+          </p>
+          <p ng-if="experience.urlDescription != null">{{ experience.urlDescription }}</p>
+        </div>
+        <div class="resume-date text-md-right">
+          <span class="text-primary">{{ experience.adresse }},&nbsp;</span><br/>
+          <span class="text-primary">{{ experience.dateDebut }} - {{ experience.dateFin }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <hr class="m-0">
+</ng-template>

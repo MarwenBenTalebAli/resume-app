@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="mb-0">
+      Gestion des competences
+    </h5>
+  </div>
+  <div class="card-body">
+    <button type="button" class="btn btn-success" (click)="onNewCompetence()">New Experience</button>
+    <button type="button" class="btn btn-primary" (click)="onSaveCompetencesData()">Save Data</button>
+    <button type="button" class="btn btn-primary" (click)="onFetchCompetencesData()">Fetch Data</button>
+  </div>
+  <div class="row">
+    <div class="col-xl-7">
+      <div class="list-group" id="list-tab" role="tablist">
+        <app-skill-item *ngFor="let competenceEl of competences; let i=index" [competence]="competenceEl"
+          [index]="i">
+        </app-skill-item>
+      </div>
+    </div>
+
+    <div class="col-xl-5">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

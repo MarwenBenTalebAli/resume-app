@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "skill-detail.component.scss"
+    ],
+    "names": [],
+    "file": "skill-detail.component.css"
+}
