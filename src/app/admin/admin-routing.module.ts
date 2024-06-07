@@ -34,7 +34,8 @@ import { SkillsComponent } from '../skills/skills.component';
 const adminRoutes: Routes = [
     {
         path: '', component: AdminComponent, children: [
-            { path: 'experiences', component: ExperiencesComponent, canActivate: [AuthGuard],
+            {
+                path: 'experiences', component: ExperiencesComponent, canActivate: [AuthGuard],
                 children: [
                     { path: '', component: ExperienceStartComponent },
                     { path: 'new', component: ExperienceEditComponent, canActivate: [AuthGuard] },
@@ -42,7 +43,8 @@ const adminRoutes: Routes = [
                     { path: ':id/edit', component: ExperienceEditComponent, canActivate: [AuthGuard] }
                 ]
             },
-            { path: 'educations', component: EducationsComponent, canActivate: [AuthGuard],
+            {
+                path: 'educations', component: EducationsComponent, canActivate: [AuthGuard],
                 children: [
                     { path: '', component: EducationStartComponent },
                     { path: 'new', component: EducationEditComponent, canActivate: [AuthGuard] },
@@ -50,7 +52,8 @@ const adminRoutes: Routes = [
                     { path: ':id/edit', component: EducationEditComponent, canActivate: [AuthGuard] },
                 ]
             },
-            { path: 'skills', component: SkillsComponent, canActivate: [AuthGuard],
+            {
+                path: 'skills', component: SkillsComponent, canActivate: [AuthGuard],
                 children: [
                     { path: '', component: SkillStartComponent },
                     { path: 'new', component: SkillEditComponent, canActivate: [AuthGuard] },
@@ -60,12 +63,12 @@ const adminRoutes: Routes = [
             },
             {
                 path: 'awards', component: AwardsComponent, canActivate: [AuthGuard],
-                    children: [
-                        { path: '', component: AwardStartComponent },
-                        { path: 'new', component: AwardEditComponent },
-                        { path: ':id', component: AwardDetailComponent },
-                        { path: ':id/edit', component: AwardEditComponent },
-                    ]
+                children: [
+                    { path: '', component: AwardStartComponent },
+                    { path: 'new', component: AwardEditComponent },
+                    { path: ':id', component: AwardDetailComponent },
+                    { path: ':id/edit', component: AwardEditComponent },
+                ]
             },
         ],
         canActivate: [AuthGuard]

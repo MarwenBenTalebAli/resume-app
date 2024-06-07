@@ -1,5 +1,6 @@
 export class Experience {
     constructor(
+        public order: number,
         public societe: string,
         public nomExperience: string,
         public dateDebut: string,

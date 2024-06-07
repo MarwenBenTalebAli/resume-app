@@ -14,6 +14,7 @@ import { CoreModule } from './core/core.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { environment } from 'src/environments/environment';
+import { NotfoundModule } from './core/notfound/notfound.module';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { environment } from 'src/environments/environment';
     MDBBootstrapModule.forRoot(),
     AboutModule,
     InterestsModule,
+    NotfoundModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAnalyticsModule,
     AuthModule,

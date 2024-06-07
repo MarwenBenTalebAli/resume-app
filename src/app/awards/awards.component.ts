@@ -3,6 +3,7 @@ import { FormationService } from './formation.service';
 import { Formation } from './formation.model';
 import { Subscription } from 'rxjs/Subscription';
 import { AuthService } from '../auth/auth.service';
+import { DataStorageService } from '../shared/data-storage.service';
 
 @Component({
   selector: 'app-awards',
@@ -15,10 +16,11 @@ export class AwardsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   @Input() isAdmin = false;
 
-  constructor(private formationService: FormationService, private authService: AuthService) { }
+  constructor(private formationService: FormationService, private authService: AuthService, private dataStorageService: DataStorageService) { }
 
   ngOnInit() {
     this.isAdmin = this.authService.isAuthenticated();
+    this.onFetchFormationsData();
     this.formations = this.formationService.getFormations();
     this.subscription = this.formationService.formationsChanged.subscribe(
       (formations: Formation[]) => {
@@ -31,4 +33,8 @@ export class AwardsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  onFetchFormationsData() {
+    console.log('onFetchFormationsData1234');
+    this.dataStorageService.getFormations();
+  }
 }

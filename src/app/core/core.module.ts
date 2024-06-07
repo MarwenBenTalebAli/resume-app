@@ -7,8 +7,11 @@ import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { AuthService } from '../auth/auth.service';
 import { DataStorageService } from '../shared/data-storage.service';
+import { UserService } from '../about/user.service';
+import { InterestService } from '../interests/interest.service';
 import { EducationService } from '../educations/education.service';
 import { ExperienceService } from '../experiences/experience.service';
+import { ProjectService } from '../projects/project.service';
 import { FormationService } from '../awards/formation.service';
 import { CompetenceService } from '../skills/competence.service';
 import { AuthInterceptor } from '../shared/auth.interceptor';
@@ -29,10 +32,13 @@ import { LoggingInterceptor } from '../shared/logging.interceptor';
         SidenavComponent
     ],
     providers: [
+        UserService,
         EducationService,
         ExperienceService,
+        ProjectService,
         FormationService,
         CompetenceService,
+        InterestService,
         DataStorageService,
         AuthService,
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

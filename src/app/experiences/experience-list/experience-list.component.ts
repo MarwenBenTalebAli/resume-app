@@ -45,6 +45,7 @@ export class ExperienceListComponent implements OnInit, OnDestroy {
   }
 
   onFetchExperiencesData() {
+    console.log('onFetchExperiencesData');
     this.dataStorageService.getExperiences();
   }
 

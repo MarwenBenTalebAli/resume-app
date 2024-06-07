@@ -14,6 +14,21 @@ export class ExperienceService {
 
     experiences: Experience[] = [
         new Experience(
+            0,
+            'QUERMES ',
+            'Développeur full stack',
+            '01/05/2019',
+            '13/05/2023',
+            'Novation city, Sousse',
+            '- Développeur full stack.\n' +
+            '- Développement d\'une application web de pilotage de la production (en anglais Manufacturing Execution System ou MES).\n' +
+            '- C\'est une application collectant en temps réel les données de production d\'une usine ou d\'un atelier\n.' +
+            '- Acquisition des données avec la bibliothèque D3.js.\n' +
+            '- Les frameworks utilisées : ReactJS, NodeJS, mui 4, D3.js.',
+            null
+        ),
+        new Experience(
+            1,
             'Indépendant ',
             'Développeur web freelance',
             '01/01/2018',
@@ -25,6 +40,7 @@ export class ExperienceService {
             null
         ),
         new Experience(
+            2,
             'Innotall GmbH',
             'Développeur Java EE',
             '01/11/2017',
@@ -35,6 +51,7 @@ export class ExperienceService {
             null
         ),
         new Experience(
+            3,
             'DOT-IT',
             'Développeur Java EE',
             '01/07/2017',
@@ -45,6 +62,7 @@ export class ExperienceService {
             null
         ),
         new Experience(
+            4,
             'Solution groupe',
             'Développeur Java EE',
             '02/01/2017',
@@ -56,6 +74,7 @@ export class ExperienceService {
             null
         ),
         new Experience(
+            5,
             'DOT-IT',
             'Stage de fin d\'étude (PFE) de 4 mois',
             '03/02/2015',
@@ -68,6 +87,7 @@ export class ExperienceService {
             '- Description : https://drive.google.com/open?id=0B_iYv23IHpIuYnplal8tck1ObDA'
         ),
         new Experience(
+            6,
             'Tunisie Télécom',
             'Stage d\'été de 1 mois',
             '09/07/2014',
@@ -79,6 +99,7 @@ export class ExperienceService {
             '- Description : https://drive.google.com/open?id=0B_iYv23IHpIucWVtb0FjVHhqOFk'
         ),
         new Experience(
+            7,
             'ESPITA',
             'Stage d\'été de 1 mois',
             '01/07/2013',
@@ -88,6 +109,7 @@ export class ExperienceService {
             '- Description : https://drive.google.com/open?id=0B_iYv23IHpIuQ2tseExuQm9EX1k'
         ),
         new Experience(
+            8,
             'Tunisie Télécom',
             'Stage de fin d\'étude (PFE) de 4 mois',
             '01/02/2012',
@@ -101,6 +123,7 @@ export class ExperienceService {
             '- Description : https://drive.google.com/open?id=0B_iYv23IHpIuRmFoY3EwNkl2dTg'
         ),
         new Experience(
+            9,
             'MEDITEL',
             'Stage d\'été de 1 mois',
             '01/08/2011',

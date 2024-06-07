@@ -3,10 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
+import { NotfoundComponent } from '../core/notfound/notfound.component';
 
 const authRoutes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
+  { path: '**', component: NotfoundComponent },
 ];
 
 @NgModule({
@@ -15,4 +17,4 @@ const authRoutes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AuthRoutingModule {}
+export class AuthRoutingModule { }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
+import { AngularFireStorage } from '@angular/fire/storage';
 // tslint:disable-next-line:import-blacklist
 import 'rxjs/Rx';
 
@@ -7,10 +8,16 @@ import { EducationService } from '../educations/education.service';
 import { Institut } from '../educations/institut.model';
 import { Experience } from '../experiences/experience.model';
 import { ExperienceService } from '../experiences/experience.service';
+import { Project } from '../projects/project.model';
+import { ProjectService } from '../projects/project.service';
 import { CompetenceService } from '../skills/competence.service';
 import { Competence } from '../skills/competence.model';
 import { FormationService } from '../awards/formation.service';
 import { Formation } from '../awards/formation.model';
+import { User } from '../about/user.model';
+import { UserService } from '../about/user.service';
+import { InterestService } from '../interests/interest.service';
+import { Interest } from '../interests/interest.model';
 
 
 
@@ -22,8 +29,11 @@ export class DataStorageService {
         private httpClient: HttpClient,
         private educationService: EducationService,
         private experienceService: ExperienceService,
+        private projectService: ProjectService,
         private competenceService: CompetenceService,
-        private formationService: FormationService
+        private formationService: FormationService,
+        private userService: UserService,
+        private interestService: InterestService
     ) {
 
     }
@@ -70,6 +80,7 @@ export class DataStorageService {
     }
 
     getExperiences() {
+        console.log('getExperiences');
         this.httpClient.get<Experience[]>(
             'https://resume-profile.firebaseio.com/experiences.json',
             {
@@ -79,13 +90,45 @@ export class DataStorageService {
         )
             .map(
                 (experiences) => {
-                    console.log(experiences);
+                    console.log('experiences1234', experiences);
                     return experiences;
                 }
             )
             .subscribe(
                 (experiences: Experience[]) => {
                     this.experienceService.setExperiences(experiences);
+                }
+            );
+    }
+
+    storeProjects() {
+        const req = new HttpRequest(
+            'PUT',
+            'https://resume-profile.firebaseio.com/projects.json',
+            this.projectService.getProjects(),
+            { reportProgress: true }
+        );
+        return this.httpClient.request(req);
+    }
+
+    getProjects() {
+        console.log('getProjects');
+        this.httpClient.get<Project[]>(
+            'https://resume-profile.firebaseio.com/projets.json',
+            {
+                observe: 'body',
+                responseType: 'json'
+            }
+        )
+            .map(
+                (projects) => {
+                    console.log('projects1234', projects);
+                    return projects;
+                }
+            )
+            .subscribe(
+                (projects: Project[]) => {
+                    this.projectService.setProjects(projects);
                 }
             );
     }
@@ -149,6 +192,65 @@ export class DataStorageService {
                     this.formationService.setFormations(formations);
                 }
             );
+    }
+
+    storeUsers() {
+        const req = new HttpRequest(
+            'PUT',
+            'https://resume-profile.firebaseio.com/users.json',
+            this.userService.getUsers(),
+            { reportProgress: true }
+        );
+        return this.httpClient.request(req);
+    }
+
+    getUsers() {
+        this.httpClient.get<User[]>(
+            'https://resume-profile.firebaseio.com/users.json',
+            {
+                observe: 'body',
+                responseType: 'json'
+            }
+        )
+            .map(
+                (users) => {
+                    console.log(users);
+                    return users;
+                }
+            )
+            .subscribe(
+                (users: User[]) => {
+                    this.userService.setUsers(users);
+                }
+            );
+    }
+
+    getUser(orderBy: string = 'email', equalTo: string) {
+        this.httpClient.get<User>(
+            `https://resume-profile.firebaseio.com/users.json?orderBy="${orderBy}"&equalTo="${equalTo}"`,
+            {
+                observe: 'body',
+                responseType: 'json'
+            }
+        ).map(user => user[0]).subscribe(
+            (user: User) => {
+                this.userService.setUser(user);
+            }
+        );
+    }
+
+    getInterest() {
+        this.httpClient.get<Interest>(
+            'https://resume-profile.firebaseio.com/interest.json',
+            {
+                observe: 'body',
+                responseType: 'json'
+            }
+        ).map(interest => interest).subscribe(
+            (interest: Interest) => {
+                this.interestService.setInterest(interest);
+            }
+        );
     }
 
 }

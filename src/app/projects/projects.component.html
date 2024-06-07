@@ -1,0 +1,41 @@
+<ng-container *ngIf="isAdmin; else defaultProjectTemplate">
+  <app-project-list></app-project-list>
+</ng-container>
+<ng-template #defaultProjectTemplate>
+  <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="project">
+    <div class="w-100">
+      <h2 class="mb-5">Projets</h2>
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div *ngFor="let project of projects" class="col col-lg-4">
+            <div class="card mb-5 cardBorder" style="width: 100%; height: 31rem">
+              <img class="card-img-top img-responsive" style="object-fit: contain; max-height: 180px"
+                [src]="project.urlImage" alt="image project.nomProjet" alt="project.nomProjet">
+              <div class="card-body">
+                <h3 class="card-title mb-0">{{ project.nomProjet }}</h3>
+                <p><span class="text-primary text-muted">{{ project.dateDebut }} - {{ project.dateFin }}</span></p>
+                <h6>
+                  {{ project.description }}
+                </h6>
+                <h5>
+                  <span calss="badge badge-info ml-2" *ngFor="let outil of project.outils">
+                    {{ outil }}
+                  </span>
+                </h5>
+              </div>
+              <div class="card-footer bg-transparent" style="border: none">
+                <a ng-if="project.urlCodeSorce != null" [attr.href]="project.urlCodeSorce" target="_blank"
+                  [title]="'Mon profil github'" class="card-link btn-outline-info">Code source <i
+                    class="fas fa-code"></i></a>
+                <a ng-if="project.urlDemoEnLigne != null" [attr.href]="project.urlDemoEnLigne" target="_blank" [title]="'Demo
+                enligne'" class="card-link btn-outline-info">Demo
+                  enligne <i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <hr class="m-0">
+</ng-template>
