@@ -1,16 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  ReactiveFormsModule,
+  FormControlState,
+} from '@angular/forms';
 
 import { ProjectService } from '../project.service';
 
 @Component({
   selector: 'app-project-edit',
+  standalone: true,
+  imports: [ReactiveFormsModule],
   templateUrl: './project-edit.component.html',
-  styleUrls: ['./project-edit.component.scss']
+  styleUrls: ['./project-edit.component.scss'],
 })
 export class ProjectEditComponent implements OnInit {
-
   id: number;
   editMode = false;
   projectForm: FormGroup;
@@ -18,17 +25,15 @@ export class ProjectEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private projectService: ProjectService,
-    private router: Router) { }
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.id = +params.id;
-          this.editMode = params.id != null;
-          this.initForm();
-        }
-      );
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params.id;
+      this.editMode = params.id != null;
+      this.initForm();
+    });
   }
 
   private initForm() {
@@ -36,7 +41,7 @@ export class ProjectEditComponent implements OnInit {
     let dateFin = '';
     let description = '';
     let nomProjet = '';
-    let outils = [];
+    let outils: any[] | FormControlState<any[]> = [];
     let urlCodeSorce = '';
     let urlDemoEnLigne = '';
     let urlImage = '';
@@ -78,5 +83,4 @@ export class ProjectEditComponent implements OnInit {
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
-
 }

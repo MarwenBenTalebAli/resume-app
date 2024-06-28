@@ -15,8 +15,10 @@
             <label for="name">Institut:</label>
             <input type="text" formControlName="nom">
             <br>
-            <span *ngIf="!educationForm.get('nom').valid &&
-	  educationForm.get('nom').touched">S'il vous plaît entrer un nom d'institut valide!</span>
+            <!--  *ngIf="!educationForm.get('nom').valid &&
+	  educationForm.get('nom').touched" -->
+            @if(!educationForm.get('nom')?.valid &&
+            educationForm.get('nom')?.touched){<span>S'il vous plaît entrer un nom d'institut valide!</span>}
           </div>
         </div>
       </div>
@@ -27,8 +29,10 @@
             <label for="name">Diplome:</label>
             <input type="text" formControlName="diplome">
             <br>
-            <span *ngIf="!educationForm.get('diplome').valid &&
-	  educationForm.get('diplome').touched">S'il vous plaît entrer un nom de diplome valide!</span>
+            <!--  *ngIf="!educationForm.get('diplome').valid &&
+	  educationForm.get('diplome').touched" -->
+            @if(!educationForm.get('diplome')?.valid &&
+            educationForm.get('diplome')?.touched){<span>S'il vous plaît entrer un nom de diplome valide!</span>}
           </div>
         </div>
       </div>
@@ -39,8 +43,10 @@
             <label for="name">Date de début:</label>
             <input type="date" formControlName="dateDebut">
             <br>
-            <span *ngIf="!educationForm.get('dateDebut').valid &&
-	  educationForm.get('dateDebut').touched">S'il vous plaît entrer une date de début valide!</span>
+            <!--  *ngIf="!educationForm.get('dateDebut').valid &&
+	  educationForm.get('dateDebut').touched" -->
+            @if(!educationForm.get('dateDebut')?.valid &&
+            educationForm.get('dateDebut')?.touched){<span>S'il vous plaît entrer une date de début valide!</span>}
           </div>
         </div>
       </div>
@@ -51,8 +57,10 @@
             <label for="name">Date de fin:</label>
             <input type="date" formControlName="dateFin">
             <br>
-            <span *ngIf="!educationForm.get('dateFin').valid &&
-	  educationForm.get('dateFin').touched">S'il vous plaît entrer une date de fin valide!</span>
+            <!--  *ngIf="!educationForm.get('dateFin').valid &&
+	  educationForm.get('dateFin').touched" -->
+            @if(!educationForm.get('dateFin')?.valid &&
+            educationForm.get('dateFin')?.touched){<span>S'il vous plaît entrer une date de fin valide!</span>}
           </div>
         </div>
       </div>
@@ -63,8 +71,10 @@
             <label for="name">Adresse:</label>
             <input type="text" formControlName="adresse">
             <br>
-            <span *ngIf="!educationForm.get('adresse').valid &&
-	  educationForm.get('adresse').touched">S'il vous plaît entrer une adresse valide!</span>
+            <!--  *ngIf="!educationForm.get('adresse').valid &&
+	  educationForm.get('adresse').touched" -->
+            @if(!educationForm.get('adresse')?.valid &&
+            educationForm.get('adresse')?.touched){<span>S'il vous plaît entrer une adresse valide!</span>}
           </div>
         </div>
       </div>
@@ -75,8 +85,10 @@
             <label for="name">Details:</label>
             <input type="text" formControlName="details">
             <br>
-            <span *ngIf="!educationForm.get('details').valid &&
-	  educationForm.get('details').touched">S'il vous plaît entrer une details valide!</span>
+            <!--  *ngIf="!educationForm.get('details').valid &&
+	  educationForm.get('details').touched" -->
+            @if(!educationForm.get('details')?.valid &&
+            educationForm.get('details')?.touched){<span>S'il vous plaît entrer une details valide!</span>}
           </div>
         </div>
       </div>

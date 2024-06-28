@@ -1,21 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, inject } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 
 import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signin',
+  standalone: true,
+  imports: [FormsModule],
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  styleUrls: ['./signin.component.css'],
 })
 export class SigninComponent implements OnInit {
-
   errorAlert: string;
+  private authService: AuthService = inject(AuthService);
 
-  constructor(private authService: AuthService) { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSignin(form: NgForm) {
     const email = form.value.email;
@@ -24,10 +25,11 @@ export class SigninComponent implements OnInit {
   }
 
   getErrorMsg(): string {
+    let message = '';
     this.errorAlert = this.authService.errorMsg;
     if (this.errorAlert) {
-      return 'Erreur: vérifier votre email et motdepasse!';
+      message = 'Erreur: vérifier votre email et motdepasse!';
     }
+    return message;
   }
-
 }

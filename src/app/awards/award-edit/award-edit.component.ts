@@ -1,16 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  NgForm,
+  FormSubmittedEvent,
+  FormResetEvent,
+  FormsModule,
+} from '@angular/forms';
 
 import { FormationService } from '../formation.service';
 
 @Component({
   selector: 'app-award-edit',
+  standalone: true,
+  imports: [FormsModule],
   templateUrl: './award-edit.component.html',
-  styleUrls: ['./award-edit.component.scss']
+  styleUrls: ['./award-edit.component.scss'],
 })
 export class AwardEditComponent implements OnInit {
-
   id: number;
   editMode = false;
   formationForm: FormGroup;
@@ -19,17 +28,24 @@ export class AwardEditComponent implements OnInit {
     private route: ActivatedRoute,
     private formationService: FormationService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.id = +params.id;
-          this.editMode = params.id != null;
-          this.initForm();
-        }
-      );
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params.id;
+      this.editMode = params.id != null;
+      this.initForm();
+    });
+
+    this.formationForm.events.subscribe((event) => {
+      if (event instanceof FormSubmittedEvent) {
+        console.log('submit', event);
+      }
+
+      if (event instanceof FormResetEvent) {
+        console.log('reset', event);
+      }
+    });
   }
 
   private initForm() {
@@ -56,16 +72,16 @@ export class AwardEditComponent implements OnInit {
       dateDebut: new FormControl(dateDebut, Validators.required),
       dateFin: new FormControl(dateFin, Validators.required),
       adresse: new FormControl(adresse, Validators.required),
-      siteWeb: new FormControl(siteWeb)
+      siteWeb: new FormControl(siteWeb),
     });
   }
 
-  onSubmitFormation() {
-    console.log(this.formationForm);
+  onSubmitFormation(formationForm: NgForm) {
+    console.log(formationForm);
     if (this.editMode) {
-      this.formationService.updateFormation(this.id, this.formationForm.value);
+      this.formationService.updateFormation(this.id, formationForm.value);
     } else {
-      this.formationService.addFormation(this.formationForm.value);
+      this.formationService.addFormation(formationForm.value);
     }
     this.onCancel();
   }
@@ -73,5 +89,4 @@ export class AwardEditComponent implements OnInit {
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
-
 }

@@ -1,118 +1,182 @@
 import { Router } from '@angular/router';
 // import * as firebase from 'firebase';
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable, NgZone, inject } from '@angular/core';
 // import { auth } from 'firebase/app';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import {
+  /*AngularFireAuth,*/ Auth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from '@angular/fire/auth';
+import {
+  Firestore,
+  collection,
+  collectionData,
+  CollectionReference,
+  setDoc,
+  DocumentData,
+  doc,
+} from '@angular/fire/firestore';
+// import {
+//   AngularFirestore,
+//   AngularFirestoreDocument,
+// } from '@angular/fire/compat/firestore';
 import { User } from '../shared/user.model';
 import { DataStorageService } from '../shared/data-storage.service';
 import { UserService } from '../about/user.service';
+import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthService {
   token: string;
   errorMsg: string;
   user: {};
   private readonly USER_KEY = 'connectedUser';
+  // private auth = inject(Auth);
 
-  constructor(
-    private router: Router,
-    public angularFirestore: AngularFirestore,
-    public angularFireAuth: AngularFireAuth,
-    public ngZone: NgZone,
-    public userService: UserService,
-    public dataStorageService: DataStorageService
-  ) { }
+  private router: Router = inject(Router);
+  public angularFirestore: /*Angular*/ Firestore = inject(Firestore);
+  // public angularFirestore: AngularFirestore = inject(AngularFirestore);
+  public angularFireAuth: /*AngularFire*/ Auth = inject(Auth);
+  // public angularFireAuth: AngularFireAuth = inject(AngularFireAuth);
+  public ngZone: NgZone = inject(NgZone);
+  public userService: UserService = inject(UserService);
+  public dataStorageService: DataStorageService = inject(DataStorageService);
+
+  constructor() {}
 
   signupUser(email: string, password: string) {
-    this.angularFireAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then(response => {
-        // this.setUserData(response.user);
-      }
-      )
-      .catch(
-        error => console.log(error)
-      );
+    createUserWithEmailAndPassword(this.angularFireAuth, email, password)
+      .then((response) => {
+        console.log('response.user', response.user);
+        this.setUserData(response.user);
+      })
+      .catch((error) => console.log('signupUserError', error));
   }
 
   signinUser(email: string, password: string) {
-    this.angularFireAuth.auth.signInWithEmailAndPassword(email, password)
-      .then(
-        response => {
-          this.ngZone.run(
-            () => {
-              this.router.navigate(['/admin/experiences']);
-            }
-          );
-          this.setUserData(response.user);
-          const currentUserEmail = this.angularFireAuth.auth.currentUser.email;
-          console.log('currentUserEmail', currentUserEmail);
+    signInWithEmailAndPassword(this.angularFireAuth, email, password)
+      .then((response) => {
+        this.ngZone.run(() => {
+          this.router.navigate(['/admin/experiences']);
+        });
+        this.setUserData(response.user);
+        console.log('currentUser', this.angularFireAuth.currentUser);
+        // const currentUserEmailP = this.angularFireAuth.currentUser?.then(
+        //   (user) => {
+        //     const currentUserEmail = user?.email;
+        //     console.log('currentUserEmail', currentUserEmail);
+        //     if (currentUserEmail) {
+        //       this.dataStorageService.getUser('email', currentUserEmail);
+        //       this.user = this.userService.getUser();
+        //     }
+        //   }
+        // );
+        const currentUserEmail = this.angularFireAuth.currentUser?.email;
+        if (currentUserEmail) {
           this.dataStorageService.getUser('email', currentUserEmail);
-          this.user = this.userService.getUser();
-          this.angularFireAuth.auth.currentUser.getIdToken()
-            .then(
-              (token: string) => {
-                this.token = token;
-                console.log('token', this.token);
-                this.setConnectedUser({
-                  uid: response.user.uid,
-                  email: response.user.email,
-                  displayName: response.user.displayName,
-                  photoURL: response.user.photoURL,
-                  emailVerified: response.user.emailVerified,
-                }
-                  , this.token
-                );
-              }
-            );
         }
-      )
-      .catch(
-        error => this.errorMsg = error
-      );
+        this.user = this.userService.getUser();
+        this.angularFireAuth.currentUser?.getIdToken().then((token) => {
+          if (token) {
+            this.token = token;
+          }
+          console.log('token', this.token);
+          this.setConnectedUser(
+            {
+              uid: response?.user?.uid || '',
+              email: response?.user?.email || '',
+              displayName: response?.user?.displayName || '',
+              photoURL: response?.user?.photoURL || '',
+              emailVerified: response?.user?.emailVerified || false,
+            },
+            this.token
+          );
+        });
+      })
+      .catch((error) => (this.errorMsg = error));
   }
 
   logout() {
-    this.angularFireAuth.auth.signOut();
-    this.token = null;
+    this.angularFireAuth.signOut();
+    this.token = '';
     this.clearConnectedUser();
     this.router.navigate(['/about']);
   }
 
   getToken() {
-    this.angularFireAuth.auth.currentUser.getIdToken()
-      .then(
-        (token: string) => this.token = token
-      );
+    this.angularFireAuth.currentUser?.getIdToken().then((token) => {
+      if (token) {
+        this.token = token;
+      }
+    });
     return this.token;
   }
 
   isAuthenticated() {
-    this.getConnectedUser()
+    this.getConnectedUser();
     const userString = localStorage.getItem(this.USER_KEY);
-    const user = JSON.parse(userString);
-    const token = (typeof user === 'object' && user !== null) ? user.token : null;
+    let token = null;
+    if (userString) {
+      const user = JSON.parse(userString);
+      token = typeof user === 'object' && user !== null ? user.token : null;
+    }
     return token != null;
   }
 
   setUserData(user: any) {
-    const userRef: AngularFirestoreDocument<any> = this.angularFirestore.doc(`users/${user.uid}`);
+    /*
+    const userRef1: AngularFirestoreDocument<any> = this.angularFirestore.doc(
+      `users/${user.uid}`
+    );
+
+    const userData1: User = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      emailVerified: user.emailVerified,
+    };
+    return userRef1.set(userData1, {
+      merge: true,
+    });
+    */
+
+    // get a reference to the user-profile collection
+    const userProfileCollection: CollectionReference<
+      DocumentData,
+      DocumentData
+    > = collection(this.angularFirestore, `users/${user.uid}`);
+
+    // get documents (data) from the collection using collectionData
+    const user$ = collectionData(userProfileCollection) as Observable<User>;
+
     const userData: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      emailVerified: user.emailVerified
+      emailVerified: user.emailVerified,
     };
-    return userRef.set(userData, {
-      merge: true
-    });
+
+    const userRef = doc(this.angularFirestore, 'users');
+    return setDoc(
+      userRef,
+      {
+        ...user$,
+        ...userData,
+      },
+      { merge: true }
+    );
   }
 
-
-
   setConnectedUser(user: User, token: string): void {
-    localStorage.setItem(this.USER_KEY, JSON.stringify({ ...user, token: token }));
+    localStorage.setItem(
+      this.USER_KEY,
+      JSON.stringify({ ...user, token: token })
+    );
   }
 
   getConnectedUser(): User | null {

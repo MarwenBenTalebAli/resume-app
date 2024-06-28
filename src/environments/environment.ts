@@ -12,8 +12,8 @@ export const environment = {
     storageBucket: 'resume-profile.appspot.com',
     messagingSenderId: '560707600047',
     appId: '1:560707600047:web:a5f72c897feb5f0c285e5a',
-    measurementId: 'G-60K8TZNEJL'
-  }
+    measurementId: 'G-60K8TZNEJL',
+  },
 };
 
 /*

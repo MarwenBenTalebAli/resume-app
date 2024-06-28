@@ -3,14 +3,14 @@ import { CompetenceService } from '../competence.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Competence } from '../competence.model';
 
-
 @Component({
   selector: 'app-skill-detail',
+  standalone: true,
+  imports: [],
   templateUrl: './skill-detail.component.html',
-  styleUrls: ['./skill-detail.component.scss']
+  styleUrls: ['./skill-detail.component.scss'],
 })
 export class SkillDetailComponent implements OnInit {
-
   competence: Competence;
   id: number;
 
@@ -18,16 +18,13 @@ export class SkillDetailComponent implements OnInit {
     private competenceService: CompetenceService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.route.params
-    .subscribe(
-      (params: Params) => {
-        this.id = +params.id;
-        this.competence = this.competenceService.getCompetence(this.id);
-      }
-    );
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params.id;
+      this.competence = this.competenceService.getCompetence(this.id);
+    });
   }
 
   onEditCompetence() {
@@ -38,5 +35,4 @@ export class SkillDetailComponent implements OnInit {
     this.competenceService.deleteCompetence(this.id);
     this.router.navigate(['/skills']);
   }
-
 }

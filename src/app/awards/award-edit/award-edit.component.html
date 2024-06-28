@@ -1,6 +1,12 @@
 <div class="row">
   <div class="col-xs-12">
-    <form [formGroup]="formationForm" (ngSubmit)="onSubmitFormation()">
+    <!-- [formGroup]="formationForm"  -->
+    <!-- 
+    #formationForm="ngForm"
+     (ngSubmit)="onSubmitFormation()"
+      -->
+    <form #formationForm="ngForm"
+    (ngSubmit)="onSubmitFormation(formationForm)">
 
       <div class="row">
         <div class="col-xs-12">
@@ -15,8 +21,12 @@
             <label for="name">Formation:</label>
             <input type="text" formControlName="nomFormation">
             <br>
-            <span *ngIf="!formationForm.get('nomFormation').valid &&
-  formationForm.get('nomFormation').touched">S'il vous plaît entrer une formation valide!</span>
+            @if (!formationForm.getError('nomFormation')?.valid &&
+            formationForm.getError('nomFormation')?.touched) {
+            <!--  *ngIf="!formationForm.getError('nomFormation').valid &&
+  formationForm.getError('nomFormation').touched" -->
+            <span>S'il vous plaît entrer une formation valide!</span>
+            }
           </div>
         </div>
       </div>
@@ -27,8 +37,12 @@
             <label for="name">Société:</label>
             <input type="text" formControlName="societe">
             <br>
-            <span *ngIf="!formationForm.get('societe').valid &&
-  formationForm.get('societe').touched">S'il vous plaît entrer une société valide!</span>
+            <!--  *ngIf="!formationForm.getError('societe').valid &&
+  formationForm.getError('societe').touched" -->
+            @if (!formationForm.getError('societe').valid &&
+            formationForm.getError('societe').touched) {
+            <span>S'il vous plaît entrer une société valide!</span>
+            }
           </div>
         </div>
       </div>
@@ -40,8 +54,11 @@
             <label for="name">Date de début:</label>
             <input type="date" formControlName="dateDebut">
             <br>
-            <span *ngIf="!formationForm.get('dateDebut').valid &&
-  formationForm.get('dateDebut').touched">S'il vous plaît entrer une date de début valide!</span>
+            <!--  *ngIf="" -->
+            @if (!formationForm.getError('dateDebut').valid &&
+            formationForm.getError('dateDebut').touched) {
+            <span>S'il vous plaît entrer une date de début valide!</span>
+            }
           </div>
         </div>
       </div>
@@ -52,8 +69,12 @@
             <label for="name">Date de fin:</label>
             <input type="date" formControlName="dateFin">
             <br>
-            <span *ngIf="!formationForm.get('dateFin').valid &&
-  formationForm.get('dateFin').touched">S'il vous plaît entrer une date de fin valide!</span>
+            <!--  *ngIf="!formationForm.getError('dateFin').valid &&
+  formationForm.getError('dateFin').touched" -->
+            @if (!formationForm.getError('dateFin').valid &&
+            formationForm.getError('dateFin').touched) {
+            <span>S'il vous plaît entrer une date de fin valide!</span>
+            }
           </div>
         </div>
       </div>
@@ -64,8 +85,12 @@
             <label for="name">Adresse:</label>
             <input type="text" formControlName="adresse">
             <br>
-            <span *ngIf="!formationForm.get('adresse').valid &&
-  formationForm.get('adresse').touched">S'il vous plaît entrer une adresse valide!</span>
+            <!--  *ngIf="!formationForm.getError('adresse').valid &&
+  formationForm.getError('adresse').touched" -->
+            @if (!formationForm.getError('adresse').valid &&
+            formationForm.getError('adresse').touched) {
+            <span>S'il vous plaît entrer une adresse valide!</span>
+            }
           </div>
         </div>
       </div>

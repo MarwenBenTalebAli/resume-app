@@ -5,27 +5,26 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 
 @Component({
   selector: 'app-education-detail',
+  standalone: true,
+  imports: [],
   templateUrl: './education-detail.component.html',
-  styleUrls: ['./education-detail.component.scss']
+  styleUrls: ['./education-detail.component.scss'],
 })
 export class EducationDetailComponent implements OnInit {
-
   institut: Institut;
   id: number;
 
   constructor(
     private educationService: EducationService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.id = +params.id;
-          this.institut = this.educationService.getInstitut(this.id);
-        }
-      );
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params.id;
+      this.institut = this.educationService.getInstitut(this.id);
+    });
   }
 
   onEditEducation() {
@@ -36,5 +35,4 @@ export class EducationDetailComponent implements OnInit {
     this.educationService.deleteInstitut(this.id);
     this.router.navigate(['/educations']);
   }
-
 }

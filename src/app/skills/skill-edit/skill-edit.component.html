@@ -14,8 +14,10 @@
             <label for="name">Compétence:</label>
             <input type="text" formControlName="nomCompetence">
             <br>
-            <span *ngIf="!competenceForm.get('nomCompetence').valid &&
-  competenceForm.get('nomCompetence').touched">S'il vous plaît entrer une compétence valide!</span>
+            <!--  *ngIf="!competenceForm.get('nomCompetence').valid &&
+  competenceForm.get('nomCompetence').touched" -->
+            @if(!competenceForm.get('nomCompetence')?.valid &&
+            competenceForm.get('nomCompetence')?.touched){<span>S'il vous plaît entrer une compétence valide!</span>}
           </div>
         </div>
       </div>
@@ -27,8 +29,10 @@
             <label for="name">Niveau:</label>
             <input type="text" formControlName="niveau">
             <br>
-            <span *ngIf="!competenceForm.get('niveau').valid &&
-  competenceForm.get('niveau').touched">S'il vous plaît entrer un niveau valide!</span>
+            <!--  *ngIf="!competenceForm.get('niveau').valid &&
+  competenceForm.get('niveau').touched" -->
+            @if(!competenceForm.get('niveau')?.valid &&
+            competenceForm.get('niveau')?.touched){<span>S'il vous plaît entrer un niveau valide!</span>}
           </div>
         </div>
       </div>
@@ -39,8 +43,10 @@
             <label for="name">Description:</label>
             <input type="text" formControlName="description">
             <br>
-            <span *ngIf="!competenceForm.get('description').valid &&
-  competenceForm.get('description').touched">S'il vous plaît entrer une description valide!</span>
+            <!--  *ngIf="!competenceForm.get('description').valid &&
+  competenceForm.get('description').touched" -->
+            @if(!competenceForm.get('description')?.valid &&
+            competenceForm.get('description')?.touched){<span>S'il vous plaît entrer une description valide!</span>}
           </div>
         </div>
       </div>

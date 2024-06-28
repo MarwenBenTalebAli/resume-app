@@ -1,27 +1,28 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { Competence } from '../competence.model';
 import { CompetenceService } from '../competence.service';
-import { DataStorageService } from 'src/app/shared/data-storage.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
-
+import { DataStorageService } from '../../shared/data-storage.service';
+import { Router, ActivatedRoute, RouterModule } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { SkillItemComponent } from './skill-item/skill-item.component';
 
 @Component({
   selector: 'app-skill-list',
+  standalone: true,
+  imports: [RouterModule, SkillItemComponent],
   templateUrl: './skill-list.component.html',
-  styleUrls: ['./skill-list.component.scss']
+  styleUrls: ['./skill-list.component.scss'],
 })
 export class SkillListComponent implements OnInit, OnDestroy {
-
   subscription: Subscription;
   competences: Competence[];
+  private dataStorageService = inject(DataStorageService);
 
   constructor(
     private competenceService: CompetenceService,
-    private dataStorageService: DataStorageService,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.subscription = this.competenceService.competencesChanged.subscribe(
@@ -37,12 +38,9 @@ export class SkillListComponent implements OnInit, OnDestroy {
   }
 
   onSaveCompetencesData() {
-    this.dataStorageService.storeCompetences()
-      .subscribe(
-        (response) => {
-          console.log(response);
-        }
-      );
+    this.dataStorageService.storeCompetences().subscribe((response) => {
+      console.log(response);
+    });
   }
 
   onFetchCompetencesData() {
@@ -52,5 +50,4 @@ export class SkillListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
 }

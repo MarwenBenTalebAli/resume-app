@@ -3,14 +3,14 @@ import { FormationService } from '../formation.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Formation } from '../formation.model';
 
-
 @Component({
   selector: 'app-award-detail',
+  standalone: true,
+  imports: [],
   templateUrl: './award-detail.component.html',
-  styleUrls: ['./award-detail.component.scss']
+  styleUrls: ['./award-detail.component.scss'],
 })
 export class AwardDetailComponent implements OnInit {
-
   formation: Formation;
   id: number;
 
@@ -18,16 +18,13 @@ export class AwardDetailComponent implements OnInit {
     private formationService: FormationService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.route.params
-    .subscribe(
-      (params: Params) => {
-        this.id = +params.id;
-        this.formation = this.formationService.getFormation(this.id);
-      }
-    );
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params.id;
+      this.formation = this.formationService.getFormation(this.id);
+    });
   }
 
   onEditFormation() {
@@ -38,5 +35,4 @@ export class AwardDetailComponent implements OnInit {
     this.formationService.deleteFormation(this.id);
     this.router.navigate(['/awards']);
   }
-
 }

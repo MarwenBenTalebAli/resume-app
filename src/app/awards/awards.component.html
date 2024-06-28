@@ -1,27 +1,33 @@
-<ng-container *ngIf="isAdmin; else defaultExperienceTemplate">
-  <app-award-list></app-award-list>
-</ng-container>
-<ng-template #defaultExperienceTemplate>
-  <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="awards">
-    <div class="w-100">
-      <h2 class="mb-5">Formations &amp; Certifications</h2>
-      <ul class="fa-ul mb-0">
-        <li *ngFor="let formation of formations">
-          <div class="row">
-            <div class="col-6">
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              <div class="subheading">{{ formation.nomFormation }}</div>
-              <span class="text-primary">{{ formation.dateDebut }} - {{ formation.dateFin }}</span>
-            </div>
-            <div class="col-6">
-              <div class="row">
-                <div class="col-3"><a href="{{ formation.siteWeb }}">{{ formation.societe }}</a></div>
-                <div class="col-9">{{ formation.adresse }}</div>
+<!--  *ngIf="isAdmin; else defaultExperienceTemplate" -->
+@if (isAdmin()) {
+  <ng-container>
+    <app-award-list></app-award-list>
+  </ng-container>
+}
+@else {
+  <!-- <ng-template #defaultExperienceTemplate> -->
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="awards">
+      <div class="w-100">
+        <h2 class="mb-5">Formations &amp; Certifications</h2>
+        <ul class="fa-ul mb-0">
+          <!--  *ngFor="let formation of formations" -->
+          @for (formation of formations; track $index){<li>
+            <div class="row">
+              <div class="col-6">
+                <i class="fa-li fa fa-trophy text-warning"></i>
+                <div class="subheading">{{ formation.nomFormation }}</div>
+                <span class="text-primary">{{ formation.dateDebut }} - {{ formation.dateFin }}</span>
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-3"><a href="{{ formation.siteWeb }}">{{ formation.societe }}</a></div>
+                  <div class="col-9">{{ formation.adresse }}</div>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </section>
-</ng-template>
+          </li>}
+        </ul>
+      </div>
+    </section>
+  <!-- </ng-template> -->
+}

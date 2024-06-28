@@ -1,19 +1,19 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Project } from 'src/app/projects/project.model';
+import { Component, OnInit, input } from '@angular/core';
+import { Project } from '../../project.model';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-project-item',
+  standalone: true,
+  imports: [RouterModule],
   templateUrl: './project-item.component.html',
-  styleUrls: ['./project-item.component.scss']
+  styleUrls: ['./project-item.component.scss'],
 })
 export class ProjectItemComponent implements OnInit {
+  project = input<Project>();
+  index = input<number>();
 
-  @Input() project: Project;
-  @Input() index: number;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

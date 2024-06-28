@@ -1,25 +1,31 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, signal } from '@angular/core';
 import { ExperienceService } from './experience.service';
 import { Experience } from './experience.model';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { DataStorageService } from '../shared/data-storage.service';
+import { ExperienceListComponent } from './experience-list/experience-list.component';
 
 @Component({
   selector: 'app-experiences',
+  standalone: true,
+  imports: [ExperienceListComponent],
   templateUrl: './experiences.component.html',
-  styleUrls: ['./experiences.component.scss']
+  styleUrls: ['./experiences.component.scss'],
 })
 export class ExperiencesComponent implements OnInit, OnDestroy {
-
   experiences: Experience[];
   subscription: Subscription;
-  @Input() isAdmin = false;
+  isAdmin = signal(false);
 
-  constructor(private experienceService: ExperienceService, private authService: AuthService, private dataStorageService: DataStorageService) { }
+  constructor(
+    private experienceService: ExperienceService,
+    private authService: AuthService,
+    private dataStorageService: DataStorageService
+  ) {}
 
   ngOnInit() {
-    this.isAdmin = this.authService.isAuthenticated();
+    this.isAdmin.set(this.authService.isAuthenticated());
     this.onFetchExperiencesData();
     this.experiences = this.experienceService.getExperiences();
     console.log('this.experiences', this.experiences);
@@ -38,5 +44,4 @@ export class ExperiencesComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
 }

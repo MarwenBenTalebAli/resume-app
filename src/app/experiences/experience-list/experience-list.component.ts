@@ -1,17 +1,19 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Experience } from '../experience.model';
 import { ExperienceService } from '../experience.service';
-import { DataStorageService } from 'src/app/shared/data-storage.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+import { DataStorageService } from '../../shared/data-storage.service';
+import { Router, ActivatedRoute, RouterOutlet } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { ExperienceItemComponent } from './experience-item/experience-item.component';
 
 @Component({
   selector: 'app-experience-list',
+  standalone: true,
+  imports: [RouterOutlet, ExperienceItemComponent],
   templateUrl: './experience-list.component.html',
-  styleUrls: ['./experience-list.component.scss']
+  styleUrls: ['./experience-list.component.scss'],
 })
 export class ExperienceListComponent implements OnInit, OnDestroy {
-
   subscription: Subscription;
   experiences: Experience[];
 
@@ -20,7 +22,7 @@ export class ExperienceListComponent implements OnInit, OnDestroy {
     private dataStorageService: DataStorageService,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.subscription = this.experienceService.experiencesChanged.subscribe(
@@ -36,12 +38,9 @@ export class ExperienceListComponent implements OnInit, OnDestroy {
   }
 
   onSaveExperiencesData() {
-    this.dataStorageService.storeExperiences()
-      .subscribe(
-        (response) => {
-          console.log(response);
-        }
-      );
+    this.dataStorageService.storeExperiences().subscribe((response) => {
+      console.log(response);
+    });
   }
 
   onFetchExperiencesData() {
@@ -52,5 +51,4 @@ export class ExperienceListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
 }

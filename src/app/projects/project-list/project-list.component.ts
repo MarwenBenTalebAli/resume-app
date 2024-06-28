@@ -1,26 +1,29 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { Project } from '../project.model';
 import { ProjectService } from '../project.service';
-import { DataStorageService } from 'src/app/shared/data-storage.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+import { DataStorageService } from '../../shared/data-storage.service';
+import { Router, ActivatedRoute, RouterOutlet } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { ProjectItemComponent } from './project-item/project-item.component';
 
 @Component({
   selector: 'app-project-list',
+  standalone: true,
+  imports: [RouterOutlet, ProjectItemComponent],
   templateUrl: './project-list.component.html',
-  styleUrls: ['./project-list.component.scss']
+  styleUrls: ['./project-list.component.scss'],
 })
 export class ProjectListComponent implements OnInit, OnDestroy {
-
   subscription: Subscription;
   projects: Project[];
+  private dataStorageService = inject(DataStorageService);
+  private projectService: ProjectService = inject(ProjectService);
 
   constructor(
-    private projectService: ProjectService,
-    private dataStorageService: DataStorageService,
+    // private projectService: ProjectService,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.subscription = this.projectService.projectsChanged.subscribe(
@@ -36,12 +39,9 @@ export class ProjectListComponent implements OnInit, OnDestroy {
   }
 
   onSaveProjectsData() {
-    this.dataStorageService.storeProjects()
-      .subscribe(
-        (response) => {
-          console.log(response);
-        }
-      );
+    this.dataStorageService.storeProjects().subscribe((response) => {
+      console.log(response);
+    });
   }
 
   onFetchProjectsData() {
@@ -52,5 +52,4 @@ export class ProjectListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
 }

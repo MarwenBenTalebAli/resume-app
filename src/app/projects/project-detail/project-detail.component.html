@@ -2,7 +2,7 @@
   <div class="tab-pane fade show active" id="list-project" role="tabpanel" aria-labelledby="list-project-list">
     <div class="row">
       <div class="col-xs-12">
-        <h4>{{ project.nomExperience }}</h4>
+        <h4>{{ project.nomProjet }}</h4>
         <p class="mb-1">{{ project.description }}</p>
       </div>
     </div>
@@ -13,8 +13,8 @@
             Gérer l'expérience <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a style="cursor: pointer;" (click)="onEditExperience()">Modifier l'éxperience</a></li>
-            <li><a style="cursor: pointer;" (click)="onDeleteExperience()">Supprimer l'éxperience</a></li>
+            <li><a style="cursor: pointer;" (click)="onEditProject()">Modifier l'éxperience</a></li>
+            <li><a style="cursor: pointer;" (click)="onDeleteProject()">Supprimer l'éxperience</a></li>
           </ul>
         </div>
       </div>

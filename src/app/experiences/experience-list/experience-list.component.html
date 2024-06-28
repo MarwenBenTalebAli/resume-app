@@ -12,9 +12,11 @@
   <div class="row">
     <div class="col-xl-7">
       <div class="list-group" id="list-tab" role="tablist">
-        <app-experience-item *ngFor="let experienceEl of experiences; let i=index" [experience]="experienceEl"
-          [index]="i">
-        </app-experience-item>
+        <!--  *ngFor="let experienceEl of experiences; let i=index" -->
+        @for(experienceEl of experiences; track $index)
+        {<app-experience-item [experience]="experienceEl"
+          [index]="$index">
+      </app-experience-item>}
       </div>
     </div>
 

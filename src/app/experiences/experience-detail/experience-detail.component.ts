@@ -5,11 +5,12 @@ import { Experience } from '../experience.model';
 
 @Component({
   selector: 'app-experience-detail',
+  standalone: true,
+  imports: [],
   templateUrl: './experience-detail.component.html',
-  styleUrls: ['./experience-detail.component.scss']
+  styleUrls: ['./experience-detail.component.scss'],
 })
 export class ExperienceDetailComponent implements OnInit {
-
   experience: Experience;
   id: number;
 
@@ -17,16 +18,13 @@ export class ExperienceDetailComponent implements OnInit {
     private experienceService: ExperienceService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.id = +params.id;
-          this.experience = this.experienceService.getExperience(this.id);
-        }
-      );
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params.id;
+      this.experience = this.experienceService.getExperience(this.id);
+    });
   }
 
   onEditExperience() {

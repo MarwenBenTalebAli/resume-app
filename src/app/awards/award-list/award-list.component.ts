@@ -1,28 +1,28 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { Formation } from '../formation.model';
 import { FormationService } from '../formation.service';
-import { DataStorageService } from 'src/app/shared/data-storage.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
-
-
+import { DataStorageService } from '../../shared/data-storage.service';
+import { Router, ActivatedRoute, RouterOutlet } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AwardItemComponent } from './award-item/award-item.component';
 
 @Component({
   selector: 'app-award-list',
+  standalone: true,
+  imports: [RouterOutlet, AwardItemComponent],
   templateUrl: './award-list.component.html',
-  styleUrls: ['./award-list.component.scss']
+  styleUrls: ['./award-list.component.scss'],
 })
 export class AwardListComponent implements OnInit, OnDestroy {
-
   subscription: Subscription;
   formations: Formation[];
+  private dataStorageService = inject(DataStorageService);
 
   constructor(
     private formationService: FormationService,
-    private dataStorageService: DataStorageService,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.subscription = this.formationService.formationsChanged.subscribe(
@@ -38,12 +38,9 @@ export class AwardListComponent implements OnInit, OnDestroy {
   }
 
   onSaveFormationsData() {
-    this.dataStorageService.storeFormations()
-      .subscribe(
-        (response) => {
-          console.log(response);
-        }
-      );
+    this.dataStorageService.storeFormations().subscribe((response) => {
+      console.log(response);
+    });
   }
 
   onFetchFormationsData() {
@@ -53,5 +50,4 @@ export class AwardListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
 }

@@ -1,16 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 import { ExperienceService } from '../experience.service';
 
 @Component({
   selector: 'app-experience-edit',
+  standalone: true,
+  imports: [ReactiveFormsModule],
   templateUrl: './experience-edit.component.html',
-  styleUrls: ['./experience-edit.component.scss']
+  styleUrls: ['./experience-edit.component.scss'],
 })
 export class ExperienceEditComponent implements OnInit {
-
   id: number;
   editMode = false;
   experienceForm: FormGroup;
@@ -18,17 +24,15 @@ export class ExperienceEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private experienceService: ExperienceService,
-    private router: Router) { }
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.id = +params.id;
-          this.editMode = params.id != null;
-          this.initForm();
-        }
-      );
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params.id;
+      this.editMode = params.id != null;
+      this.initForm();
+    });
   }
 
   private initForm() {
@@ -58,14 +62,17 @@ export class ExperienceEditComponent implements OnInit {
       dateDebut: new FormControl(dateDebut, Validators.required),
       dateFin: new FormControl(dateFin, Validators.required),
       description: new FormControl(description, Validators.required),
-      urlDescription: new FormControl(urlDescription)
+      urlDescription: new FormControl(urlDescription),
     });
   }
 
   onSubmitExperience() {
     console.log(this.experienceForm);
     if (this.editMode) {
-      this.experienceService.updateExperience(this.id, this.experienceForm.value);
+      this.experienceService.updateExperience(
+        this.id,
+        this.experienceForm.value
+      );
     } else {
       this.experienceService.addExperience(this.experienceForm.value);
     }
@@ -75,5 +82,4 @@ export class ExperienceEditComponent implements OnInit {
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
-
 }

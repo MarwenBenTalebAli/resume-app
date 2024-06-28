@@ -1,44 +1,48 @@
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top"
-  [ngClass]="{ 'bg-primary' : isAuthenticated(), 'bg-primary2' : !isAuthenticated() }" id="sideNav">
-  <a class="navbar-brand js-scroll-trigger" href="#page-top">
-    <span class="d-block d-lg-none">Ben taleb ali Marwen</span>
-    <span class="d-none d-lg-block">
-      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../assets/profile.jpg" alt="">
-    </span>
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav">
-      <ng-template [ngIf]="!isAuthenticated()">
-        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
-          *ngFor="let item of menu">
-          <a class="nav-link js-scroll-trigger" routerLink={{item.routerLink}}>
-            <i [innerHTML]="sanitizedSvg(item.icon)"></i>
-            <span class="ml-2">{{item.name}}</span>
-          </a>
-        </li>
-      </ng-template>
-      <ng-template [ngIf]="isAuthenticated()">
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link js-scroll-trigger" routerLink="admin/experiences">Gestion d'experience</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link js-scroll-trigger" routerLink="admin/educations">Gestion d'education</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link js-scroll-trigger" routerLink="admin/skills">Gestion compétence</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link js-scroll-trigger" routerLink="admin/awards">Gestion de formation</a>
-        </li>
-        <li>
-          <button class="btn btn-danger waves-effect waves-light" (click)="onLogout()"
-            *ngIf="isAuthenticated()">Logout</button>
-        </li>
-      </ng-template>
-    </ul>
+<nz-sider nzCollapsible>
+  <div class="logo"
+  style="text-align: center;"
+  >
+    <a href="#page-top">
+      <nz-avatar nzIcon="user"
+      [nzShape]="'circle'" [nzSize]="80"
+      width="200px"
+      height="200px"
+      nzSrc="../assets/images/profile.jpg"
+      alt="image1234" ></nz-avatar>
+      <h1>Ben taleb ali MARWEN</h1>
+    </a>
   </div>
-</nav>
+  <ul nz-menu nzTheme="dark" nzMode="inline">
+    @if(!isAuthenticated()) {
+    @for(item of menu; track $index) {
+    <li nz-menu-item>
+      <a routerLink={{item.routerLink}}>
+        <!-- <i [innerHTML]="sanitizedSvg(item.icon)"></i> -->
+        <span nz-icon nzType={{item.iconName}} nzTheme="outline" style="font-size: 24px;"></span>
+        <span>{{item.name}}</span>
+      </a>
+    </li>
+    }
+    }
+
+    @if(isAuthenticated()) {
+    <li class="nav-item" routerLinkActive="active">
+      <a class="nav-link js-scroll-trigger" routerLink="admin/experiences">Gestion d'experience</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active">
+      <a class="nav-link js-scroll-trigger" routerLink="admin/educations">Gestion d'education</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active">
+      <a class="nav-link js-scroll-trigger" routerLink="admin/skills">Gestion compétence</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active">
+      <a class="nav-link js-scroll-trigger" routerLink="admin/awards">Gestion de formation</a>
+    </li>
+    @if (isAuthenticated()) {
+    <li>
+      <button class="btn btn-danger waves-effect waves-light" (click)="onLogout()">Logout</button>
+    </li>
+    }
+    }
+  </ul>
+</nz-sider>

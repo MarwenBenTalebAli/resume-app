@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 import { EducationService } from '../education.service';
 
-
 @Component({
   selector: 'app-education-edit',
+  standalone: true,
+  imports: [ReactiveFormsModule],
   templateUrl: './education-edit.component.html',
-  styleUrls: ['./education-edit.component.scss']
+  styleUrls: ['./education-edit.component.scss'],
 })
 export class EducationEditComponent implements OnInit {
-
   id: number;
   editMode = false;
   educationForm: FormGroup;
@@ -19,17 +24,15 @@ export class EducationEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private educationService: EducationService,
-    private router: Router) { }
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.id = +params.id;
-          this.editMode = params.id != null;
-          this.initForm();
-        }
-      );
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params.id;
+      this.editMode = params.id != null;
+      this.initForm();
+    });
   }
 
   private initForm() {
@@ -56,7 +59,7 @@ export class EducationEditComponent implements OnInit {
       dateDebut: new FormControl(dateDebut, Validators.required),
       dateFin: new FormControl(dateFin, Validators.required),
       adresse: new FormControl(adresse, Validators.required),
-      details: new FormControl(details, Validators.required)
+      details: new FormControl(details, Validators.required),
     });
   }
 
@@ -71,7 +74,6 @@ export class EducationEditComponent implements OnInit {
   }
 
   onCancel() {
-    this.router.navigate(['../'], {relativeTo: this.route});
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
-
 }

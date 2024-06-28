@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-xs-12">
-    <form [formGroup]="experienceForm" (ngSubmit)="onSubmitExperience()">
+    <form [formGroup]="projectForm" (ngSubmit)="onSubmitProject()">
 
       <div class="row">
         <div class="col-xs-12">
-          <button type="submit" class="btn btn-success" [disabled]="!experienceForm.valid">Enregistrer</button>
+          <button type="submit" class="btn btn-success" [disabled]="!projectForm.valid">Enregistrer</button>
           <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
         </div>
       </div>
@@ -15,8 +15,10 @@
             <label for="name">Société:</label>
             <input type="text" formControlName="societe">
             <br>
-            <span *ngIf="!experienceForm.get('societe').valid &&
- experienceForm.get('societe').touched">S'il vous plaît entrer une société valide!</span>
+            <!--  *ngIf="!projectForm.get('societe').valid &&
+ projectForm.get('societe').touched" -->
+            @if(!projectForm.get('societe')?.valid &&
+            projectForm.get('societe')?.touched){<span>S'il vous plaît entrer une société valide!</span>}
           </div>
         </div>
       </div>
@@ -27,8 +29,10 @@
             <label for="name">Expérience:</label>
             <input type="text" formControlName="nomExperience">
             <br>
-            <span *ngIf="!experienceForm.get('nomExperience').valid &&
- experienceForm.get('nomExperience').touched">S'il vous plaît entrer une expérience valide!</span>
+            <!--  *ngIf="!experienceForm.get('nomExperience').valid &&
+ experienceForm.get('nomExperience').touched" -->
+            @if(!projectForm.get('nomExperience')?.valid &&
+            projectForm.get('nomExperience')?.touched){<span>S'il vous plaît entrer une expérience valide!</span>}
           </div>
         </div>
       </div>
@@ -39,8 +43,10 @@
             <label for="name">Date de début:</label>
             <input type="date" formControlName="dateDebut">
             <br>
-            <span *ngIf="!experienceForm.get('dateDebut').valid &&
- experienceForm.get('dateDebut').touched">S'il vous plaît entrer une date de début valide!</span>
+            <!--  *ngIf="!experienceForm.get('dateDebut').valid &&
+ experienceForm.get('dateDebut').touched" -->
+            @if(!projectForm.get('dateDebut')?.valid &&
+            projectForm.get('dateDebut')?.touched){<span>S'il vous plaît entrer une date de début valide!</span>}
           </div>
         </div>
       </div>
@@ -51,8 +57,10 @@
             <label for="name">Date de fin:</label>
             <input type="date" formControlName="dateFin">
             <br>
-            <span *ngIf="!experienceForm.get('dateFin').valid &&
- experienceForm.get('dateFin').touched">S'il vous plaît entrer une date de fin valide!</span>
+            <!--  *ngIf="!experienceForm.get('dateFin').valid &&
+ experienceForm.get('dateFin').touched" -->
+            @if(!projectForm.get('dateFin')?.valid &&
+ projectForm.get('dateFin')?.touched){<span>S'il vous plaît entrer une date de fin valide!</span>}
           </div>
         </div>
       </div>
@@ -63,8 +71,10 @@
             <label for="name">Adresse:</label>
             <input type="text" formControlName="adresse">
             <br>
-            <span *ngIf="!experienceForm.get('adresse').valid &&
- experienceForm.get('adresse').touched">S'il vous plaît entrer une adresse valide!</span>
+            <!--  *ngIf="!projectForm.get('adresse')?.valid &&
+ projectForm.get('adresse')?.touched" -->
+            @if(!projectForm.get('adresse')?.valid &&
+ projectForm.get('adresse')?.touched){<span>S'il vous plaît entrer une adresse valide!</span>}
           </div>
         </div>
       </div>
@@ -75,8 +85,10 @@
             <label for="name">Description:</label>
             <input type="text" formControlName="description">
             <br>
-            <span *ngIf="!experienceForm.get('description').valid &&
- experienceForm.get('description').touched">S'il vous plaît entrer une description valide!</span>
+            <!--  *ngIf="!projectForm.get('description')?.valid &&
+ projectForm.get('description')?.touched" -->
+            @if(!projectForm.get('description')?.valid &&
+ projectForm.get('description')?.touched){<span>S'il vous plaît entrer une description valide!</span>}
           </div>
         </div>
       </div>

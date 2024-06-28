@@ -12,8 +12,12 @@
   <div class="row">
     <div class="col-xl-7">
       <div class="list-group" id="list-tab" role="tablist">
-        <app-project-item *ngFor="let projectEl of projects; let i=index" [project]="projectEl" [index]="i">
-        </app-project-item>
+        <!--  *ngFor="let projectEl of projects; let i=index" -->
+          <!--  | async -->
+        @for (projectEl of projects; track $index) {
+          <app-project-item [project]="projectEl" [index]="$index">
+          </app-project-item>
+        }
       </div>
     </div>
 

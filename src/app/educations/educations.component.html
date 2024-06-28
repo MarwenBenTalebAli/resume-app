@@ -1,23 +1,29 @@
-<ng-container *ngIf="isAdmin; else defaultTemplate">
-  <app-education-list></app-education-list>
-</ng-container>
-<ng-template #defaultTemplate>
-  <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="education">
-    <div class="w-100">
-      <h2 class="mb-5">Éducation</h2>
-      <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-6"
-        *ngFor="let institut of instituts">
-        <div class="resume-content">
-          <h3 class="mb-0">{{ institut.nom }}</h3>
-          <div class="subheading mb-3">{{ institut.diplome }}</div>
-          <div>{{ institut.adresse }}</div>
-          <p></p>
-        </div>
-        <div class="resume-date text-md-right">
-          <span class="text-primary">{{ institut.dateDebut }} - {{ institut.dateFin }}</span>
-        </div>
+<!--  *ngIf="isAdmin; else defaultTemplate" -->
+@if (isAdmin()) {
+  <ng-container>
+    <app-education-list></app-education-list>
+  </ng-container>
+}
+@else {
+  <!-- <ng-template #defaultTemplate> -->
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="education">
+      <div class="w-100">
+        <h2 class="mb-5">Éducation</h2>
+        <!-- *ngFor="let institut of instituts" -->
+        @for(institut of instituts; track $index){<div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-6"
+          >
+          <div class="resume-content">
+            <h3 class="mb-0">{{ institut.nom }}</h3>
+            <div class="subheading mb-3">{{ institut.diplome }}</div>
+            <div>{{ institut.adresse }}</div>
+            <p></p>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">{{ institut.dateDebut }} - {{ institut.dateFin }}</span>
+          </div>
+        </div>}
       </div>
-    </div>
-  </section>
-  <hr class="m-0">
-</ng-template>
+    </section>
+    <hr class="m-0">
+  <!-- </ng-template> -->
+}

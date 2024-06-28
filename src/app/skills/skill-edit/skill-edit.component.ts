@@ -1,16 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 import { CompetenceService } from '../competence.service';
 
 @Component({
   selector: 'app-skill-edit',
+  standalone: true,
+  imports: [ReactiveFormsModule],
   templateUrl: './skill-edit.component.html',
-  styleUrls: ['./skill-edit.component.scss']
+  styleUrls: ['./skill-edit.component.scss'],
 })
 export class SkillEditComponent implements OnInit {
-
   id: number;
   editMode = false;
   competenceForm: FormGroup;
@@ -19,17 +25,14 @@ export class SkillEditComponent implements OnInit {
     private route: ActivatedRoute,
     private competenceService: CompetenceService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.id = +params.id;
-          this.editMode = params.id != null;
-          this.initForm();
-        }
-      );
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params.id;
+      this.editMode = params.id != null;
+      this.initForm();
+    });
   }
 
   private initForm() {
@@ -47,14 +50,17 @@ export class SkillEditComponent implements OnInit {
     this.competenceForm = new FormGroup({
       nomCompetence: new FormControl(nomCompetence, Validators.required),
       niveau: new FormControl(niveau, Validators.required),
-      description: new FormControl(description, Validators.required)
+      description: new FormControl(description, Validators.required),
     });
   }
 
   onSubmitCompetence() {
     console.log(this.competenceForm);
     if (this.editMode) {
-      this.competenceService.updateCompetence(this.id, this.competenceForm.value);
+      this.competenceService.updateCompetence(
+        this.id,
+        this.competenceForm.value
+      );
     } else {
       this.competenceService.addCompetence(this.competenceForm.value);
     }
@@ -64,5 +70,4 @@ export class SkillEditComponent implements OnInit {
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
-
 }

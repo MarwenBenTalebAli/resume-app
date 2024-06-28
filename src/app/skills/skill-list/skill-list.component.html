@@ -12,9 +12,11 @@
   <div class="row">
     <div class="col-xl-7">
       <div class="list-group" id="list-tab" role="tablist">
-        <app-skill-item *ngFor="let competenceEl of competences; let i=index" [competence]="competenceEl"
-          [index]="i">
-        </app-skill-item>
+        <!--  *ngFor="let competenceEl of competences; let i=index" -->
+        @for (competenceEl of competences; track $index) {
+          <app-skill-item [competence]="competenceEl" [index]="$index">
+          </app-skill-item>
+        }
       </div>
     </div>
 
