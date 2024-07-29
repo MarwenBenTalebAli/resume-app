@@ -1,4 +1,4 @@
-<nz-sider nzCollapsible>
+<nz-sider nzCollapsible style="background-color: #1c3381;">
   <div class="logo"
   style="text-align: center;"
   >
@@ -9,10 +9,10 @@
       height="200px"
       nzSrc="../assets/images/profile.jpg"
       alt="image1234" ></nz-avatar>
-      <h1>Ben taleb ali MARWEN</h1>
+      <!-- <h1>Ben taleb ali MARWEN</h1> -->
     </a>
   </div>
-  <ul nz-menu nzTheme="dark" nzMode="inline">
+  <ul nz-menu nzTheme="dark" nzMode="inline" style="background-color: #1c3381;">
     @if(!isAuthenticated()) {
     @for(item of menu; track $index) {
     <li nz-menu-item>

@@ -6,7 +6,7 @@ import {
   environment,
   getEventPosition,
   isTouchEvent
-} from "./chunk-HWIC3F32.js";
+} from "./chunk-7VJB33WV.js";
 import {
   DOCUMENT
 } from "./chunk-JTFJXEPH.js";
@@ -786,9 +786,10 @@ export {
   MediaMatcher,
   BreakpointObserver,
   NzResizeService,
+  NzScrollService,
   gridResponsiveMap,
   siderResponsiveMap,
   NzBreakpointService,
   NzDestroyService
 };
-//# sourceMappingURL=chunk-XBNBZFXP.js.map
+//# sourceMappingURL=chunk-2TDQGAOK.js.map

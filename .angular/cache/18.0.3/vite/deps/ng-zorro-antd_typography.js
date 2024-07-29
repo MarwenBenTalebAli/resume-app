@@ -1,6 +1,9 @@
 import {
   FocusMonitor
-} from "./chunk-6ULGLZM3.js";
+} from "./chunk-HYJNSAIE.js";
+import {
+  NzI18nService
+} from "./chunk-UISZV4WS.js";
 import {
   NgControl
 } from "./chunk-BUTJST7K.js";
@@ -11,14 +14,22 @@ import {
   NzOverlayModule,
   POSITION_MAP,
   getPlacementName
-} from "./chunk-KJWE22Q6.js";
+} from "./chunk-6WUKDEAI.js";
 import {
   CdkConnectedOverlay,
   ENTER,
   ESCAPE,
   OverlayModule,
   zoomBigMotion
-} from "./chunk-JZ3ZRJPT.js";
+} from "./chunk-MR366GAT.js";
+import "./chunk-PKPGLG6A.js";
+import "./chunk-D4ASDKWF.js";
+import "./chunk-X337QUQF.js";
+import {
+  NzIconDirective,
+  NzIconModule
+} from "./chunk-RCFPNZO5.js";
+import "./chunk-3JSU54FM.js";
 import {
   NzOutletModule,
   NzStringTemplateOutletDirective
@@ -28,37 +39,26 @@ import {
   NzResizeService,
   cancelRequestAnimationFrame,
   reqAnimFrame
-} from "./chunk-XBNBZFXP.js";
-import "./chunk-PKPGLG6A.js";
-import "./chunk-D4ASDKWF.js";
-import "./chunk-X337QUQF.js";
-import {
-  Directionality
-} from "./chunk-CFNTZZRK.js";
-import {
-  NzI18nService
-} from "./chunk-SZ7KWKM4.js";
-import {
-  NzIconDirective,
-  NzIconModule
-} from "./chunk-WX4YWH3P.js";
-import "./chunk-3JSU54FM.js";
-import {
-  NzConfigService,
-  WithConfig,
-  isPresetColor
-} from "./chunk-DXE4DR7A.js";
+} from "./chunk-2TDQGAOK.js";
 import {
   Platform,
   _getEventTarget
 } from "./chunk-5322DHDX.js";
+import {
+  Directionality
+} from "./chunk-CFNTZZRK.js";
+import {
+  NzConfigService,
+  WithConfig,
+  isPresetColor
+} from "./chunk-ZLSREH3V.js";
 import {
   getStatusClassNames,
   isNotNil,
   isStyleSupport,
   measure,
   toBoolean
-} from "./chunk-HWIC3F32.js";
+} from "./chunk-7VJB33WV.js";
 import "./chunk-W43KMHDR.js";
 import "./chunk-4ESRDJKD.js";
 import {
@@ -145,12 +145,12 @@ import {
   ɵɵtextInterpolate1,
   ɵɵviewQuery
 } from "./chunk-EGKYOYDE.js";
-import "./chunk-YWCZMQC3.js";
 import {
   asapScheduler,
   fromEvent,
   merge
 } from "./chunk-VYB34C76.js";
+import "./chunk-YWCZMQC3.js";
 import {
   BehaviorSubject,
   EMPTY,

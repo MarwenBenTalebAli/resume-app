@@ -3,11 +3,13 @@ import { UserService } from './user.service';
 import { User } from './user.model';
 import { Subscription } from 'rxjs';
 import { DataStorageService } from '../shared/data-storage.service';
+import { NzIconDirective } from 'ng-zorro-antd/icon';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [],
+  imports: [NzIconDirective, NzButtonModule],
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss'],
 })

@@ -8,10 +8,6 @@ import {
   trigger
 } from "./chunk-X337QUQF.js";
 import {
-  BidiModule,
-  Directionality
-} from "./chunk-CFNTZZRK.js";
-import {
   Platform,
   RtlScrollAxisType,
   _getEventTarget,
@@ -20,11 +16,15 @@ import {
   supportsScrollBehavior
 } from "./chunk-5322DHDX.js";
 import {
+  BidiModule,
+  Directionality
+} from "./chunk-CFNTZZRK.js";
+import {
   coerceArray,
   coerceCssPixelValue,
   coerceElement,
   coerceNumberProperty
-} from "./chunk-HWIC3F32.js";
+} from "./chunk-7VJB33WV.js";
 import {
   DOCUMENT,
   Location
@@ -5338,4 +5338,4 @@ export {
   slideMotion,
   zoomBigMotion
 };
-//# sourceMappingURL=chunk-JZ3ZRJPT.js.map
+//# sourceMappingURL=chunk-MR366GAT.js.map

@@ -59,6 +59,30 @@ function coerceElement(elementOrRef) {
 function isNotNil(value) {
   return typeof value !== "undefined" && value !== null;
 }
+function shallowEqual(objA, objB) {
+  if (objA === objB) {
+    return true;
+  }
+  if (typeof objA !== "object" || !objA || typeof objB !== "object" || !objB) {
+    return false;
+  }
+  const keysA = Object.keys(objA);
+  const keysB = Object.keys(objB);
+  if (keysA.length !== keysB.length) {
+    return false;
+  }
+  const bHasOwnProperty = Object.prototype.hasOwnProperty.bind(objB);
+  for (let idx = 0; idx < keysA.length; idx++) {
+    const key = keysA[idx];
+    if (!bHasOwnProperty(key)) {
+      return false;
+    }
+    if (objA[key] !== objB[key]) {
+      return false;
+    }
+  }
+  return true;
+}
 function toBoolean(value) {
   return coerceBooleanProperty(value);
 }
@@ -83,6 +107,15 @@ function isStyleSupport(styleName) {
     return styleNameList.some((name) => name in documentElement.style);
   }
   return false;
+}
+function getStyleAsText(styles) {
+  if (!styles) {
+    return "";
+  }
+  return Object.keys(styles).map((key) => {
+    const val = styles[key];
+    return `${key}:${typeof val === "string" ? val : `${val}px`}`;
+  }).join(";");
 }
 var ELEMENT_NODE = 1;
 var TEXT_NODE = 3;
@@ -332,16 +365,18 @@ export {
   coerceCssPixelValue,
   coerceElement,
   isNotNil,
+  shallowEqual,
   toBoolean,
   numberAttributeWithZeroFallback,
   toCssPixel,
   isTouchEvent,
   getEventPosition,
   isStyleSupport,
+  getStyleAsText,
   measure,
   inNextTick,
   canUseDom,
   updateCSS,
   getStatusClassNames
 };
-//# sourceMappingURL=chunk-HWIC3F32.js.map
+//# sourceMappingURL=chunk-7VJB33WV.js.map
