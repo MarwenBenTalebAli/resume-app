@@ -1,16 +1,16 @@
 import {
   NzIconDirective,
   NzIconModule
-} from "./chunk-RCFPNZO5.js";
+} from "./chunk-WX4YWH3P.js";
 import "./chunk-3JSU54FM.js";
-import {
-  PlatformModule
-} from "./chunk-5322DHDX.js";
 import {
   NzConfigService,
   WithConfig
-} from "./chunk-ZLSREH3V.js";
-import "./chunk-7VJB33WV.js";
+} from "./chunk-DXE4DR7A.js";
+import {
+  PlatformModule
+} from "./chunk-5322DHDX.js";
+import "./chunk-HWIC3F32.js";
 import "./chunk-W43KMHDR.js";
 import "./chunk-4ESRDJKD.js";
 import "./chunk-JTFJXEPH.js";
@@ -58,8 +58,8 @@ import {
   ɵɵtextInterpolate,
   ɵɵviewQuery
 } from "./chunk-EGKYOYDE.js";
-import "./chunk-VYB34C76.js";
 import "./chunk-YWCZMQC3.js";
+import "./chunk-VYB34C76.js";
 import {
   __decorate
 } from "./chunk-QMXPFFSE.js";
