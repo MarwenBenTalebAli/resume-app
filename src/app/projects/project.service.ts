@@ -13,19 +13,7 @@ export class ProjectService {
   private httpClient = inject(HttpClient);
   projectsChanged = new Subject<Project[]>();
 
-  projects: Project[] = [
-    new Project(
-      0,
-      '26/03/2021',
-      '31/03/2021',
-      "C'est une application Web qui vous permet de créer un hamburger et de le commander et de vous connecter pour voir vos commandes.",
-      'Burger-builder-app',
-      ['ReactJS', 'HTML', 'JavaScript', 'CSS', 'Firebase'],
-      'https://github.com/MarwenBenTalebAli/burger-builder-app',
-      'https://burger-builder-app-2318e.web.app/',
-      'https://drive.google.com/thumbnail?id=1dsLhOLprUeVmNYfidywybhzGMM32KbWV'
-    ),
-  ];
+  projects: Project[] = [];
 
   constructor() {}
 

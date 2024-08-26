@@ -13,12 +13,11 @@ export class InterestService {
   private httpClient = inject(HttpClient);
   interestChanged = new Subject<Interest>();
 
-  interest: Interest = new Interest(
-    `En plus d'être développeur Web, j'apprécie la plupart de mon temps passé à l'extérieur. J'aime faire du vélo de montagne.`,
-    `Quand je suis forcé à l'intérieur, je suis un certain nombre de cours de développement et d'éducation en ligne,
-        J'ai l'esprit ouverte d'esprit et je passe une grande partie de mon temps libre à explorer les dernières avancées technologiques
-        dans le monde du développement web.`
-  );
+  interest: Interest = new Interest('', '');
+  // `En plus d'être développeur Web, j'apprécie la plupart de mon temps passé à l'extérieur. J'aime faire du vélo de montagne.`,
+  // `Quand je suis forcé à l'intérieur, je suis un certain nombre de cours de développement et d'éducation en ligne,
+  //     J'ai l'esprit ouverte d'esprit et je passe une grande partie de mon temps libre à explorer les dernières avancées technologiques
+  //     dans le monde du développement web.`
 
   constructor() {}
 

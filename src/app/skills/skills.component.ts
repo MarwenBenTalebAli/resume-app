@@ -6,11 +6,13 @@ import { AuthService } from '../auth/auth.service';
 import { DataStorageService } from '../shared/data-storage.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SkillListComponent } from './skill-list/skill-list.component';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [SkillListComponent],
+  imports: [SkillListComponent, NzGridModule, NzIconModule],
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.scss'],
 })
@@ -41,8 +43,29 @@ export class SkillsComponent implements OnInit, OnDestroy {
     this.dataStorageService.getCompetences();
   }
 
-  sanitizedSvg(svgString: string) {
-    return this.sanitizer.bypassSecurityTrustHtml(svgString);
+  sanitizedSvg(
+    svgString: string,
+    width: string,
+    height: string,
+    stroke: string,
+    fill: string
+  ) {
+    let newSvgString = svgString;
+
+    newSvgString = newSvgString.replace(
+      'height="1em"',
+      'height="' + height + '"'
+    );
+    newSvgString = newSvgString.replace('width="1em"', 'width="' + width + '"');
+    newSvgString = newSvgString.replace(
+      'fill="currentColor"',
+      'fill="' + fill + '"'
+    );
+    newSvgString = newSvgString.replace(
+      'stroke="currentColor"',
+      'stroke="' + stroke + '"'
+    );
+    return this.sanitizer.bypassSecurityTrustHtml(newSvgString);
   }
 
   ngOnDestroy() {

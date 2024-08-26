@@ -20,7 +20,7 @@
                 <!--  [nzExtra]="extraTemplate" -->
                 <nz-card class="card" style="width:100%;" [nzActions]="[actionSetting, actionEdit]">
                 <img class="card-img-top img-responsive" style="object-fit: contain; max-height: 180px" [src]="project.urlImage"
-                  alt="image project.nomProjet" alt="project.nomProjet">
+                  [alt]="project.nomProjet + '-image'">
                 <div class="card-body">
                   <h3 nz-typography class="card-title mb-0">{{ project.nomProjet }}</h3>
                   <!-- <p> -->
@@ -73,6 +73,6 @@
         </div>
       </div>
     </section>
-    <hr class="m-0">
+    <!-- <hr class="m-0"> -->
   <!-- </ng-template> -->
 }

@@ -13,15 +13,15 @@ export class CompetenceService {
   competencesChanged = new Subject<Competence[]>();
 
   competences: Competence[] = [
-    new Competence(
-      'Java',
-      'Avancé',
-      "J'effectue cette formation au sein de la société FORMAPLUS.",
-      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40"/></svg>'
-    ),
-    new Competence('Spring Boot', 'Intermédiaire', 'Développeur Java EE'),
-    new Competence('Angular', 'Intermédiaire', ''),
-    new Competence('Bootstrap', 'Intermédiaire', ''),
+    // new Competence(
+    //   'Java',
+    //   'Avancé',
+    //   "J'effectue cette formation au sein de la société FORMAPLUS.",
+    //   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40"/></svg>'
+    // ),
+    // new Competence('Spring Boot', 'Intermédiaire', 'Développeur Java EE'),
+    // new Competence('Angular', 'Intermédiaire', ''),
+    // new Competence('Bootstrap', 'Intermédiaire', ''),
   ];
 
   constructor(private httpClient: HttpClient) {}

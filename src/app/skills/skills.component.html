@@ -11,15 +11,21 @@
       <h2 class="mb-5">Compétences </h2>
 
       <div class="subheading mb-3">Langages de programmation &amp; Outils</div>
-      <ul class="list-inline dev-icons">
+      <!-- <ul class="list-inline dev-icons"> -->
+        <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
         @for (competence of competences; track $index) {
-        <!--  *ngFor="let competence of competences" -->
-        <li class="list-inline-item">
-          <i style="height: 60px; width: 46px;"
-            [innerHTML]="(competence && competence.svg) ? sanitizedSvg(competence.svg) : null"></i>
-        </li>
+          <div nz-col class="gutter-row" [nzSpan]="6">
+            <div class="inner-box" nz-row>
+              <div nz-col nzSpan="4">
+                <i style="height: 60px; width: 46px;"
+                [innerHTML]="(competence && competence.svg) ? sanitizedSvg(competence.svg, '3em', '3em', 'blue', 'blue') : null"></i>
+                </div>
+              <div nz-col nzSpan="4">{{competence.nomCompetence}}</div>
+            </div>
+          </div>
         }
-      </ul>
+      </div>
+      <!-- </ul> -->
       <!-- <ul class="list-inline dev-icons">
           <li class="list-inline-item">
             <i class="fab fa-html5"></i>
@@ -65,7 +71,7 @@
           </li>
         </ul> -->
 
-      <div class="subheading mb-3">Workflow</div>
+      <!-- <div class="subheading mb-3">Workflow</div>
       <ul class="fa-ul mb-0">
         <li>
           <i class="fa-li fa fa-check"></i>
@@ -79,9 +85,9 @@
           <i class="fa-li fa fa-check"></i>
           Cross Functional Teams
         </li>
-      </ul>
+      </ul> -->
     </div>
   </section>
-  <hr class="m-0">
+  <!-- <hr class="m-0"> -->
 <!-- </ng-template> -->
 }
