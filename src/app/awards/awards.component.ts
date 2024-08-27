@@ -5,11 +5,14 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { DataStorageService } from '../shared/data-storage.service';
 import { AwardListComponent } from './award-list/award-list.component';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @Component({
   selector: 'app-awards',
   standalone: true,
-  imports: [AwardListComponent],
+  imports: [AwardListComponent, NzGridModule, NzCardModule, NzIconModule],
   templateUrl: './awards.component.html',
   styleUrls: ['./awards.component.scss'],
 })
