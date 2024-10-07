@@ -7,6 +7,7 @@ export class Experience {
     public dateFin: string,
     public adresse: string,
     public description: string,
-    public urlDescription: string
+    public urlDescription: string,
+    public societeLogo: string
   ) {}
 }

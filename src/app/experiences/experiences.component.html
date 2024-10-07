@@ -33,7 +33,7 @@
           </div>
           <div class="resume-date text-md-right">
             <span class="text-primary">Adresse: {{ experience.adresse }},&nbsp;</span><br/>
-            <span class="text-primary">{{ experience.dateDebut }} - {{ experience.dateFin }}</span><br/>
+            <span class="text-primary">{{ experience.dateDebut }} - {{ experience.dateFin ? experience.dateFin : 'Présent' }}</span><br/>
             <span class="text-primary">Expérience: {{ calcDate(experience.dateDebut, experience.dateFin)?.result }}</span>
           </div>
         </div>

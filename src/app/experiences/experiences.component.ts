@@ -57,7 +57,15 @@ export class ExperiencesComponent implements OnInit, OnDestroy {
     console.log('separator', separator);
 
     const newDate1Array = date1.split(separator);
-    const newDate2Array = date2.split(separator);
+    let date2Copiy = date2;
+    if (!date2 || date2 === 'Présent') {
+      let today = new Date();
+      const dd = String(today.getDate()).padStart(2, '0');
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const yyyy = today.getFullYear();
+      date2Copiy = dd + '/' + mm + '/' + yyyy;
+    }
+    const newDate2Array = date2Copiy.split(separator);
 
     let newDate1 = '';
     let newDate2 = '';
