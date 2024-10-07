@@ -47,3 +47,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+.angular/cache/18.0.3/resume/.tsbuildinfo
