@@ -3,7 +3,7 @@
     <h1 class="mb-0">{{user.prenom}}
       <span class="text-primary">{{user.nom}}</span>
     </h1>
-    <div class="subheading mb-5">{{user.adresse}} · {{user.numero}} ·
+    <div class="subheading mb-5">{{user.adresse}} · {{user.numero ? user.numero.toString() : null}} ·
       <a href="mailto:{{user.email}}">{{user.email}}</a>
     </div>
     <p class="lead mb-5">{{user.detail}}

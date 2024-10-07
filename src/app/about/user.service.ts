@@ -35,7 +35,7 @@ export class UserService {
     'github.com/MarwenBenTalebAli',
     'www.linkedin.com/in/dev-web',
     'MARWEN',
-    '(+216) 25 056 351',
+    ['(+216) 25 056 351', '(+216) 23 043 762'],
     'BEN TALEB ALI'
   );
 

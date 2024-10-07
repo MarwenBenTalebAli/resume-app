@@ -7,7 +7,7 @@ export class User {
     public githubUrl: string,
     public linkedinUrl: string,
     public nom: string,
-    public numero: string,
+    public numero: string[],
     public prenom: string,
     public imageFile?: File,
     public imageURL?: string
