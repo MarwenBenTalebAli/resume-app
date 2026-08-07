@@ -6,6 +6,7 @@
     "start": "ng serve -o",
     "start2": "firebase emulators:start --only hosting",
     "build": "ng build",
+    "deploy": "firebase deploy --only hosting",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
