@@ -5,15 +5,18 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { DataStorageService } from '../shared/data-storage.service';
 import { EducationListComponent } from './education-list/education-list.component';
+import { TranslatePipe } from '@ngx-translate/core';
+import { TranslateFieldPipe } from '../shared/translate-field.pipe';
 
 @Component({
   selector: 'app-educations',
   standalone: true,
-  imports: [EducationListComponent],
+  imports: [EducationListComponent, TranslateFieldPipe, TranslatePipe],
   templateUrl: './educations.component.html',
   styleUrls: ['./educations.component.scss'],
 })
 export class EducationsComponent implements OnInit, OnDestroy {
+  pageName: string = 'PAGES.EDUCATIONS';
   instituts: Institut[];
   subscription: Subscription;
   isAdmin = signal(false);
@@ -21,7 +24,7 @@ export class EducationsComponent implements OnInit, OnDestroy {
   constructor(
     private educationService: EducationService,
     private authService: AuthService,
-    private dataStorageService: DataStorageService
+    private dataStorageService: DataStorageService,
   ) {}
 
   ngOnInit() {
@@ -31,7 +34,7 @@ export class EducationsComponent implements OnInit, OnDestroy {
     this.subscription = this.educationService.institutsChanged.subscribe(
       (instituts: Institut[]) => {
         this.instituts = instituts;
-      }
+      },
     );
   }
 

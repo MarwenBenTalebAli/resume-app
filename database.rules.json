@@ -6,6 +6,11 @@
       ".indexOn": [
         "email"
       ]
+    },
+    "users2": {
+      ".indexOn": [
+        "email"
+      ]
     }
   }
 }

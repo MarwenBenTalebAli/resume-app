@@ -3,15 +3,15 @@
     <h1 class="mb-0">{{user.prenom}}
       <span class="text-primary">{{user.nom}}</span>
     </h1>
-    <div class="subheading mb-5">{{user.adresse}} · {{user.numero ? user.numero.toString() : null}} ·
+    <div class="subheading mb-5">{{user.adresse | translateField}} · {{user.numero ? user.numero.toString() : null}} ·
       <a href="mailto:{{user.email}}">{{user.email}}</a>
     </div>
-    <p class="lead mb-5">{{user.detail}}
+    <p class="lead mb-5">{{user.detail | translateField}}
     </p>
     <p class="text-center">
-      <a nz-button nzType="primary" [nzSize]="'large'" role="button" target="_blank" [attr.href]="'//'+user.cvUrl">
+      <a nz-button nzType="primary" [nzSize]="'large'" role="button" target="_blank" [attr.href]="'//'+(user.cvUrl | translateField)">
         <span nz-icon nzType="file-pdf" nzTheme="fill" style="font-size: 24px;"></span>
-         Voir mon CV
+         {{ cvBtnLabel | translate}}
       </a>
       <!-- <a class="btn btn-outline-primary" role="button" target="_blank" [attr.href]="'//'+user.cvUrl"> -->
         <!-- <i class="fas fa-eye fa-lg"></i> -->

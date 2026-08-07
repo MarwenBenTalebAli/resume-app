@@ -19,7 +19,7 @@
       <a routerLink={{item.routerLink}}>
         <!-- <i [innerHTML]="sanitizedSvg(item.icon)"></i> -->
         <span nz-icon nzType={{item.iconName}} nzTheme="outline" style="font-size: 24px;"></span>
-        <span>{{item.name}}</span>
+        <span>{{item.label | translate}}</span>
       </a>
     </li>
     }

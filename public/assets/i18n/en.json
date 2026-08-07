@@ -1,0 +1,53 @@
+{
+    "SIDENAV": {
+        "HOME": "Home",
+        "ABOUT": "About",
+        "PROJECTS": "Projects",
+        "EXPERIENCES": "Experience",
+        "EDUCATIONS": "Education",
+        "SKILLS": "Skills",
+        "INTERESTS": "Interests",
+        "AWARDS": "Training"
+    },
+    "ADMIN": {
+        "EXPERIENCES": "Manage Experience",
+        "EDUCATIONS": "Manage Education",
+        "SKILLS": "Manage Skills",
+        "AWARDS": "Manage Training",
+        "LOGOUT": "Logout"
+    },
+    "LANGUAGE": {
+        "FRENCH": "French",
+        "ENGLISH": "English"
+    },
+    "PAGES": {
+        "HOME": "Home",
+        "ABOUT": "About",
+        "PROJECTS": "Projects",
+        "EXPERIENCES": "Experience",
+        "EDUCATIONS": "Education",
+        "SKILLS": "Skills",
+        "INTERESTS": "Interests",
+        "AWARDS": "Training & certifications"
+    },
+    "BUTTONS": {
+        "CV": "See my CV",
+        "SOURCE_CODE": "Source code",
+        "ONLINE_DEMO": "Online demo"
+    },
+    "HOME_PAGE": {
+        "DETAIL_1": "Welcome to my portfolio, I am Ben taleb Ali MARWEN. Nice to meet you.",
+        "DETAIL_2": "I am a Full Stack Developer."
+    },
+    "EXPERIENCES_PAGE": {
+        "SOCIETY": "Society",
+        "ADDRESS": "Address",
+        "EXPERIENCE": "Experience"
+    },
+    "SKILLS_PAGE": {
+        "SUB_TITLE": "Programming Languages & Tools"
+    },
+    "NOT_FOUND_PAGE": {
+        "NOT_FOUND_LABEL": "Page not found 404."
+    }
+}

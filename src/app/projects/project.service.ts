@@ -5,6 +5,7 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 
 import { Project } from './project.model';
 import { Subject } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -39,9 +40,9 @@ export class ProjectService {
     this.projectsChanged.next(this.projects.slice());
     const req = new HttpRequest(
       'PUT',
-      'https://resume-profile.firebaseio.com/projects.json',
+      `${environment.firebaseConfig.databaseURL}/${environment.collections.projets}.json`,
       project,
-      { reportProgress: true }
+      { reportProgress: true },
     );
     return this.httpClient.request(req);
   }
@@ -51,9 +52,9 @@ export class ProjectService {
     this.projectsChanged.next(this.projects.slice());
     const req = new HttpRequest(
       'PATCH',
-      'https://resume-profile.firebaseio.com/projects.json',
+      `${environment.firebaseConfig.databaseURL}/${environment.collections.projets}.json`,
       newProject,
-      { reportProgress: true }
+      { reportProgress: true },
     );
     return this.httpClient.request(req);
   }
@@ -63,9 +64,9 @@ export class ProjectService {
     this.projectsChanged.next(this.projects.slice());
     const req = new HttpRequest(
       'DELETE',
-      'https://resume-profile.firebaseio.com/projects.json',
+      `${environment.firebaseConfig.databaseURL}/${environment.collections.projets}.json`,
       this.projects[index],
-      { reportProgress: true }
+      { reportProgress: true },
     );
     return this.httpClient.request(req);
   }

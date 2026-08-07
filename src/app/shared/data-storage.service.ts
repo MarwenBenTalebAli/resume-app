@@ -23,6 +23,7 @@ import { UserService } from '../about/user.service';
 import { InterestService } from '../interests/interest.service';
 import { Interest } from '../interests/interest.model';
 import { map } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -42,9 +43,9 @@ export class DataStorageService {
   storeEducations() {
     const req = new HttpRequest(
       'PUT',
-      'https://resume-profile.firebaseio.com/educations.json',
+      `${environment.firebaseConfig.databaseURL}/${environment.collections.educations}.json`,
       this.educationService.getInstituts(),
-      { reportProgress: true }
+      { reportProgress: true },
     );
     return this.httpClient.request(req);
   }
@@ -52,17 +53,17 @@ export class DataStorageService {
   getEducations() {
     this.httpClient
       .get<Institut[]>(
-        'https://resume-profile.firebaseio.com/educations.json',
+        `${environment.firebaseConfig.databaseURL}/${environment.collections.educations}.json`,
         {
           observe: 'body',
           responseType: 'json',
-        }
+        },
       )
       .pipe(
         map((instituts) => {
           console.log('getEducations', instituts);
           return instituts;
-        })
+        }),
       )
       .subscribe((instituts: Institut[]) => {
         this.educationService.setInstituts(instituts);
@@ -72,9 +73,9 @@ export class DataStorageService {
   storeExperiences() {
     const req = new HttpRequest(
       'PUT',
-      'https://resume-profile.firebaseio.com/experiences.json',
+      `${environment.firebaseConfig.databaseURL}/${environment.collections.experiences}.json`,
       this.experienceService.getExperiences(),
-      { reportProgress: true }
+      { reportProgress: true },
     );
     return this.httpClient.request(req);
   }
@@ -83,17 +84,17 @@ export class DataStorageService {
     console.log('getExperiences');
     this.httpClient
       .get<Experience[]>(
-        'https://resume-profile.firebaseio.com/experiences.json',
+        `${environment.firebaseConfig.databaseURL}/${environment.collections.experiences}.json`,
         {
           observe: 'body',
           responseType: 'json',
-        }
+        },
       )
       .pipe(
         map((experiences) => {
           console.log('getExperiences:', experiences);
           return experiences;
-        })
+        }),
       )
       .subscribe((experiences: Experience[]) => {
         this.experienceService.setExperiences(experiences);
@@ -103,24 +104,27 @@ export class DataStorageService {
   storeProjects() {
     const req = new HttpRequest(
       'PUT',
-      'https://resume-profile.firebaseio.com/projects.json',
+      `${environment.firebaseConfig.databaseURL}/${environment.collections.projets}.json`,
       this.projectService.getProjects(),
-      { reportProgress: true }
+      { reportProgress: true },
     );
     return this.httpClient.request(req);
   }
 
   getProjects() {
     this.httpClient
-      .get<Project[]>('https://resume-profile.firebaseio.com/projets.json', {
-        observe: 'body',
-        responseType: 'json',
-      })
+      .get<Project[]>(
+        `${environment.firebaseConfig.databaseURL}/${environment.collections.projets}.json`,
+        {
+          observe: 'body',
+          responseType: 'json',
+        },
+      )
       .pipe(
         map((projects) => {
           console.log('getProjectsmap:', projects);
           return projects;
-        })
+        }),
       )
       .subscribe((projects: Project[]) => {
         console.log('getProjects1234', {
@@ -134,26 +138,26 @@ export class DataStorageService {
   storeCompetences() {
     const req = new HttpRequest(
       'PUT',
-      'https://resume-profile.firebaseio.com/competences.json',
+      `${environment.firebaseConfig.databaseURL}/${environment.collections.competences}.json`,
       this.competenceService.getCompetences(),
-      { reportProgress: true }
+      { reportProgress: true },
     );
     return this.httpClient.request(req);
   }
   getCompetences() {
     this.httpClient
       .get<Competence[]>(
-        'https://resume-profile.firebaseio.com/competences.json',
+        `${environment.firebaseConfig.databaseURL}/${environment.collections.competences}.json`,
         {
           observe: 'body',
           responseType: 'json',
-        }
+        },
       )
       .pipe(
         map((competences) => {
           console.log('getCompetences:', competences);
           return competences;
-        })
+        }),
       )
       .subscribe((competences: Competence[]) => {
         this.competenceService.setCompetences(competences);
@@ -163,9 +167,9 @@ export class DataStorageService {
   storeFormations() {
     const req = new HttpRequest(
       'PUT',
-      'https://resume-profile.firebaseio.com/formations.json',
+      `${environment.firebaseConfig.databaseURL}/${environment.collections.formations}.json`,
       this.formationService.getFormations(),
-      { reportProgress: true }
+      { reportProgress: true },
     );
     return this.httpClient.request(req);
   }
@@ -173,17 +177,17 @@ export class DataStorageService {
   getFormations() {
     this.httpClient
       .get<Formation[]>(
-        'https://resume-profile.firebaseio.com/formations.json',
+        `${environment.firebaseConfig.databaseURL}/${environment.collections.formations}.json`,
         {
           observe: 'body',
           responseType: 'json',
-        }
+        },
       )
       .pipe(
         map((formations) => {
           console.log('getFormations:', formations);
           return formations;
-        })
+        }),
       )
       .subscribe((formations: Formation[]) => {
         this.formationService.setFormations(formations);
@@ -193,24 +197,27 @@ export class DataStorageService {
   storeUsers() {
     const req = new HttpRequest(
       'PUT',
-      'https://resume-profile.firebaseio.com/users.json',
+      `${environment.firebaseConfig.databaseURL}/${environment.collections.users}.json`,
       this.userService.getUsers(),
-      { reportProgress: true }
+      { reportProgress: true },
     );
     return this.httpClient.request(req);
   }
 
   getUsers() {
     this.httpClient
-      .get<User[]>('https://resume-profile.firebaseio.com/users.json', {
-        observe: 'body',
-        responseType: 'json',
-      })
+      .get<User[]>(
+        `${environment.firebaseConfig.databaseURL}/${environment.collections.users}.json`,
+        {
+          observe: 'body',
+          responseType: 'json',
+        },
+      )
       .pipe(
         map((users) => {
           console.log('getUsers:', users);
           return users;
-        })
+        }),
       )
       .subscribe((users: User[]) => {
         this.userService.setUsers(users);
@@ -220,17 +227,17 @@ export class DataStorageService {
   getUser(orderBy: string = 'email', equalTo: string) {
     this.httpClient
       .get<User[]>(
-        `https://resume-profile.firebaseio.com/users.json?orderBy="${orderBy}"&equalTo="${equalTo}"`,
+        `${environment.firebaseConfig.databaseURL}/${environment.collections.users}.json?orderBy="${orderBy}"&equalTo="${equalTo}"`,
         {
           observe: 'body',
           responseType: 'json',
-        }
+        },
       )
       .pipe(
         map((user) => {
           console.log('getUser:', { ...user });
           return user;
-        })
+        }),
       )
       .subscribe((user: User[]) => {
         this.userService.setUser(user[0]);
@@ -239,10 +246,13 @@ export class DataStorageService {
 
   getInterest() {
     this.httpClient
-      .get<Interest>('https://resume-profile.firebaseio.com/interest.json', {
-        observe: 'body',
-        responseType: 'json',
-      })
+      .get<Interest>(
+        `${environment.firebaseConfig.databaseURL}/${environment.collections.interest}.json`,
+        {
+          observe: 'body',
+          responseType: 'json',
+        },
+      )
       .pipe(map((interest) => interest))
       .subscribe((interest: Interest) => {
         this.interestService.setInterest(interest);

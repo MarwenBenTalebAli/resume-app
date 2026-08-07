@@ -9,6 +9,8 @@ import {
   NzLayoutComponent,
 } from 'ng-zorro-antd/layout';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from './shared/language.service';
 
 @Component({
   selector: 'app-root',
@@ -28,4 +30,21 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 })
 export class AppComponent {
   isCollapsed = false;
+  // currentLanguage: 'fr' | 'en' = 'fr';
+
+  constructor(
+    private translate: TranslateService,
+    public languageService: LanguageService,
+  ) {}
+
+  changeLanguage(lang: 'fr' | 'en') {
+    // this.currentLanguage = lang;
+    // this.translate.use(lang);
+    // localStorage.setItem('lang', lang);
+    this.languageService.changeLanguage(lang);
+  }
+
+  get currentLanguage() {
+    return this.languageService.currentLanguage;
+  }
 }

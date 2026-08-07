@@ -186,4 +186,13 @@ a:focus,
 a:hover {
   color: #824027;
 }
+
+.project-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
 /*# sourceMappingURL=experiences.component.css.map */

@@ -8,9 +8,9 @@
 <!-- <ng-template #defaultTemplate> -->
   <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="skills">
     <div class="w-100">
-      <h2 class="mb-5">Compétences </h2>
+      <h2 class="mb-5">{{pageName | translate}} </h2>
 
-      <div class="subheading mb-3">Langages de programmation &amp; Outils</div>
+      <div class="subheading mb-3">{{ subTitle | translate }}</div>
       <!-- <ul class="list-inline dev-icons"> -->
         <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
         @for (competence of competences; track $index) {

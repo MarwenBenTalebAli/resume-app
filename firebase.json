@@ -1,6 +1,7 @@
 {
   "hosting": {
-    "public": "dist/resume",
+    "site": "resume-profile-1",
+    "public": "dist/resume/browser",
     "ignore": [
       "firebase.json",
       "**/.*",

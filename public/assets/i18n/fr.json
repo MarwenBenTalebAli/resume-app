@@ -1,0 +1,53 @@
+{
+    "SIDENAV": {
+        "HOME": "Accueil",
+        "ABOUT": "À propos",
+        "PROJECTS": "Projets",
+        "EXPERIENCES": "Expérience",
+        "EDUCATIONS": "Éducation",
+        "SKILLS": "Compétences",
+        "INTERESTS": "Intérêts",
+        "AWARDS": "Formation"
+    },
+    "ADMIN": {
+        "EXPERIENCES": "Gestion d'expérience",
+        "EDUCATIONS": "Gestion d'éducation",
+        "SKILLS": "Gestion des compétences",
+        "AWARDS": "Gestion des formations",
+        "LOGOUT": "Déconnexion"
+    },
+    "LANGUAGE": {
+        "FRENCH": "Français",
+        "ENGLISH": "Anglais"
+    },
+    "PAGES": {
+        "HOME": "Accueil",
+        "ABOUT": "À propos",
+        "PROJECTS": "Projets",
+        "EXPERIENCES": "Expérience",
+        "EDUCATIONS": "Éducation",
+        "SKILLS": "Compétences",
+        "INTERESTS": "Intérêts",
+        "AWARDS": "Formations & Certifications"
+    },
+    "BUTTONS": {
+        "CV": "Voir mon CV",
+        "SOURCE_CODE": "Code source",
+        "ONLINE_DEMO": "Demo enligne"
+    },
+    "HOME_PAGE": {
+        "DETAIL_1": "Bienvenue dans mon portfolio, Je suis Ben taleb Ali MARWEN. Ravi de vous rencontrer.",
+        "DETAIL_2": "Je suis un Développeur Full stack."
+    },
+    "EXPERIENCES_PAGE": {
+        "SOCIETY": "Société",
+        "ADDRESS": "Adresse",
+        "EXPERIENCE": "Expérience"
+    },
+    "SKILLS_PAGE": {
+        "SUB_TITLE": "Langages de programmation & Outils"
+    },
+    "NOT_FOUND_PAGE": {
+        "NOT_FOUND_LABEL": "Page non trouvée 404."
+    }
+}

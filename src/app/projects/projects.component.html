@@ -8,7 +8,7 @@
   <!-- <ng-template #defaultProjectTemplate> -->
     <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="project">
       <div class="w-100">
-        <h2 class="mb-5">Projets</h2>
+        <h2 class="mb-5">{{ pageName  | translate }}</h2>
         <div class="container">
           <!--  class="row justify-content-md-center" -->
           <div nz-row [nzGutter]="[16, 16]">
@@ -30,8 +30,19 @@
                       <!--  class="card-title mb-0" -->
                       {{ project.dateDebut }} - {{ project.dateFin }}
                       </nz-tag>
-                  <p nz-typography nzEllipsis nzExpandable [nzEllipsisRows]="3">
-                    {{ project.description }}
+                    <!-- @if (languageService.currentLanguage === 'fr') {
+                      <p nz-typography nzEllipsis nzExpandable [nzEllipsisRows]="3">
+                        {{ project.description | translateField }}
+                      </p>
+                    }
+
+                    @if (languageService.currentLanguage === 'en') {
+                      <p nz-typography nzEllipsis nzExpandable [nzEllipsisRows]="3">
+                        {{ project.description | translateField }}
+                      </p>
+                    } -->
+                  <p class="project-description">
+                    {{ project.description | translateField }}
                   </p>
                   <h5>
                     @for (outil of project.outils; track $index) {
@@ -53,7 +64,7 @@
                   <!-- class="card-link btn-outline-info" -->
                   <a  nz-button nzType="primary" [nzSize]="'default'" nzGhost [attr.href]="project.urlCodeSorce" target="_blank" [title]="'Mon profil github'"
                   style="padding-left: 6px;"
-                  >Code source 
+                  >{{ sourceCodeBtnLabel | translate}} 
                   <span nz-icon nzType="code" nzTheme="outline"></span>
                 </a>
                 }
@@ -63,7 +74,7 @@
                 {
                   <!-- class="card-link btn-outline-info" -->
                   <a  nz-button nzType="primary" [nzSize]="'default'" nzGhost [attr.href]="project.urlDemoEnLigne" target="_blank" [title]="'Demo enligne'">
-                  Demo enligne <span nz-icon nzType="link" nzTheme="outline"></span>
+                  {{ onlineDemoBtnLabel | translate}} <span nz-icon nzType="link" nzTheme="outline"></span>
                   </a>}
               </ng-template>
               <!-- </div> -->

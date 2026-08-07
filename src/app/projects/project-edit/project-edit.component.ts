@@ -25,7 +25,7 @@ export class ProjectEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private projectService: ProjectService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -39,7 +39,7 @@ export class ProjectEditComponent implements OnInit {
   private initForm() {
     let dateDebut = '';
     let dateFin = '';
-    let description = '';
+    let description = {};
     let nomProjet = '';
     let outils: any[] | FormControlState<any[]> = [];
     let urlCodeSorce = '';

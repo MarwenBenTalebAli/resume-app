@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ExperienceService } from '../experience.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Experience } from '../experience.model';
+import { TranslateFieldPipe } from '../../shared/translate-field.pipe';
 
 @Component({
   selector: 'app-experience-detail',
   standalone: true,
-  imports: [],
+  imports: [TranslateFieldPipe],
   templateUrl: './experience-detail.component.html',
   styleUrls: ['./experience-detail.component.scss'],
 })
@@ -17,7 +18,7 @@ export class ExperienceDetailComponent implements OnInit {
   constructor(
     private experienceService: ExperienceService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit() {

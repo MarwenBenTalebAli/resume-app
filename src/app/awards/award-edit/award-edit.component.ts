@@ -27,7 +27,7 @@ export class AwardEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private formationService: FormationService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -49,7 +49,7 @@ export class AwardEditComponent implements OnInit {
   }
 
   private initForm() {
-    let nomFormation = '';
+    let nomFormation = {};
     let societe = '';
     let dateDebut = '';
     let dateFin = '';

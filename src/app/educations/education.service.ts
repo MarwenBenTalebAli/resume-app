@@ -10,6 +10,7 @@ import {
 
 import { Institut } from './institut.model';
 import { Subject } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -66,9 +67,9 @@ export class EducationService {
     this.institutsChanged.next(this.instituts.slice());
     const req = new HttpRequest(
       'PUT',
-      'https://resume-profile.firebaseio.com/educations.json',
+      `${environment.firebaseConfig.databaseURL}/${environment.collections.educations}.json`,
       institut,
-      { reportProgress: true }
+      { reportProgress: true },
     );
     return this.httpClient.request(req);
   }
@@ -78,9 +79,9 @@ export class EducationService {
     this.institutsChanged.next(this.instituts.slice());
     const req = new HttpRequest(
       'PATCH',
-      'https://resume-profile.firebaseio.com/educations.json',
+      `${environment.firebaseConfig.databaseURL}/${environment.collections.educations}.json`,
       newInstitut,
-      { reportProgress: true }
+      { reportProgress: true },
     );
     return this.httpClient.request(req);
   }
@@ -90,9 +91,9 @@ export class EducationService {
     this.institutsChanged.next(this.instituts.slice());
     const req = new HttpRequest(
       'DELETE',
-      'https://resume-profile.firebaseio.com/educations.json',
+      `${environment.firebaseConfig.databaseURL}/${environment.collections.educations}.json`,
       this.instituts[index],
-      { reportProgress: true }
+      { reportProgress: true },
     );
     return this.httpClient.request(req);
   }

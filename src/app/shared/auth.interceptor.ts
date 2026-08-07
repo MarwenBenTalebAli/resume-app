@@ -11,25 +11,26 @@ import { Observable } from 'rxjs';
 import { Injectable, inject } from '@angular/core';
 
 import { AuthService } from '../auth/auth.service';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   urlsToNotUse: Array<{ method: string; url: string }>;
   constructor(private authService: AuthService) {
     this.urlsToNotUse = [
-      { method: 'GET', url: 'experiences.json' },
-      { method: 'GET', url: 'projets.json' },
-      { method: 'GET', url: 'educations.json' },
-      { method: 'GET', url: 'formations.json' },
-      { method: 'GET', url: 'users.json' },
-      { method: 'GET', url: 'interest.json' },
-      { method: 'GET', url: 'competences.json' },
+      { method: 'GET', url: environment.collections.experiences + '.json' },
+      { method: 'GET', url: environment.collections.projets + '.json' },
+      { method: 'GET', url: environment.collections.educations + '.json' },
+      { method: 'GET', url: environment.collections.formations + '.json' },
+      { method: 'GET', url: environment.collections.users + '.json' },
+      { method: 'GET', url: environment.collections.interest + '.json' },
+      { method: 'GET', url: environment.collections.competences + '.json' },
     ];
   }
 
   intercept(
     req: HttpRequest<any>,
-    next: HttpHandler
+    next: HttpHandler,
   ): Observable<HttpEvent<any>> {
     console.log('Intercepted!', req);
     if (!this.isValidRequestForInterceptor(req.url, req.method)) {
@@ -50,14 +51,14 @@ export class AuthInterceptor implements HttpInterceptor {
 
   private isValidRequestForInterceptor(
     requestUrl: string,
-    requestMethod: string
+    requestMethod: string,
   ): boolean {
     let positionIndicator: string = 'resume-profile.firebaseio.com/';
     let position = requestUrl.indexOf(positionIndicator);
 
     if (position > 0) {
       let destination: string = requestUrl.substring(
-        position + positionIndicator.length
+        position + positionIndicator.length,
       );
       for (let address of this.urlsToNotUse) {
         if (
@@ -74,18 +75,18 @@ export class AuthInterceptor implements HttpInterceptor {
 
 export function authInterceptor(
   req: HttpRequest<unknown>,
-  next: HttpHandlerFn
+  next: HttpHandlerFn,
 ): Observable<HttpEvent<unknown>> {
   const authService = inject(AuthService);
 
   const urlsToNotUse: Array<{ method: string; url: string }> = [
-    { method: 'GET', url: 'experiences.json' },
-    { method: 'GET', url: 'projets.json' },
-    { method: 'GET', url: 'educations.json' },
-    { method: 'GET', url: 'formations.json' },
-    { method: 'GET', url: 'users.json' },
-    { method: 'GET', url: 'interest.json' },
-    { method: 'GET', url: 'competences.json' },
+    { method: 'GET', url: environment.collections.experiences + '.json' },
+    { method: 'GET', url: environment.collections.projets + '.json' },
+    { method: 'GET', url: environment.collections.educations + '.json' },
+    { method: 'GET', url: environment.collections.formations + '.json' },
+    { method: 'GET', url: environment.collections.users + '.json' },
+    { method: 'GET', url: environment.collections.interest + '.json' },
+    { method: 'GET', url: environment.collections.competences + '.json' },
   ];
 
   console.log('Intercepted!', req);
@@ -106,14 +107,14 @@ export function authInterceptor(
   function isValidRequestForInterceptor(
     requestUrl: string,
     requestMethod: string,
-    urlsToNotUse: Array<{ method: string; url: string }>
+    urlsToNotUse: Array<{ method: string; url: string }>,
   ): boolean {
     let positionIndicator: string = 'resume-profile.firebaseio.com/';
     let position = requestUrl.indexOf(positionIndicator);
 
     if (position > 0) {
       let destination: string = requestUrl.substring(
-        position + positionIndicator.length
+        position + positionIndicator.length,
       );
       for (let address of urlsToNotUse) {
         if (

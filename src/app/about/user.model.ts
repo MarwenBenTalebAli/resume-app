@@ -1,15 +1,17 @@
+import { Translatable } from '../shared/translatable.model';
+
 export class User {
   constructor(
-    public adresse: string,
-    public detail: string,
-    public email: string,
-    public cvUrl: string,
-    public githubUrl: string,
-    public linkedinUrl: string,
-    public nom: string,
-    public numero: string[],
-    public prenom: string,
+    public adresse: Translatable = {},
+    public detail: Translatable = {},
+    public email: string = '',
+    public cvUrl: Translatable = {},
+    public githubUrl: string = '',
+    public linkedinUrl: string = '',
+    public nom: string = '',
+    public numero: string[] = [],
+    public prenom: string = '',
     public imageFile?: File,
-    public imageURL?: string
+    public imageURL?: string,
   ) {}
 }

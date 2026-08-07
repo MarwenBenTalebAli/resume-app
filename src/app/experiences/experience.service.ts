@@ -5,6 +5,7 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 
 import { Experience } from './experience.model';
 import { Subject } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -155,9 +156,9 @@ export class ExperienceService {
     this.experiencesChanged.next(this.experiences.slice());
     const req = new HttpRequest(
       'PUT',
-      'https://resume-profile.firebaseio.com/experiences.json',
+      `${environment.firebaseConfig.databaseURL}/${environment.collections.experiences}.json`,
       experience,
-      { reportProgress: true }
+      { reportProgress: true },
     );
     return this.httpClient.request(req);
   }
@@ -167,9 +168,9 @@ export class ExperienceService {
     this.experiencesChanged.next(this.experiences.slice());
     const req = new HttpRequest(
       'PATCH',
-      'https://resume-profile.firebaseio.com/experiences.json',
+      `${environment.firebaseConfig.databaseURL}/${environment.collections.experiences}.json`,
       newExperience,
-      { reportProgress: true }
+      { reportProgress: true },
     );
     return this.httpClient.request(req);
   }
@@ -179,9 +180,9 @@ export class ExperienceService {
     this.experiencesChanged.next(this.experiences.slice());
     const req = new HttpRequest(
       'DELETE',
-      'https://resume-profile.firebaseio.com/experiences.json',
+      `${environment.firebaseConfig.databaseURL}/${environment.collections.experiences}.json`,
       this.experiences[index],
-      { reportProgress: true }
+      { reportProgress: true },
     );
     return this.httpClient.request(req);
   }

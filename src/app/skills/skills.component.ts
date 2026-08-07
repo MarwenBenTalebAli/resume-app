@@ -8,15 +8,18 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { SkillListComponent } from './skill-list/skill-list.component';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [SkillListComponent, NzGridModule, NzIconModule],
+  imports: [SkillListComponent, NzGridModule, NzIconModule, TranslatePipe],
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.scss'],
 })
 export class SkillsComponent implements OnInit, OnDestroy {
+  pageName: string = 'PAGES.SKILLS';
+  subTitle: string = 'SKILLS_PAGE.SUB_TITLE';
   competences: Competence[];
   subscription: Subscription;
   isAdmin = signal(false);
@@ -25,7 +28,7 @@ export class SkillsComponent implements OnInit, OnDestroy {
     private competenceService: CompetenceService,
     private authService: AuthService,
     private dataStorageService: DataStorageService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
   ) {}
 
   ngOnInit() {
@@ -35,7 +38,7 @@ export class SkillsComponent implements OnInit, OnDestroy {
     this.subscription = this.competenceService.competencesChanged.subscribe(
       (competences: Competence[]) => {
         this.competences = competences;
-      }
+      },
     );
   }
 
@@ -48,22 +51,22 @@ export class SkillsComponent implements OnInit, OnDestroy {
     width: string,
     height: string,
     stroke: string,
-    fill: string
+    fill: string,
   ) {
     let newSvgString = svgString;
 
     newSvgString = newSvgString.replace(
       'height="1em"',
-      'height="' + height + '"'
+      'height="' + height + '"',
     );
     newSvgString = newSvgString.replace('width="1em"', 'width="' + width + '"');
     newSvgString = newSvgString.replace(
       'fill="currentColor"',
-      'fill="' + fill + '"'
+      'fill="' + fill + '"',
     );
     newSvgString = newSvgString.replace(
       'stroke="currentColor"',
-      'stroke="' + stroke + '"'
+      'stroke="' + stroke + '"',
     );
     return this.sanitizer.bypassSecurityTrustHtml(newSvgString);
   }

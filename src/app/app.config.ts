@@ -3,6 +3,12 @@ import {
   importProvidersFrom,
   provideZoneChangeDetection,
 } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+// ngx-translate
+import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+
 import { provideRouter } from '@angular/router';
 import {
   // HTTP_INTERCEPTORS,
@@ -44,13 +50,21 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(
       // withInterceptorsFromDi()
-      withInterceptors([loggingInterceptor, authInterceptor])
+      withInterceptors([loggingInterceptor, authInterceptor]),
     ),
     provideNzIcons(),
     provideNzI18n(en_US),
+    provideTranslateService({
+      loader: provideTranslateHttpLoader({
+        prefix: './assets/i18n/',
+        suffix: '.json',
+      }),
+      fallbackLang: 'fr',
+      lang: localStorage.getItem('language') || 'fr',
+    }),
     importProvidersFrom(FormsModule),
     provideAnimationsAsync(),
-    provideHttpClient(),
+    // provideHttpClient(),
     // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     // {
     //   provide: HTTP_INTERCEPTORS,

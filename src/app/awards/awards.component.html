@@ -8,7 +8,7 @@
   <!-- <ng-template #defaultExperienceTemplate> -->
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="awards">
       <div class="w-100">
-        <h2 class="mb-5">Formations &amp; Certifications</h2>
+        <h2 class="mb-5">{{ pageName | translate}}</h2>
         <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
           <!--  *ngFor="let formation of formations" -->
           @for (formation of formations; track $index){
@@ -21,7 +21,7 @@
             </ng-template>
             <ng-template #title>
               <span nz-icon nzType="trophy" nzTheme="outline" style="color: darkgoldenrod;"></span>
-              <div class="subheading">{{ formation.nomFormation }}</div>
+              <div class="subheading">{{ formation.nomFormation | translateField }}</div>
               <span class="text-primary">{{ formation.dateDebut }} - {{ formation.dateFin }}</span>
             </ng-template>
             <ng-template #description>

@@ -24,7 +24,7 @@ export class EducationEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private educationService: EducationService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -37,11 +37,11 @@ export class EducationEditComponent implements OnInit {
 
   private initForm() {
     let nom = '';
-    let diplome = '';
+    let diplome = {};
     let adresse = '';
     let dateDebut = '';
     let dateFin = '';
-    let details = '';
+    let details = {};
 
     if (this.editMode) {
       const education = this.educationService.getInstitut(this.id);

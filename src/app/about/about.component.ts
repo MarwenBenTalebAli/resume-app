@@ -5,15 +5,18 @@ import { Subscription } from 'rxjs';
 import { DataStorageService } from '../shared/data-storage.service';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { TranslateFieldPipe } from '../shared/translate-field.pipe';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [NzIconDirective, NzButtonModule],
+  imports: [NzIconDirective, NzButtonModule, TranslateFieldPipe, TranslatePipe],
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent implements OnInit, OnDestroy {
+  cvBtnLabel: string = 'BUTTONS.CV';
   user: User;
   subscription: Subscription;
   private userService = inject(UserService);

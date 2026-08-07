@@ -7,8 +7,40 @@
 }
 
 nz-header {
-  background: #fff;
-  padding: 0;
+  height: 64px;
+  padding: 0 24px;
+  background: #1c3381;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .language-switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    button {
+      border: none;
+      background: transparent;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      &.active {
+        background: #40a9ff;
+        color: white;
+        font-weight: 600;
+      }
+    }
+  }
 }
 
 nz-content {
@@ -25,3 +57,4 @@ nz-content {
 nz-footer {
   text-align: center;
 }
+

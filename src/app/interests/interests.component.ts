@@ -4,15 +4,18 @@ import { InterestService } from './interest.service';
 import { AuthService } from '../auth/auth.service';
 import { DataStorageService } from '../shared/data-storage.service';
 import { Subscription } from 'rxjs';
+import { TranslatePipe } from '@ngx-translate/core';
+import { TranslateFieldPipe } from '../shared/translate-field.pipe';
 
 @Component({
   selector: 'app-interests',
   standalone: true,
-  imports: [],
+  imports: [TranslateFieldPipe, TranslatePipe],
   templateUrl: './interests.component.html',
   styleUrls: ['./interests.component.scss'],
 })
 export class InterestsComponent implements OnInit {
+  pageName: string = 'PAGES.INTERESTS';
   interest: Interest;
   subscription: Subscription;
   isAdmin = signal(false);
@@ -20,7 +23,7 @@ export class InterestsComponent implements OnInit {
   constructor(
     private interestService: InterestService,
     private authService: AuthService,
-    private dataStorageService: DataStorageService
+    private dataStorageService: DataStorageService,
   ) {}
 
   ngOnInit() {
@@ -30,7 +33,7 @@ export class InterestsComponent implements OnInit {
     this.subscription = this.interestService.interestChanged.subscribe(
       (interest: Interest) => {
         this.interest = interest;
-      }
+      },
     );
   }
 

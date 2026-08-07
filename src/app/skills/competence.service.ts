@@ -5,6 +5,7 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 
 import { Competence } from './competence.model';
 import { Subject } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -44,9 +45,9 @@ export class CompetenceService {
     this.competencesChanged.next(this.competences.slice());
     const req = new HttpRequest(
       'PUT',
-      'https://resume-profile.firebaseio.com/competences.json',
+      `${environment.firebaseConfig.databaseURL}/${environment.collections.competences}.json`,
       competence,
-      { reportProgress: true }
+      { reportProgress: true },
     );
     return this.httpClient.request(req);
   }
@@ -56,9 +57,9 @@ export class CompetenceService {
     this.competencesChanged.next(this.competences.slice());
     const req = new HttpRequest(
       'PATCH',
-      'https://resume-profile.firebaseio.com/competences.json',
+      `${environment.firebaseConfig.databaseURL}/${environment.collections.competences}.json`,
       newCompetence,
-      { reportProgress: true }
+      { reportProgress: true },
     );
     return this.httpClient.request(req);
   }
@@ -68,9 +69,9 @@ export class CompetenceService {
     this.competencesChanged.next(this.competences.slice());
     const req = new HttpRequest(
       'DELETE',
-      'https://resume-profile.firebaseio.com/competences.json',
+      `${environment.firebaseConfig.databaseURL}/${environment.collections.competences}.json`,
       this.competences[index],
-      { reportProgress: true }
+      { reportProgress: true },
     );
     return this.httpClient.request(req);
   }

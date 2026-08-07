@@ -11,6 +11,9 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { TranslatePipe } from '@ngx-translate/core';
+import { TranslateFieldPipe } from '../shared/translate-field.pipe';
+import { LanguageService } from '../shared/language.service';
 
 @Component({
   selector: 'app-projects',
@@ -23,19 +26,31 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
     NzIconModule,
     NzTagModule,
     NzTypographyModule,
+    TranslateFieldPipe,
+    TranslatePipe,
   ],
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
+  pageName: string = 'PAGES.PROJECTS';
+  sourceCodeBtnLabel: string = 'BUTTONS.SOURCE_CODE';
+  onlineDemoBtnLabel: string = 'BUTTONS.ONLINE_DEMO';
   projects: Project[];
   subscription: Subscription;
   isAdmin = signal(false);
+  // using inject
   private projectService: ProjectService = inject(ProjectService);
   private authService: AuthService = inject(AuthService);
   private dataStorageService: DataStorageService = inject(DataStorageService);
+  private languageService: LanguageService = inject(LanguageService);
 
+  // inject using constructor
   constructor() {} // private dataStorageService: DataStorageService // private authService: AuthService, // private projectService: ProjectService,
+
+  get currentLanguage() {
+    return this.languageService.currentLanguage;
+  }
 
   ngOnInit() {
     this.isAdmin.set(this.authService.isAuthenticated());
@@ -45,9 +60,8 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     this.subscription = this.projectService.projectsChanged.subscribe(
       (projects: Project[]) => {
         console.log('projects1234', projects);
-
         this.projects = projects;
-      }
+      },
     );
   }
 

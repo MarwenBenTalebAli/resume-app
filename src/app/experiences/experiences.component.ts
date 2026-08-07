@@ -6,15 +6,26 @@ import { AuthService } from '../auth/auth.service';
 import { DataStorageService } from '../shared/data-storage.service';
 import { ExperienceListComponent } from './experience-list/experience-list.component';
 import { NzTimelineModule } from 'ng-zorro-antd/timeline';
+import { TranslatePipe } from '@ngx-translate/core';
+import { TranslateFieldPipe } from '../shared/translate-field.pipe';
 
 @Component({
   selector: 'app-experiences',
   standalone: true,
-  imports: [ExperienceListComponent, NzTimelineModule],
+  imports: [
+    ExperienceListComponent,
+    NzTimelineModule,
+    TranslateFieldPipe,
+    TranslatePipe,
+  ],
   templateUrl: './experiences.component.html',
   styleUrls: ['./experiences.component.scss'],
 })
 export class ExperiencesComponent implements OnInit, OnDestroy {
+  pageName: string = 'PAGES.EXPERIENCES';
+  societyLabel: string = 'EXPERIENCES_PAGE.SOCIETY';
+  addressLabel: string = 'EXPERIENCES_PAGE.ADDRESS';
+  experienceLabel: string = 'EXPERIENCES_PAGE.EXPERIENCE';
   experiences: Experience[];
   subscription: Subscription;
   isAdmin = signal(false);
@@ -22,7 +33,7 @@ export class ExperiencesComponent implements OnInit, OnDestroy {
   constructor(
     private experienceService: ExperienceService,
     private authService: AuthService,
-    private dataStorageService: DataStorageService
+    private dataStorageService: DataStorageService,
   ) {}
 
   ngOnInit() {
@@ -33,7 +44,7 @@ export class ExperiencesComponent implements OnInit, OnDestroy {
     this.subscription = this.experienceService.experiencesChanged.subscribe(
       (experiences: Experience[]) => {
         this.experiences = experiences;
-      }
+      },
     );
   }
 
@@ -145,18 +156,18 @@ export class ExperiencesComponent implements OnInit, OnDestroy {
         (years_passed == 1
           ? years_passed + ' ' + yrsTxt[0] + ' '
           : years_passed > 1
-          ? years_passed + ' ' + yrsTxt[1] + ' '
-          : '') +
+            ? years_passed + ' ' + yrsTxt[1] + ' '
+            : '') +
         (months_passed == 1
           ? months_passed + ' ' + mnthsTxt[0]
           : months_passed > 1
-          ? months_passed + ' ' + mnthsTxt[1] + ' '
-          : '') +
+            ? months_passed + ' ' + mnthsTxt[1] + ' '
+            : '') +
         (days_passed == 1
           ? days_passed + ' ' + daysTxt[0]
           : days_passed > 1
-          ? days_passed + ' ' + daysTxt[1]
-          : '');
+            ? days_passed + ' ' + daysTxt[1]
+            : '');
 
       //return the result
       return {

@@ -24,7 +24,7 @@ export class ExperienceEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private experienceService: ExperienceService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -36,13 +36,13 @@ export class ExperienceEditComponent implements OnInit {
   }
 
   private initForm() {
-    let nom = '';
+    let nom = {};
     let societe = '';
     let adresse = '';
     let dateDebut = '';
     let dateFin = '';
-    let description = '';
-    let urlDescription = '';
+    let description = {};
+    let urlDescription = {};
 
     if (this.editMode) {
       const experience = this.experienceService.getExperience(this.id);
@@ -71,7 +71,7 @@ export class ExperienceEditComponent implements OnInit {
     if (this.editMode) {
       this.experienceService.updateExperience(
         this.id,
-        this.experienceForm.value
+        this.experienceForm.value,
       );
     } else {
       this.experienceService.addExperience(this.experienceForm.value);
