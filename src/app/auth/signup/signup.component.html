@@ -1,15 +1,72 @@
-<div class="row">
-  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-    <form (ngSubmit)="onSignup(f)" #f="ngForm">
-      <div class="form-group">
-        <label for="email">Mail</label>
-        <input type="email" id="email" name="email" ngModel class="form-control">
+<div class="signup-page">
+  <div class="signup-wrapper">
+    <div class="signup-card">
+      <div class="signup-header">
+        <div class="signup-icon">
+          <span nz-icon nzType="user-add" nzTheme="outline"></span>
+        </div>
+
+        <h1>Create Account</h1>
+        <p>Create an account to access your portfolio</p>
       </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" ngModel class="form-control">
-      </div>
-      <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Sign Up</button>
-    </form>
+
+      <form nz-form (ngSubmit)="onSignup(f)" #f="ngForm">
+        <!-- Email -->
+        <nz-form-item>
+          <nz-form-label [nzSpan]="24" nzFor="email"> Email </nz-form-label>
+
+          <nz-form-control [nzSpan]="24">
+            <nz-input-group nzPrefixIcon="mail">
+              <input
+                nz-input
+                type="email"
+                id="email"
+                name="email"
+                ngModel
+                required
+                email
+                placeholder="Enter your email"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- Password -->
+        <nz-form-item>
+          <nz-form-label [nzSpan]="24" nzFor="password">
+            Password
+          </nz-form-label>
+
+          <nz-form-control [nzSpan]="24">
+            <nz-input-group nzPrefixIcon="lock">
+              <input
+                nz-input
+                type="password"
+                id="password"
+                name="password"
+                ngModel
+                required
+                minlength="6"
+                placeholder="Enter your password"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- Submit -->
+        <button
+          nz-button
+          nzType="primary"
+          nzSize="large"
+          nzBlock
+          type="submit"
+          [disabled]="!f.valid"
+          class="signup-button"
+        >
+          <span nz-icon nzType="user-add" nzTheme="outline"></span>
+          Sign Up
+        </button>
+      </form>
+    </div>
   </div>
 </div>

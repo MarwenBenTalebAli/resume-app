@@ -21,7 +21,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     FormsModule,
   ],
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css'],
+  styleUrls: ['./signin.component.scss'],
 })
 export class SigninComponent implements OnInit {
   errorAlert: string;
