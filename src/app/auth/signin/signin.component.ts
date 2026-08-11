@@ -3,10 +3,23 @@ import { FormsModule, NgForm } from '@angular/forms';
 
 import { AuthService } from '../auth.service';
 
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+
 @Component({
   selector: 'app-signin',
   standalone: true,
-  imports: [FormsModule],
+  imports: [
+    NzFormModule,
+    NzInputModule,
+    NzButtonModule,
+    NzAlertModule,
+    NzIconModule,
+    FormsModule,
+  ],
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css'],
 })

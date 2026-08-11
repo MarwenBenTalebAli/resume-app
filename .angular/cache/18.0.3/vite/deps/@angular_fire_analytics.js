@@ -7,6 +7,7 @@ import {
   Title
 } from "./chunk-SB4LQBXS.js";
 import "./chunk-CWZKNQIC.js";
+import "./chunk-IBWLUNSB.js";
 import {
   Auth,
   authState
@@ -37,7 +38,6 @@ import {
   ɵisSupportedError,
   ɵzoneWrap
 } from "./chunk-MN4KVADT.js";
-import "./chunk-IBWLUNSB.js";
 import {
   APP_INITIALIZER,
   ComponentFactoryResolver$1,
@@ -54,8 +54,8 @@ import {
   ɵɵdefineNgModule,
   ɵɵinject
 } from "./chunk-HEUYED7V.js";
-import "./chunk-YWCZMQC3.js";
 import "./chunk-VYB34C76.js";
+import "./chunk-YWCZMQC3.js";
 import {
   concatMap,
   distinct,

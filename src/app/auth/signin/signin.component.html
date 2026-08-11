@@ -1,32 +1,83 @@
-<div class="row">
-	<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-		<div class="card">
-			<div class="card-body">
-				<h3 class="text-center default-text py-3"><i class="fa fa-lock"></i> Login:</h3>
-				<!--Body-->
-				<form (ngSubmit)="onSignin(f)" #f="ngForm">
-					<div class="md-form">
-						<i class="fa fa-envelope prefix grey-text"></i>
-						<input type="email" id="defaultForm-email" name="email" ngModel class="form-control">
-						<label for="defaultForm-email">Your email</label>
-					</div>
-					<div class="md-form">
-						<i class="fa fa-lock prefix grey-text"></i>
-						<input type="password" id="defaultForm-pass" name="password" ngModel class="form-control">
-						<label for="defaultForm-pass">Your password</label>
-					</div>
-					<div class="text-center">
-						@if(errorAlert){
-						<!--  *ngIf="errorAlert" -->
-						<div class="alert alert-danger alert-dismissible fade show">
-							<button type="button" class="close" data-dismiss="alert">&times;</button>
-							<strong>{{ errorAlert }}</strong>
-						</div>}
-						<button class="btn btn-default waves-effect waves-light" type="submit"
-							[disabled]="!f.valid">Sign In</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+<div class="signin-page">
+  <div class="signin-wrapper">
+    <div class="signin-card">
+      <div class="signin-header">
+        <div class="signin-icon">
+          <span nz-icon nzType="lock" nzTheme="outline"></span>
+        </div>
+
+        <h1>Admin Sign In</h1>
+		<p>Sign in to manage your portfolio</p>
+      </div>
+
+      <form nz-form (ngSubmit)="onSignin(f)" #f="ngForm">
+        <!-- Email -->
+        <nz-form-item>
+          <nz-form-label [nzSpan]="24" nzFor="email"> Email </nz-form-label>
+
+          <nz-form-control [nzSpan]="24">
+            <nz-input-group nzPrefixIcon="mail">
+              <input
+                nz-input
+                type="email"
+                id="email"
+                name="email"
+                ngModel
+                required
+                email
+                placeholder="Enter your email"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- Password -->
+        <nz-form-item>
+          <nz-form-label [nzSpan]="24" nzFor="password">
+            Password
+          </nz-form-label>
+
+          <nz-form-control [nzSpan]="24">
+            <nz-input-group nzPrefixIcon="lock">
+              <input
+                nz-input
+                type="password"
+                id="password"
+                name="password"
+                ngModel
+                required
+                placeholder="Enter your password"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- Error -->
+        @if (errorAlert) {
+          <nz-alert
+            nzType="error"
+            [nzMessage]="errorAlert"
+            nzShowIcon
+            class="signin-error"
+          >
+          </nz-alert>
+        }
+
+        <!-- Submit -->
+        <button
+          nz-button
+          nzType="primary"
+          nzSize="large"
+          nzBlock
+          type="submit"
+          [disabled]="!f.valid"
+          class="signin-button"
+        >
+          <span nz-icon nzType="login" nzTheme="outline"></span>
+          Sign In
+        </button>
+      </form>
+    </div>
+
+  </div>
 </div>
