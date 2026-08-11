@@ -20,7 +20,7 @@
 						<!--  *ngIf="errorAlert" -->
 						<div class="alert alert-danger alert-dismissible fade show">
 							<button type="button" class="close" data-dismiss="alert">&times;</button>
-							<strong>{{ getErrorMsg() }}</strong>
+							<strong>{{ errorAlert }}</strong>
 						</div>}
 						<button class="btn btn-default waves-effect waves-light" type="submit"
 							[disabled]="!f.valid">Sign In</button>

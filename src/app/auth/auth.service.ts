@@ -31,7 +31,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 })
 export class AuthService {
   token: string;
-  errorMsg: string;
+  // errorMsg: string;
   user: {};
   private readonly USER_KEY = 'connectedUser';
   // private auth = inject(Auth);
@@ -56,47 +56,82 @@ export class AuthService {
       .catch((error) => console.log('signupUserError', error));
   }
 
-  signinUser(email: string, password: string) {
-    signInWithEmailAndPassword(this.angularFireAuth, email, password)
-      .then((response) => {
-        this.ngZone.run(() => {
-          this.router.navigate(['/admin/experiences']);
-        });
-        this.setUserData(response.user);
-        console.log('currentUser', this.angularFireAuth.currentUser);
-        // const currentUserEmailP = this.angularFireAuth.currentUser?.then(
-        //   (user) => {
-        //     const currentUserEmail = user?.email;
-        //     console.log('currentUserEmail', currentUserEmail);
-        //     if (currentUserEmail) {
-        //       this.dataStorageService.getUser('email', currentUserEmail);
-        //       this.user = this.userService.getUser();
-        //     }
-        //   }
-        // );
-        const currentUserEmail = this.angularFireAuth.currentUser?.email;
-        if (currentUserEmail) {
-          this.dataStorageService.getUser('email', currentUserEmail);
-        }
-        this.user = this.userService.getUser();
-        this.angularFireAuth.currentUser?.getIdToken().then((token) => {
-          if (token) {
-            this.token = token;
-          }
-          console.log('token', this.token);
-          this.setConnectedUser(
-            {
-              uid: response?.user?.uid || '',
-              email: response?.user?.email || '',
-              displayName: response?.user?.displayName || '',
-              photoURL: response?.user?.photoURL || '',
-              emailVerified: response?.user?.emailVerified || false,
-            },
-            this.token
-          );
-        });
-      })
-      .catch((error) => (this.errorMsg = error));
+  async signinUser(email: string, password: string): Promise<any> {
+    try {
+      const response = await signInWithEmailAndPassword(
+        this.angularFireAuth,
+        email,
+        password,
+      );
+
+      console.log('SERVICE:signinUser:response:', response);
+
+      this.setUserData(response.user);
+      console.log(
+        'SERVICE:signinUser:currentUser',
+        this.angularFireAuth.currentUser,
+      );
+      // const currentUserEmailP = this.angularFireAuth.currentUser?.then(
+      //   (user) => {
+      //     const currentUserEmail = user?.email;
+      //     console.log('currentUserEmail', currentUserEmail);
+      //     if (currentUserEmail) {
+      //       this.dataStorageService.getUser('email', currentUserEmail);
+      //       this.user = this.userService.getUser();
+      //     }
+      //   }
+      // );
+      const currentUserEmail = this.angularFireAuth.currentUser?.email;
+      if (currentUserEmail) {
+        this.dataStorageService.getUser(
+          'SERVICE:signinUser:email:',
+          currentUserEmail,
+        );
+      }
+      this.user = this.userService.getUser();
+      console.log('SERVICE:signinUser:user:', this.user);
+      const token = await this.angularFireAuth.currentUser?.getIdToken();
+      // .then((token) => {
+      if (token) {
+        this.token = token;
+      }
+      console.log('SERVICE:signinUser:token:', this.token);
+      this.setConnectedUser(
+        {
+          uid: response?.user?.uid || '',
+          email: response?.user?.email || '',
+          displayName: response?.user?.displayName || '',
+          photoURL: response?.user?.photoURL || '',
+          emailVerified: response?.user?.emailVerified || false,
+        },
+        this.token,
+      );
+
+      console.log('SERVICE:signinUser:SUCCESS:');
+
+      // this.ngZone.run(() => {
+      //   this.router.navigate(['/admin/experiences']);
+      // });
+
+      const navigationResult = await this.router.navigate([
+        '/admin/experiences',
+      ]);
+
+      console.log('SERVICE:signinUser:navigationResult:', navigationResult);
+
+      // });
+    } catch (error) {
+      // console.log('signinUserError:', Object.keys(error));
+      // console.log('signinUserError:code:', error.code);
+      // console.log(
+      //   'signinUserError:customData:',
+      //   Object.keys(error.customData),
+      // );
+      // console.log('signinUserError:name:', error.name);
+      // this.errorMsg = error;
+      console.error('SERVICE:signinUser:ERROR:', error);
+      throw error;
+    }
   }
 
   logout() {
@@ -143,15 +178,21 @@ export class AuthService {
       merge: true,
     });
     */
+    console.log('user.uid', user.uid);
 
     // get a reference to the user-profile collection
+
     const userProfileCollection: CollectionReference<
       DocumentData,
       DocumentData
-    > = collection(this.angularFirestore, `users/${user.uid}`);
+    > = collection(this.angularFirestore, 'users');
+
+    console.log('userProfileCollection:', userProfileCollection);
 
     // get documents (data) from the collection using collectionData
-    const user$ = collectionData(userProfileCollection) as Observable<User>;
+    // const user$ = collectionData(userProfileCollection) as Observable<User>;
+
+    // console.log('user$:', user$);
 
     const userData: User = {
       uid: user.uid,
@@ -161,21 +202,21 @@ export class AuthService {
       emailVerified: user.emailVerified,
     };
 
-    const userRef = doc(this.angularFirestore, 'users');
+    const userRef = doc(this.angularFirestore, `users/${user.uid}`);
     return setDoc(
       userRef,
       {
-        ...user$,
+        // ...user$,
         ...userData,
       },
-      { merge: true }
+      { merge: true },
     );
   }
 
   setConnectedUser(user: User, token: string): void {
     localStorage.setItem(
       this.USER_KEY,
-      JSON.stringify({ ...user, token: token })
+      JSON.stringify({ ...user, token: token }),
     );
   }
 
