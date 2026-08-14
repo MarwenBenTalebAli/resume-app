@@ -51,19 +51,34 @@ export class ExperienceEditComponent implements OnInit {
     if (this.editMode) {
       const experience = this.experienceService.getExperience(this.id);
 
-      nom = experience.nomExperience;
-      societe = experience.societe;
-      adresse = experience.adresse;
-      dateDebut = experience.dateDebut;
-      dateFin = experience.dateFin;
-      description = experience.description;
-      urlDescription = experience.urlDescription;
+      console.log('EDIT ID:', this.id);
+      console.log('EDIT EXPERIENCE:', experience);
+
+      if (!experience) {
+        console.error('Experience not found for ID:', this.id);
+        return;
+      }
+
+      // Translatable fields
+      nom = experience.nomExperience ?? { fr: '', en: '' };
+      description = experience.description ?? { fr: '', en: '' };
+      urlDescription = experience.urlDescription ?? { fr: '', en: '' };
+
+      // Normal fields
+      societe = experience.societe ?? '';
+      adresse = experience.adresse ?? '';
+      dateDebut = experience.dateDebut ?? '';
+      dateFin = experience.dateFin ?? '';
+
+      console.log('nom:', nom);
+      console.log('description:', description);
+      console.log('urlDescription:', urlDescription);
     }
 
     this.experienceForm = new FormGroup({
       nomExperience: new FormGroup({
-        fr: new FormControl(nom.fr, Validators.required),
-        en: new FormControl(nom.en, Validators.required),
+        fr: new FormControl(nom.fr ?? '', Validators.required),
+        en: new FormControl(nom.en ?? '', Validators.required),
       }),
 
       societe: new FormControl(societe, Validators.required),
@@ -75,15 +90,17 @@ export class ExperienceEditComponent implements OnInit {
       dateFin: new FormControl(dateFin, Validators.required),
 
       description: new FormGroup({
-        fr: new FormControl(description.fr, Validators.required),
-        en: new FormControl(description.en, Validators.required),
+        fr: new FormControl(description.fr ?? '', Validators.required),
+        en: new FormControl(description.en ?? '', Validators.required),
       }),
 
       urlDescription: new FormGroup({
-        fr: new FormControl(urlDescription.fr),
-        en: new FormControl(urlDescription.en),
+        fr: new FormControl(urlDescription.fr ?? ''),
+        en: new FormControl(urlDescription.en ?? ''),
       }),
     });
+
+    console.log('FORM VALUE:', this.experienceForm.value);
   }
 
   onSubmitExperience() {
