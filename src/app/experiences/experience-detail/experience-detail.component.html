@@ -1,23 +1,60 @@
 <div class="tab-content" id="nav-tabContentExperience">
-  <div class="tab-pane fade show active" id="list-experience" role="tabpanel" aria-labelledby="list-experience-list">
+  <div
+    class="tab-pane fade show active"
+    id="list-experience"
+    role="tabpanel"
+    aria-labelledby="list-experience-list"
+  >
     <div class="row">
       <div class="col-xs-12">
-        <h4>{{ experience.nomExperience }}</h4>
-        <p class="mb-1">{{ experience.description | translateField }}</p>
+        <h2>{{ experience.nomExperience | translateField }}</h2>
+
+        @for (
+          item of (experience.description | translateField).split("-");
+          track $index
+        ) {
+          <p
+            class="mb-1"
+            style="
+              white-space: pre-line;
+              text-align: justify;
+              text-justify: inter-word;
+            "
+          >
+            {{ item.length > 1 ? "-" : null }} {{ item }}
+          </p>
+        }
       </div>
     </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="btn-group" appDropdown>
-          <button type="button" class="btn btn-primary dropdown-toggle">
-            Gérer l'expérience <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a style="cursor: pointer;" (click)="onEditExperience()">Modifier l'éxperience</a></li>
-            <li><a style="cursor: pointer;" (click)="onDeleteExperience()">Supprimer l'éxperience</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <div class="experience-actions">
+
+  <button
+    nz-button
+    nzType="primary"
+    nz-dropdown
+    [nzDropdownMenu]="experienceMenu"
+    nzPlacement="bottomLeft"
+  >
+    {{ manageExperienceButtonLabel | translate }}
+    <span nz-icon nzType="down"></span>
+  </button>
+
+  <nz-dropdown-menu #experienceMenu="nzDropdownMenu">
+    <ul nz-menu>
+
+      <li nz-menu-item (click)="onEditExperience()">
+        <span nz-icon nzType="edit"></span>
+        {{ editExperienceButtonLabel | translate }}
+      </li>
+
+      <li nz-menu-item (click)="onDeleteExperience()">
+        <span nz-icon nzType="delete"></span>
+        {{ deleteExperienceButtonLabel | translate }}
+      </li>
+
+    </ul>
+  </nz-dropdown-menu>
+
+</div>
   </div>
 </div>

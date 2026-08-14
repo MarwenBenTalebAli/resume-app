@@ -1,27 +1,75 @@
-<div class="card">
-  <div class="card-header">
-    <h5 class="mb-0">
-      Gestion des experiences
-    </h5>
+<div class="experience-management">
+  <!-- Header -->
+
+  <div class="management-header">
+    <div>
+      <h2>{{ headerTitle | translate }}</h2>
+      <p>{{ headerSubtitle | translate }}</p>
+    </div>
+
+    <div class="management-actions">
+      <button
+        nz-button
+        nzType="primary"
+        nzSize="large"
+        (click)="onNewExperience()"
+      >
+        <span nz-icon nzType="plus" nzTheme="outline"></span>
+        {{ newExperienceButtonLabel | translate }}
+      </button>
+
+      <button
+        nz-button
+        nzType="default"
+        nzSize="large"
+        (click)="onSaveExperiencesData()"
+      >
+        <span nz-icon nzType="save" nzTheme="outline"></span>
+        {{ saveDataButtonLabel | translate }}
+      </button>
+
+      <button
+        nz-button
+        nzType="default"
+        nzSize="large"
+        (click)="onFetchExperiencesData()"
+      >
+        <span nz-icon nzType="cloud-download" nzTheme="outline"></span>
+        {{ fetchDataButtonLabel | translate }}
+      </button>
+    </div>
   </div>
-  <div class="card-body">
-    <button type="button" class="btn btn-success" (click)="onNewExperience()">New Experience</button>
-    <button type="button" class="btn btn-primary" (click)="onSaveExperiencesData()">Save Data</button>
-    <button type="button" class="btn btn-primary" (click)="onFetchExperiencesData()">Fetch Data</button>
-  </div>
-  <div class="row">
-    <div class="col-xl-7">
-      <div class="list-group" id="list-tab" role="tablist">
-        <!--  *ngFor="let experienceEl of experiences; let i=index" -->
-        @for(experienceEl of experiences; track $index)
-        {<app-experience-item [experience]="experienceEl"
-          [index]="$index">
-      </app-experience-item>}
+
+  <!-- Main content -->
+
+  <div class="experience-content">
+    <!-- Experiences list -->
+    <div class="experience-list">
+      <div class="section-title">
+        <span nz-icon nzType="profile" nzTheme="outline"></span>
+        <h3>{{listTitle | translate}}</h3>
+      </div>
+
+      <div class="experience-items">
+        @for (experienceEl of experiences; track $index) {
+          <app-experience-item [experience]="experienceEl" [index]="$index">
+          </app-experience-item>
+        }
       </div>
     </div>
 
-    <div class="col-xl-5">
-      <router-outlet></router-outlet>
+    <!-- Experience details -->
+    <div class="experience-details">
+      <div class="section-title">
+        <!-- <div class="section-title-content"> -->
+        <span nz-icon nzType="file-text" nzTheme="outline"></span>
+        <h3>{{detailsTitle | translate}}</h3>
+        <!-- </div> -->
+      </div>
+
+      <div class="details-content">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
 </div>

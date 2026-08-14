@@ -1,12 +1,38 @@
 <a
-  style="cursor: pointer"
-  [routerLink]="[index()]"
-  routerLinkActive="active"
-  class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">{{ experience()?.nomExperience }}</h5>
-      <small>{{ experience()?.dateDebut }} - {{ experience()?.dateFin }}</small>
-    </div>
-    <p class="mb-1">{{ experience()?.societe }}</p>
-    <small>{{ experience()?.adresse }}</small>
+[routerLink]="[index()]"
+routerLinkActive="selected"
+class="experience-item"
+
+>
+
+  <div class="experience-main">
+
+
+<div class="experience-title">
+  <h4>{{ experience()?.nomExperience | translateField }}</h4>
+
+  <span class="experience-date">
+    {{ experience()?.dateDebut }} - {{ experience()?.dateFin }}
+  </span>
+</div>
+
+<div class="experience-company">
+  <span nz-icon nzType="bank" nzTheme="outline"></span>
+  <span>{{ experience()?.societe }}</span>
+</div>
+
+<div class="experience-address">
+  <span nz-icon nzType="environment" nzTheme="outline"></span>
+  <span>{{ experience()?.adresse }}</span>
+</div>
+
+
+  </div>
+
+<span
+ nz-icon
+ nzType="right"
+ nzTheme="outline"
+ class="experience-arrow"> </span>
+
 </a>

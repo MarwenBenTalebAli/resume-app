@@ -16,6 +16,9 @@
         "AWARDS": "Manage Training",
         "LOGOUT": "Logout"
     },
+    "ADMIN_EXPERIENCES_START_COMPONENT": {
+        "SELECT_EXPERIENCE_TEXT": "Please select an experience!"
+    },
     "LANGUAGE": {
         "FRENCH": "French",
         "ENGLISH": "English"
@@ -34,6 +37,28 @@
         "CV": "See my CV",
         "SOURCE_CODE": "Source code",
         "ONLINE_DEMO": "Online demo"
+    },
+    "ADMIN_EXPERIENCES_HEADER": {
+        "HEADER_TITLE": "Experience Management",
+        "HEADER_SUBTITLE": "Modify the information for this professional experience."
+    },
+    "ADMIN_EXPERIENCES_BUTTONS": {
+        "NEW_EXPERIENCE": "New Experience",
+        "SAVE_DATA": "Save Data",
+        "FETCH_DATA": "Fetch Data"
+    },
+    "ADMIN_EXPERIENCE_DETAIL_BUTTONS": {
+        "MANAGE_EXPERIENCE": "Manage Experience",
+        "EDIT_EXPERIENCE": "Edit Experience",
+        "DELETE_EXPERIENCE": "Delete Experience"
+    },
+    "ADMIN_EXPERIENCE_EDIT_BUTTONS": {
+        "CANCEL": "Cancel",
+        "SAVE": "Save"
+    },
+    "ADMIN_EXPERIENCE_DETAIL": {
+        "LIST_TITLE": "Experiences",
+        "DETAILS_TITLE": "Experience Details"
     },
     "HOME_PAGE": {
         "DETAIL_1": "Welcome to my portfolio, I am Ben taleb Ali MARWEN. Nice to meet you.",

@@ -1,107 +1,313 @@
-<div class="row">
-  <div class="col-xs-12">
-    <form [formGroup]="experienceForm" (ngSubmit)="onSubmitExperience()">
+<div class="experience-edit">
 
-      <div class="row">
-        <div class="col-xs-12">
-          <button type="submit" class="btn btn-success" [disabled]="!experienceForm.valid">Enregistrer</button>
-          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
-        </div>
+  <div class="edit-header">
+    <div class="edit-title">
+      <span nz-icon nzType="edit" nzTheme="outline"></span>
+      <div>
+        <h2>Modifier l'expérience</h2>
+        <p>Modifiez les informations de cette expérience professionnelle.</p>
       </div>
+    </div>
 
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Société:</label>
-            <input type="text" formControlName="societe">
-            <br>
-            <!--  *ngIf="!experienceForm.get('societe').valid &&
- experienceForm.get('societe').touched" -->
-            @if(!experienceForm.get('societe')?.valid &&
-            experienceForm.get('societe')?.touched){<span>S'il vous plaît entrer une société valide!</span>}
-          </div>
-        </div>
-      </div>
+    <div class="edit-actions">
+      <button
+        nz-button
+        nzType="primary"
+        nzSize="large"
+        type="submit"
+        form="experienceForm"
+        [disabled]="!experienceForm.valid"
+      >
+        <span nz-icon nzType="save" nzTheme="outline"></span>
+        {{saveButtonLabel | translate }}
+      </button>
 
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Expérience:</label>
-            <input type="text" formControlName="nomExperience">
-            <br>
-            <!--  *ngIf="!experienceForm.get('nomExperience').valid &&
- experienceForm.get('nomExperience').touched" -->
-            @if(!experienceForm.get('nomExperience')?.valid &&
-            experienceForm.get('nomExperience')?.touched){<span>S'il vous plaît entrer une expérience valide!</span>}
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Date de début:</label>
-            <input type="date" formControlName="dateDebut">
-            <br>
-            <!--  *ngIf="!experienceForm.get('dateDebut').valid &&
- experienceForm.get('dateDebut').touched" -->
-            @if(!experienceForm.get('dateDebut')?.valid &&
-            experienceForm.get('dateDebut')?.touched){<span>S'il vous plaît entrer une date de début valide!</span>}
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Date de fin:</label>
-            <input type="date" formControlName="dateFin">
-            <br>
-            <!--  *ngIf="!experienceForm.get('dateFin').valid &&
- experienceForm.get('dateFin').touched" -->
-            @if(!experienceForm.get('dateFin')?.valid &&
-            experienceForm.get('dateFin')?.touched){<span>S'il vous plaît entrer une date de fin valide!</span>}
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Adresse:</label>
-            <input type="text" formControlName="adresse">
-            <br>
-            <!--  *ngIf="!experienceForm.get('adresse').valid &&
- experienceForm.get('adresse').touched" -->
-            @if(!experienceForm.get('adresse')?.valid &&
-            experienceForm.get('adresse')?.touched){<span>S'il vous plaît entrer une adresse valide!</span>}
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Description:</label>
-            <input type="text" formControlName="description">
-            <br>
-            <!--  *ngIf="!experienceForm.get('description').valid &&
- experienceForm.get('description').touched" -->
-            @if(!experienceForm.get('description')?.valid &&
-            experienceForm.get('description')?.touched){<span>S'il vous plaît entrer une description valide!</span>}
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Url de description:</label>
-            <input type="text" formControlName="urlDescription">
-          </div>
-        </div>
-      </div>
-
-    </form>
+      <button
+        nz-button
+        nzType="default"
+        nzSize="large"
+        type="button"
+        (click)="onCancel()"
+      >
+        <span nz-icon nzType="close" nzTheme="outline"></span>
+        {{cancelButtonLabel | translate}}
+      </button>
+    </div>
   </div>
+
+  <form
+    id="experienceForm"
+    [formGroup]="experienceForm"
+    (ngSubmit)="onSubmitExperience()"
+    class="experience-form"
+  >
+
+    <!-- Société -->
+    <div class="form-section">
+
+      <div class="form-section-title">
+        <span nz-icon nzType="bank" nzTheme="outline"></span>
+        <h3>Informations professionnelles</h3>
+      </div>
+
+      <div class="form-field">
+        <label for="societe">Société</label>
+
+        <input
+          id="societe"
+          type="text"
+          formControlName="societe"
+          placeholder="Nom de la société"
+        >
+
+        <div class="field-error">
+          <!--  *ngIf="!experienceForm.get('societe').valid &&
+          experienceForm.get('societe').touched" -->
+          @if(!experienceForm.get('societe')?.valid &&
+          experienceForm.get('societe')?.touched){
+            <span>S'il vous plaît entrer une société valide!</span>
+          }
+        </div>
+      </div>
+
+
+      <!-- Expérience -->
+      <div class="form-field">
+        <label>Expérience</label>
+
+        <div formGroupName="nomExperience">
+
+          <div class="translation-field">
+            <label for="nomExperienceFr">🇫🇷 Français</label>
+
+            <input
+              id="nomExperienceFr"
+              type="text"
+              formControlName="fr"
+              placeholder="Titre de l'expérience en français"
+            >
+          </div>
+
+          <div class="translation-field">
+            <label for="nomExperienceEn">🇬🇧 English</label>
+
+            <input
+              id="nomExperienceEn"
+              type="text"
+              formControlName="en"
+              placeholder="Experience title in English"
+            >
+          </div>
+
+        </div>
+
+        <div class="field-error">
+          <!--  *ngIf="!experienceForm.get('nomExperience').valid &&
+          experienceForm.get('nomExperience').touched" -->
+          @if(!experienceForm.get('nomExperience')?.valid &&
+          experienceForm.get('nomExperience')?.touched){
+            <span>S'il vous plaît entrer une expérience valide!</span>
+          }
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- Dates -->
+    <div class="form-section">
+
+      <div class="form-section-title">
+        <span nz-icon nzType="calendar" nzTheme="outline"></span>
+        <h3>Période</h3>
+      </div>
+
+      <div class="form-row">
+
+        <div class="form-field">
+          <label for="dateDebut">Date de début</label>
+
+          <input
+            id="dateDebut"
+            type="date"
+            formControlName="dateDebut"
+          >
+
+          <div class="field-error">
+            <!--  *ngIf="!experienceForm.get('dateDebut').valid &&
+            experienceForm.get('dateDebut').touched" -->
+            @if(!experienceForm.get('dateDebut')?.valid &&
+            experienceForm.get('dateDebut')?.touched){
+              <span>S'il vous plaît entrer une date de début valide!</span>
+            }
+          </div>
+        </div>
+
+
+        <div class="form-field">
+          <label for="dateFin">Date de fin</label>
+
+          <input
+            id="dateFin"
+            type="date"
+            formControlName="dateFin"
+          >
+
+          <div class="field-error">
+            <!--  *ngIf="!experienceForm.get('dateFin').valid &&
+            experienceForm.get('dateFin').touched" -->
+            @if(!experienceForm.get('dateFin')?.valid &&
+            experienceForm.get('dateFin')?.touched){
+              <span>S'il vous plaît entrer une date de fin valide!</span>
+            }
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Location -->
+    <div class="form-section">
+
+      <div class="form-section-title">
+        <span nz-icon nzType="environment" nzTheme="outline"></span>
+        <h3>Localisation</h3>
+      </div>
+
+      <div class="form-field">
+        <label for="adresse">Adresse</label>
+
+        <input
+          id="adresse"
+          type="text"
+          formControlName="adresse"
+          placeholder="Adresse de l'expérience"
+        >
+
+        <div class="field-error">
+          <!--  *ngIf="!experienceForm.get('adresse').valid &&
+          experienceForm.get('adresse').touched" -->
+          @if(!experienceForm.get('adresse')?.valid &&
+          experienceForm.get('adresse')?.touched){
+            <span>S'il vous plaît entrer une adresse valide!</span>
+          }
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- Description -->
+    <div class="form-section">
+
+      <div class="form-section-title">
+        <span nz-icon nzType="file-text" nzTheme="outline"></span>
+        <h3>Description</h3>
+      </div>
+
+      <div class="form-field">
+        <label>Description</label>
+
+        <div formGroupName="description">
+
+          <div class="translation-field">
+            <label for="descriptionFr">🇫🇷 Français</label>
+
+            <textarea
+              id="descriptionFr"
+              formControlName="fr"
+              rows="5"
+              placeholder="Description de l'expérience en français"
+            ></textarea>
+          </div>
+
+          <div class="translation-field">
+            <label for="descriptionEn">🇬🇧 English</label>
+
+            <textarea
+              id="descriptionEn"
+              formControlName="en"
+              rows="5"
+              placeholder="Experience description in English"
+            ></textarea>
+          </div>
+
+        </div>
+
+        <div class="field-error">
+          <!--  *ngIf="!experienceForm.get('description').valid &&
+          experienceForm.get('description').touched" -->
+          @if(!experienceForm.get('description')?.valid &&
+          experienceForm.get('description')?.touched){
+            <span>S'il vous plaît entrer une description valide!</span>
+          }
+        </div>
+      </div>
+
+
+      <div class="form-field">
+        <label>Url de description</label>
+
+        <div formGroupName="urlDescription">
+
+          <div class="translation-field">
+            <label for="urlDescriptionFr">🇫🇷 Français</label>
+
+            <input
+              id="urlDescriptionFr"
+              type="text"
+              formControlName="fr"
+              placeholder="https://..."
+            >
+          </div>
+
+          <div class="translation-field">
+            <label for="urlDescriptionEn">🇬🇧 English</label>
+
+            <input
+              id="urlDescriptionEn"
+              type="text"
+              formControlName="en"
+              placeholder="https://..."
+            >
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- Bottom actions -->
+    <div class="form-footer">
+
+      <button
+        nz-button
+        nzType="default"
+        nzSize="large"
+        type="button"
+        (click)="onCancel()"
+      >
+        <span nz-icon nzType="close" nzTheme="outline"></span>
+        {{cancelButtonLabel | translate}}
+      </button>
+
+      <button
+        nz-button
+        nzType="primary"
+        nzSize="large"
+        type="submit"
+        [disabled]="!experienceForm.valid"
+      >
+        <span nz-icon nzType="save" nzTheme="outline"></span>
+        {{saveButtonLabel | translate }}
+      </button>
+
+    </div>
+
+  </form>
+
 </div>
+

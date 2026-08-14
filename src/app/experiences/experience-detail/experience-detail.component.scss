@@ -1,0 +1,49 @@
+.experience-details {
+background: #ffffff;
+border-radius: 12px;
+
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+overflow: hidden;
+
+min-width: 0;
+}
+
+.section-title {
+display: flex;
+align-items: center;
+
+padding: 18px 22px;
+
+border-bottom: 1px solid #f0f0f0;
+
+.section-title-content {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+span[nz-icon] {
+font-size: 20px;
+color: #b45309;
+}
+
+h3 {
+margin: 0;
+
+
+font-size: 18px;
+font-weight: 600;
+color: #262626;
+
+
+}
+}
+
+.details-content {
+padding: 25px;
+
+min-height: 400px;
+
+background: #ffffff;
+}

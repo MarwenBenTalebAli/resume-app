@@ -16,6 +16,31 @@
         "AWARDS": "Gestion des formations",
         "LOGOUT": "Déconnexion"
     },
+    "ADMIN_EXPERIENCES_START_COMPONENT": {
+        "SELECT_EXPERIENCE_TEXT": "S'il vous plaît sélectionnez une experience!"
+    },
+    "ADMIN_EXPERIENCES_HEADER": {
+        "HEADER_TITLE": "Gestion des expériences",
+        "HEADER_SUBTITLE": "Modifiez les informations de cette expérience professionnelle."
+    },
+    "ADMIN_EXPERIENCES_BUTTONS": {
+        "NEW_EXPERIENCE": "Nouvelle expérience",
+        "SAVE_DATA": "Enregistrer les données",
+        "FETCH_DATA": "Récupérer les données"
+    },
+    "ADMIN_EXPERIENCE_DETAIL_BUTTONS": {
+        "MANAGE_EXPERIENCE": "Gérer l'expérience",
+        "EDIT_EXPERIENCE": "Modifier l'expérience",
+        "DELETE_EXPERIENCE": "Supprimer l'expérience"
+    },
+    "ADMIN_EXPERIENCE_EDIT_BUTTONS": {
+        "CANCEL": "Annuler",
+        "SAVE": "Enregistrer"
+    },
+    "ADMIN_EXPERIENCE_DETAIL": {
+        "LIST_TITLE": "Expériences",
+        "DETAILS_TITLE": "Détails de l'expérience"
+    },
     "LANGUAGE": {
         "FRENCH": "Français",
         "ENGLISH": "Anglais"
