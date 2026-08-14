@@ -10,6 +10,7 @@ import {
 import { ExperienceService } from '../experience.service';
 import { Translatable } from '../../shared/translatable.model';
 import { TranslatePipe } from '@ngx-translate/core';
+import { formatDateForInput, formatDateForStorage } from '../../shared/utils';
 
 @Component({
   selector: 'app-experience-edit',
@@ -67,8 +68,8 @@ export class ExperienceEditComponent implements OnInit {
       // Normal fields
       societe = experience.societe ?? '';
       adresse = experience.adresse ?? '';
-      dateDebut = experience.dateDebut ?? '';
-      dateFin = experience.dateFin ?? '';
+      dateDebut = formatDateForInput(experience.dateDebut);
+      dateFin = formatDateForInput(experience.dateFin);
 
       console.log('nom:', nom);
       console.log('description:', description);
@@ -104,15 +105,21 @@ export class ExperienceEditComponent implements OnInit {
   }
 
   onSubmitExperience() {
-    console.log('Form:', this.experienceForm.value);
+    const formValue = this.experienceForm.value;
+
+    const experienceData = {
+      ...formValue,
+      dateDebut: formatDateForStorage(formValue.dateDebut),
+      dateFin: formatDateForStorage(formValue.dateFin),
+    };
+
+    console.log('Form:', formValue);
+    console.log('Experience data:', experienceData);
 
     if (this.editMode) {
-      this.experienceService.updateExperience(
-        this.id,
-        this.experienceForm.value,
-      );
+      this.experienceService.updateExperience(this.id, experienceData);
     } else {
-      this.experienceService.addExperience(this.experienceForm.value);
+      this.experienceService.addExperience(experienceData);
     }
 
     this.onCancel();
