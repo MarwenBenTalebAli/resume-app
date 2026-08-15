@@ -1,138 +1,397 @@
 .experience-management {
-padding: 30px;
-background: #f5f7fa;
-min-height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  height: calc(100vh - 32px);
+
+  padding: 30px;
+
+  background: #f5f7fa;
+
+  overflow: hidden;
 }
 
-/* Header */
+
+/* =========================================================
+   Header
+   ========================================================= */
 
 .management-header {
-display: flex;
-justify-content: space-between;
-align-items: flex-start;
-gap: 30px;
+  flex-shrink: 0;
 
-margin-bottom: 25px;
-padding: 25px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 
-background: #ffffff;
-border-radius: 12px;
+  gap: 30px;
 
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
 
-h2 {
-margin: 0 0 6px;
-font-size: 26px;
-font-weight: 600;
+  padding: 25px 30px;
+
+  background: #ffffff;
+
+  border-radius: 12px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+
+  h2 {
+    margin: 0 0 6px;
+
+    font-size: 26px;
+    font-weight: 600;
+  }
+
+
+  p {
+    margin: 0;
+
+    color: #8c8c8c;
+
+    font-size: 14px;
+  }
 }
 
-p {
-margin: 0;
-color: #8c8c8c;
-font-size: 14px;
-}
-}
 
-/* Buttons */
+/* =========================================================
+   Buttons
+   ========================================================= */
 
 .management-actions {
-display: flex;
-gap: 10px;
-flex-wrap: wrap;
+  display: flex;
 
-button {
-display: flex;
-align-items: center;
-gap: 6px;
-}
+  gap: 10px;
+
+  flex-wrap: wrap;
+
+
+  button {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+  }
 }
 
-/* Main content */
+
+/* =========================================================
+   Main content
+   ========================================================= */
 
 .experience-content {
-display: grid;
-grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-gap: 25px;
+  display: grid;
+
+  grid-template-columns: 380px minmax(0, 1fr);
+
+  gap: 25px;
+
+  flex: 1;
+
+  min-height: 0;
+
+  overflow: hidden;
 }
 
-/* Panels */
+
+/* =========================================================
+   Panels
+   ========================================================= */
 
 .experience-list,
 .experience-details {
-background: #ffffff;
-border-radius: 12px;
+  display: flex;
 
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  flex-direction: column;
 
-overflow: hidden;
+  min-width: 0;
+  min-height: 0;
+
+  background: #ffffff;
+
+  border-radius: 12px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+  overflow: hidden;
 }
+
+
+/* =========================================================
+   Section title
+   ========================================================= */
 
 .section-title {
-display: flex;
-align-items: center;
-gap: 10px;
+  flex-shrink: 0;
 
-padding: 18px 22px;
+  display: flex;
 
-border-bottom: 1px solid #f0f0f0;
+  align-items: center;
 
-span {
-font-size: 20px;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 18px 22px;
+
+  border-bottom: 1px solid #f0f0f0;
+
+  background: #ffffff;
+
+
+  /*
+   * Left side:
+   * icon + "Expériences"
+   */
+  .section-title-main {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+
+
+    span {
+      flex-shrink: 0;
+
+      font-size: 20px;
+    }
+
+
+    h3 {
+      margin: 0;
+
+      font-size: 18px;
+
+      font-weight: 600;
+
+      white-space: nowrap;
+    }
+  }
+
+
+  /*
+   * Currently selected experience
+   */
+  .selected-experience-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    max-width: 55%;
+
+    min-width: 0;
+
+    padding: 7px 12px;
+
+    color: #b45309;
+
+    background: #fff7ed;
+
+    border: 1px solid #fed7aa;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+
+    /*
+     * Check icon
+     */
+    span:first-child {
+      flex-shrink: 0;
+
+      font-size: 14px;
+    }
+
+
+    /*
+     * Experience name
+     */
+    span:last-child {
+      min-width: 0;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+      white-space: nowrap;
+    }
+  }
 }
 
-h3 {
-margin: 0;
-font-size: 18px;
-font-weight: 600;
-}
-}
 
-/* Experience list */
+/* =========================================================
+   Experience list
+   ========================================================= */
 
 .experience-items {
-padding: 15px;
+  flex: 1;
+
+  min-height: 0;
+
+  padding: 15px;
+
+  overflow-y: auto;
+
+  overflow-x: hidden;
+
+  scroll-behavior: smooth;
+
+  scrollbar-width: thin;
 }
 
-/* Details */
+
+/*
+ * No sticky selected item anymore.
+ *
+ * The selected experience is displayed
+ * in .selected-experience-title instead.
+ */
+
+
+/* =========================================================
+   Details
+   ========================================================= */
 
 .details-content {
-padding: 20px;
+  flex: 1;
+
+  min-height: 0;
+
+  padding: 20px;
+
+  overflow-y: auto;
+
+  overflow-x: hidden;
+
+  scroll-behavior: smooth;
+
+  scrollbar-width: thin;
 }
 
-/* Responsive */
+
+/* =========================================================
+   Responsive - Tablet
+   ========================================================= */
 
 @media (max-width: 992px) {
-.management-header {
-flex-direction: column;
+
+  .experience-management {
+    height: auto;
+
+    min-height: calc(100vh - 32px);
+
+    overflow: visible;
+  }
+
+
+  .management-header {
+    flex-direction: column;
+  }
+
+
+  .management-actions {
+    width: 100%;
+  }
+
+
+  .experience-content {
+    grid-template-columns: 1fr;
+
+    overflow: visible;
+  }
+
+
+  .experience-list {
+    max-height: 400px;
+  }
+
+
+  .experience-details {
+    min-height: 500px;
+  }
+
+
+  .section-title {
+
+    .selected-experience-title {
+      max-width: 50%;
+    }
+  }
 }
 
-.management-actions {
-width: 100%;
-}
 
-.experience-content {
-grid-template-columns: 1fr;
-}
-}
+/* =========================================================
+   Responsive - Mobile
+   ========================================================= */
 
 @media (max-width: 576px) {
-.experience-management {
-padding: 15px;
-}
 
-.management-header {
-padding: 20px;
-}
-
-.management-actions {
-flex-direction: column;
+  .experience-management {
+    padding: 15px;
+  }
 
 
-button {
-  width: 100%;
-  justify-content: center;
-}
+  .management-header {
+    padding: 20px;
+  }
 
 
-}
+  .management-actions {
+    flex-direction: column;
+
+
+    button {
+      width: 100%;
+
+      justify-content: center;
+    }
+  }
+
+
+  .experience-list {
+    max-height: 350px;
+  }
+
+
+  .experience-details {
+    min-height: 450px;
+  }
+
+
+  .section-title {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    padding: 15px 18px;
+
+
+    .section-title-main {
+      width: 100%;
+    }
+
+
+    .selected-experience-title {
+      width: 100%;
+
+      max-width: 100%;
+
+      box-sizing: border-box;
+    }
+  }
+
+
+  .experience-items,
+  .details-content {
+    padding: 12px;
+  }
 }

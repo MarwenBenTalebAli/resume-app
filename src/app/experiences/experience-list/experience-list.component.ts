@@ -1,13 +1,21 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Router,
+  ActivatedRoute,
+  RouterOutlet,
+  NavigationEnd,
+} from '@angular/router';
+import { Subscription, filter } from 'rxjs';
+
 import { Experience } from '../experience.model';
 import { ExperienceService } from '../experience.service';
 import { DataStorageService } from '../../shared/data-storage.service';
-import { Router, ActivatedRoute, RouterOutlet } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { ExperienceItemComponent } from './experience-item/experience-item.component';
+
 import { TranslatePipe } from '@ngx-translate/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { TranslateFieldPipe } from '../../shared/translate-field.pipe';
 
 @Component({
   selector: 'app-experience-list',
@@ -18,21 +26,32 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     RouterOutlet,
     ExperienceItemComponent,
     TranslatePipe,
+    TranslateFieldPipe,
   ],
   templateUrl: './experience-list.component.html',
   styleUrls: ['./experience-list.component.scss'],
 })
 export class ExperienceListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
-  experiences: Experience[];
+  routerSubscription: Subscription;
 
-  newExperienceButtonLabel: string = 'ADMIN_EXPERIENCES_BUTTONS.NEW_EXPERIENCE';
-  saveDataButtonLabel: string = 'ADMIN_EXPERIENCES_BUTTONS.SAVE_DATA';
-  fetchDataButtonLabel: string = 'ADMIN_EXPERIENCES_BUTTONS.FETCH_DATA';
-  headerTitle: string = 'ADMIN_EXPERIENCES_HEADER.HEADER_TITLE';
-  headerSubtitle: string = 'ADMIN_EXPERIENCES_HEADER.HEADER_SUBTITLE';
-  listTitle: string = 'ADMIN_EXPERIENCE_DETAIL.LIST_TITLE';
-  detailsTitle: string = 'ADMIN_EXPERIENCE_DETAIL.DETAILS_TITLE';
+  experiences: Experience[] = [];
+
+  selectedExperience: Experience | null = null;
+
+  newExperienceButtonLabel = 'ADMIN_EXPERIENCES_BUTTONS.NEW_EXPERIENCE';
+
+  saveDataButtonLabel = 'ADMIN_EXPERIENCES_BUTTONS.SAVE_DATA';
+
+  fetchDataButtonLabel = 'ADMIN_EXPERIENCES_BUTTONS.FETCH_DATA';
+
+  headerTitle = 'ADMIN_EXPERIENCES_HEADER.HEADER_TITLE';
+
+  headerSubtitle = 'ADMIN_EXPERIENCES_HEADER.HEADER_SUBTITLE';
+
+  listTitle = 'ADMIN_EXPERIENCE_DETAIL.LIST_TITLE';
+
+  detailsTitle = 'ADMIN_EXPERIENCE_DETAIL.DETAILS_TITLE';
 
   constructor(
     private experienceService: ExperienceService,
@@ -41,31 +60,87 @@ export class ExperienceListComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    /*
+     * Experiences
+     */
     this.subscription = this.experienceService.experiencesChanged.subscribe(
       (experiences: Experience[]) => {
         this.experiences = experiences;
+
+        this.updateSelectedExperience();
       },
     );
+
     this.experiences = this.experienceService.getExperiences();
+
+    /*
+     * Watch route changes
+     *
+     * When the user selects another experience,
+     * the URL changes from /0 to /1, /2, etc.
+     */
+    this.routerSubscription = this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.updateSelectedExperience();
+      });
+
+    /*
+     * Initial selected experience
+     */
+    this.updateSelectedExperience();
   }
 
-  onNewExperience() {
+  private updateSelectedExperience(): void {
+    /*
+     * Example URLs:
+     *
+     * /admin/experiences/0
+     * /admin/experiences/1
+     * /admin/experiences/2
+     *
+     * The last number represents the experience index.
+     */
+
+    const match = this.router.url.match(/\/(\d+)$/);
+
+    if (!match) {
+      this.selectedExperience = null;
+
+      return;
+    }
+
+    const index = Number(match[1]);
+
+    if (Number.isNaN(index) || index < 0 || index >= this.experiences.length) {
+      this.selectedExperience = null;
+
+      return;
+    }
+
+    this.selectedExperience = this.experiences[index] ?? null;
+  }
+
+  onNewExperience(): void {
     this.router.navigate(['new'], { relativeTo: this.route });
   }
 
-  onSaveExperiencesData() {
+  onSaveExperiencesData(): void {
     this.dataStorageService.storeExperiences().subscribe((response) => {
       console.log(response);
     });
   }
 
-  onFetchExperiencesData() {
+  onFetchExperiencesData(): void {
     console.log('onFetchExperiencesData');
+
     this.dataStorageService.getExperiences();
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
+
+    this.routerSubscription?.unsubscribe();
   }
 }
