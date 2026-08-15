@@ -1,11 +1,17 @@
 import { Component, OnInit, input } from '@angular/core';
-import { Institut } from '../../institut.model';
+
 import { RouterModule } from '@angular/router';
+
+import { Institut } from '../../institut.model';
+
+import { TranslateFieldPipe } from '../../../shared/translate-field.pipe';
+
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @Component({
   selector: 'app-education-item',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, TranslateFieldPipe, NzIconModule],
   templateUrl: './education-item.component.html',
   styleUrls: ['./education-item.component.scss'],
 })

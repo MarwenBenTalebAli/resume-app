@@ -74,5 +74,22 @@
     },
     "NOT_FOUND_PAGE": {
         "NOT_FOUND_LABEL": "Page non trouvée 404."
+    },
+    "ADMIN_EDUCATIONS_BUTTONS": {
+        "NEW_EDUCATION": "Nouvelle éducation",
+        "SAVE_DATA": "Enregistrer les données",
+        "FETCH_DATA": "Récupérer les données"
+    },
+    "ADMIN_EDUCATIONS_HEADER": {
+        "HEADER_TITLE": "Gestion des éducations",
+        "HEADER_SUBTITLE": "Gérez vos formations académiques."
+    },
+    "ADMIN_EDUCATION_DETAIL": {
+        "LIST_TITLE": "Éducations",
+        "DETAILS_TITLE": "Détails"
+    },
+    "ADMIN_EDUCATION_DETAIL_BUTTONS": {
+        "EDIT_EDUCATION": "Modifier l'éducation",
+        "DELETE_EDUCATION": "Supprimer l'éducation"
     }
 }

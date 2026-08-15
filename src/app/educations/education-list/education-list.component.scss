@@ -1,0 +1,232 @@
+.education-management {
+  display: flex;
+  flex-direction: column;
+
+  height: calc(100vh - 32px);
+  padding: 30px;
+
+  background: #f5f7fa;
+
+  overflow: hidden;
+}
+
+/* Header */
+
+.management-header {
+  flex-shrink: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 30px;
+
+  margin-bottom: 25px;
+  padding: 25px 30px;
+
+  background: #ffffff;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+  h2 {
+    margin: 0 0 6px;
+
+    font-size: 26px;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0;
+
+    color: #8c8c8c;
+
+    font-size: 14px;
+  }
+}
+
+/* Buttons */
+
+.management-actions {
+  display: flex;
+  gap: 10px;
+
+  flex-wrap: wrap;
+
+  button {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+  }
+}
+
+/* Main content */
+
+.education-content {
+  display: grid;
+
+  grid-template-columns: 380px minmax(0, 1fr);
+
+  gap: 25px;
+
+  flex: 1;
+
+  min-height: 0;
+
+  overflow: hidden;
+}
+
+/* Panels */
+
+.education-list,
+.education-details {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  min-height: 0;
+
+  background: #ffffff;
+
+  border-radius: 12px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+  overflow: hidden;
+}
+
+/* Section title */
+
+.section-title {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 18px 22px;
+
+  border-bottom: 1px solid #f0f0f0;
+
+  background: #ffffff;
+
+  span {
+    font-size: 20px;
+  }
+
+  h3 {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+/* Education list */
+
+.education-items {
+  flex: 1;
+
+  min-height: 0;
+
+  padding: 15px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scroll-behavior: smooth;
+
+  scrollbar-width: thin;
+}
+
+/* Details */
+
+.details-content {
+  flex: 1;
+
+  min-height: 0;
+
+  padding: 20px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scroll-behavior: smooth;
+
+  scrollbar-width: thin;
+}
+
+/* Responsive */
+
+@media (max-width: 992px) {
+
+  .education-management {
+    height: auto;
+
+    min-height: calc(100vh - 32px);
+
+    overflow: visible;
+  }
+
+  .management-header {
+    flex-direction: column;
+  }
+
+  .management-actions {
+    width: 100%;
+  }
+
+  .education-content {
+    grid-template-columns: 1fr;
+
+    overflow: visible;
+  }
+
+  .education-list {
+    max-height: 400px;
+  }
+
+  .education-details {
+    min-height: 500px;
+  }
+}
+
+@media (max-width: 576px) {
+
+  .education-management {
+    padding: 15px;
+  }
+
+  .management-header {
+    padding: 20px;
+  }
+
+  .management-actions {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+
+      justify-content: center;
+    }
+  }
+
+  .education-list {
+    max-height: 350px;
+  }
+
+  .education-details {
+    min-height: 450px;
+  }
+
+  .section-title {
+    padding: 15px 18px;
+  }
+
+  .education-items,
+  .details-content {
+    padding: 12px;
+  }
+}

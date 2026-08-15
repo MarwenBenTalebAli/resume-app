@@ -74,5 +74,22 @@
     },
     "NOT_FOUND_PAGE": {
         "NOT_FOUND_LABEL": "Page not found 404."
+    },
+    "ADMIN_EDUCATIONS_BUTTONS": {
+        "NEW_EDUCATION": "New Education",
+        "SAVE_DATA": "Save Data",
+        "FETCH_DATA": "Fetch Data"
+    },
+    "ADMIN_EDUCATIONS_HEADER": {
+        "HEADER_TITLE": "Education Management",
+        "HEADER_SUBTITLE": "Manage your academic education."
+    },
+    "ADMIN_EDUCATION_DETAIL": {
+        "LIST_TITLE": "Education",
+        "DETAILS_TITLE": "Details"
+    },
+    "ADMIN_EDUCATION_DETAIL_BUTTONS": {
+        "EDIT_EDUCATION": "Edit Education",
+        "DELETE_EDUCATION": "Delete Education"
     }
 }

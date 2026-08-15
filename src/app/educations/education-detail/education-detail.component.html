@@ -1,23 +1,208 @@
-<div class="tab-content" id="nav-tabContentEducation">
-  <div class="tab-pane fade show active" id="list-education" role="tabpanel" aria-labelledby="list-education-list">
-    <div class="row">
-      <div class="col-xs-12">
-        <h4>{{ institut.diplome }}</h4>
-        <p class="mb-1">{{ institut.details }}</p>
+<div class="education-detail">
+
+  <div class="detail-header">
+
+    <div class="detail-title">
+
+      <span
+        nz-icon
+        nzType="read"
+        nzTheme="outline">
+      </span>
+
+      <div>
+
+        <h2>
+          {{ institut?.diplome | translateField }}
+        </h2>
+
+        <p>
+          {{ institut?.nom }}
+        </p>
+
       </div>
+
     </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="btn-group" appDropdown>
-          <button type="button" class="btn btn-primary dropdown-toggle">
-            Gérer l'éducation <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a style="cursor: pointer;" (click)="onEditEducation()">Modifier l'éducation</a></li>
-            <li><a style="cursor: pointer;" (click)="onDeleteEducation()">Supprimer l'éducation</a></li>
-          </ul>
-        </div>
-      </div>
+
+
+    <div class="detail-actions">
+
+      <button
+        nz-button
+        nzType="primary"
+        nzSize="large"
+        (click)="onEditEducation()"
+      >
+        <span
+          nz-icon
+          nzType="edit"
+          nzTheme="outline">
+        </span>
+
+        {{ editEducationButtonLabel | translate }}
+
+      </button>
+
+
+      <button
+        nz-button
+        nzType="default"
+        nzSize="large"
+        nzDanger
+        (click)="onDeleteEducation()"
+      >
+        <span
+          nz-icon
+          nzType="delete"
+          nzTheme="outline">
+        </span>
+
+        {{ deleteEducationButtonLabel | translate }}
+
+      </button>
+
     </div>
+
   </div>
+
+
+  <div class="detail-content">
+
+    <!-- Institution -->
+
+    <div class="detail-section">
+
+      <div class="detail-section-title">
+
+        <span
+          nz-icon
+          nzType="bank"
+          nzTheme="outline">
+        </span>
+
+        <h3>
+          Institution
+        </h3>
+
+      </div>
+
+
+      <div class="detail-value">
+        {{ institut?.nom }}
+      </div>
+
+    </div>
+
+
+    <!-- Diploma -->
+
+    <div class="detail-section">
+
+      <div class="detail-section-title">
+
+        <span
+          nz-icon
+          nzType="read"
+          nzTheme="outline">
+        </span>
+
+        <h3>
+          Diplôme
+        </h3>
+
+      </div>
+
+
+      <div class="detail-value">
+        {{ institut?.diplome | translateField }}
+      </div>
+
+    </div>
+
+
+    <!-- Period -->
+
+    <div class="detail-section">
+
+      <div class="detail-section-title">
+
+        <span
+          nz-icon
+          nzType="calendar"
+          nzTheme="outline">
+        </span>
+
+        <h3>
+          Période
+        </h3>
+
+      </div>
+
+
+      <div class="detail-value">
+
+        {{ institut?.dateDebut }}
+        -
+        {{ institut?.dateFin }}
+
+      </div>
+
+    </div>
+
+
+    <!-- Address -->
+
+    <div class="detail-section">
+
+      <div class="detail-section-title">
+
+        <span
+          nz-icon
+          nzType="environment"
+          nzTheme="outline">
+        </span>
+
+        <h3>
+          Adresse
+        </h3>
+
+      </div>
+
+
+      <div class="detail-value">
+        {{ institut?.adresse }}
+      </div>
+
+    </div>
+
+
+    <!-- Details -->
+
+    <div class="detail-section">
+
+      <div class="detail-section-title">
+
+        <span
+          nz-icon
+          nzType="file-text"
+          nzTheme="outline">
+        </span>
+
+        <h3>
+          Détails
+        </h3>
+
+      </div>
+
+
+      <div class="detail-description">
+
+        {{ institut?.details | translateField }}
+
+      </div>
+
+    </div>
+
+  </div>
+
 </div>

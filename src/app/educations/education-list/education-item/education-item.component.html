@@ -1,12 +1,52 @@
 <a
-  style="cursor: pointer"
   [routerLink]="[index()]"
-  routerLinkActive="active"
-  class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">{{ institut()?.diplome }}</h5>
-      <small>{{ institut()?.dateDebut }} - {{ institut()?.dateFin }}</small>
+  routerLinkActive="selected"
+  class="education-item"
+>
+
+  <div class="education-main">
+
+    <div class="education-title">
+      <h4>
+        {{ institut()?.diplome | translateField }}
+      </h4>
+
+      <span class="education-date">
+        {{ institut()?.dateDebut }} - {{ institut()?.dateFin }}
+      </span>
     </div>
-    <p class="mb-1">{{ institut()?.nom }}</p>
-    <small>{{ institut()?.adresse }}</small>
+
+    <div class="education-institution">
+      <span
+        nz-icon
+        nzType="bank"
+        nzTheme="outline"
+      ></span>
+
+      <span>
+        {{ institut()?.nom }}
+      </span>
+    </div>
+
+    <div class="education-address">
+      <span
+        nz-icon
+        nzType="environment"
+        nzTheme="outline"
+      ></span>
+
+      <span>
+        {{ institut()?.adresse }}
+      </span>
+    </div>
+
+  </div>
+
+  <span
+    nz-icon
+    nzType="right"
+    nzTheme="outline"
+    class="education-arrow"
+  ></span>
+
 </a>

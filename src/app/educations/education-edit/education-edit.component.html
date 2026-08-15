@@ -1,98 +1,466 @@
-<div class="row">
-  <div class="col-xs-12">
-    <form [formGroup]="educationForm" (ngSubmit)="onSubmitEducation()">
+<div class="education-edit">
 
-      <div class="row">
-        <div class="col-xs-12">
-          <button type="submit" class="btn btn-success" [disabled]="!educationForm.valid">Enregistrer</button>
-          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
-        </div>
+  <div class="edit-header">
+
+    <div class="edit-title">
+
+      <span
+        nz-icon
+        nzType="edit"
+        nzTheme="outline">
+      </span>
+
+      <div>
+
+        <h2>
+          Modifier l'éducation
+        </h2>
+
+        <p>
+          Modifiez les informations de cette formation.
+        </p>
+
       </div>
 
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Institut:</label>
-            <input type="text" formControlName="nom">
-            <br>
-            <!--  *ngIf="!educationForm.get('nom').valid &&
-	  educationForm.get('nom').touched" -->
-            @if(!educationForm.get('nom')?.valid &&
-            educationForm.get('nom')?.touched){<span>S'il vous plaît entrer un nom d'institut valide!</span>}
-          </div>
-        </div>
-      </div>
+    </div>
 
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Diplome:</label>
-            <input type="text" formControlName="diplome">
-            <br>
-            <!--  *ngIf="!educationForm.get('diplome').valid &&
-	  educationForm.get('diplome').touched" -->
-            @if(!educationForm.get('diplome')?.valid &&
-            educationForm.get('diplome')?.touched){<span>S'il vous plaît entrer un nom de diplome valide!</span>}
-          </div>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Date de début:</label>
-            <input type="date" formControlName="dateDebut">
-            <br>
-            <!--  *ngIf="!educationForm.get('dateDebut').valid &&
-	  educationForm.get('dateDebut').touched" -->
-            @if(!educationForm.get('dateDebut')?.valid &&
-            educationForm.get('dateDebut')?.touched){<span>S'il vous plaît entrer une date de début valide!</span>}
-          </div>
-        </div>
-      </div>
+    <div class="edit-actions">
 
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Date de fin:</label>
-            <input type="date" formControlName="dateFin">
-            <br>
-            <!--  *ngIf="!educationForm.get('dateFin').valid &&
-	  educationForm.get('dateFin').touched" -->
-            @if(!educationForm.get('dateFin')?.valid &&
-            educationForm.get('dateFin')?.touched){<span>S'il vous plaît entrer une date de fin valide!</span>}
-          </div>
-        </div>
-      </div>
+      <button
+        nz-button
+        nzType="primary"
+        nzSize="large"
+        type="submit"
+        form="educationForm"
+        [disabled]="!educationForm.valid"
+      >
 
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Adresse:</label>
-            <input type="text" formControlName="adresse">
-            <br>
-            <!--  *ngIf="!educationForm.get('adresse').valid &&
-	  educationForm.get('adresse').touched" -->
-            @if(!educationForm.get('adresse')?.valid &&
-            educationForm.get('adresse')?.touched){<span>S'il vous plaît entrer une adresse valide!</span>}
-          </div>
-        </div>
-      </div>
+        <span
+          nz-icon
+          nzType="save"
+          nzTheme="outline">
+        </span>
 
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Details:</label>
-            <input type="text" formControlName="details">
-            <br>
-            <!--  *ngIf="!educationForm.get('details').valid &&
-	  educationForm.get('details').touched" -->
-            @if(!educationForm.get('details')?.valid &&
-            educationForm.get('details')?.touched){<span>S'il vous plaît entrer une details valide!</span>}
-          </div>
-        </div>
-      </div>
+        Enregistrer
 
-    </form>
+      </button>
+
+
+      <button
+        nz-button
+        nzType="default"
+        nzSize="large"
+        type="button"
+        (click)="onCancel()"
+      >
+
+        <span
+          nz-icon
+          nzType="close"
+          nzTheme="outline">
+        </span>
+
+        Cancel
+
+      </button>
+
+    </div>
+
   </div>
+
+
+  <form
+    id="educationForm"
+    [formGroup]="educationForm"
+    (ngSubmit)="onSubmitEducation()"
+    class="education-form"
+  >
+
+
+    <!-- Institut -->
+
+    <div class="form-section">
+
+      <div class="form-section-title">
+
+        <span
+          nz-icon
+          nzType="bank"
+          nzTheme="outline">
+        </span>
+
+        <h3>
+          Informations académiques
+        </h3>
+
+      </div>
+
+
+      <div class="form-field">
+
+        <label for="nom">
+          Institut
+        </label>
+
+        <input
+          id="nom"
+          type="text"
+          formControlName="nom"
+          placeholder="Nom de l'institut"
+        >
+
+
+        <div class="field-error">
+
+          <!--  *ngIf="!educationForm.get('nom').valid &&
+          educationForm.get('nom').touched" -->
+
+          @if(
+            !educationForm.get('nom')?.valid &&
+            educationForm.get('nom')?.touched
+          ){
+
+            <span>
+              S'il vous plaît entrer un nom d'institut valide!
+            </span>
+
+          }
+
+        </div>
+
+      </div>
+
+
+      <!-- Diplôme -->
+
+      <div class="form-field">
+
+        <label>
+          Diplôme
+        </label>
+
+
+        <div formGroupName="diplome">
+
+          <div class="translation-field">
+
+            <label for="diplomeFr">
+              🇫🇷 Français
+            </label>
+
+            <input
+              id="diplomeFr"
+              type="text"
+              formControlName="fr"
+              placeholder="Nom du diplôme en français"
+            >
+
+          </div>
+
+
+          <div class="translation-field">
+
+            <label for="diplomeEn">
+              🇬🇧 English
+            </label>
+
+            <input
+              id="diplomeEn"
+              type="text"
+              formControlName="en"
+              placeholder="Degree name in English"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="field-error">
+
+          @if(
+            !educationForm.get('diplome')?.valid &&
+            educationForm.get('diplome')?.touched
+          ){
+
+            <span>
+              S'il vous plaît entrer un diplôme valide!
+            </span>
+
+          }
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Dates -->
+
+    <div class="form-section">
+
+      <div class="form-section-title">
+
+        <span
+          nz-icon
+          nzType="calendar"
+          nzTheme="outline">
+        </span>
+
+        <h3>
+          Période
+        </h3>
+
+      </div>
+
+
+      <div class="form-row">
+
+
+        <div class="form-field">
+
+          <label for="dateDebut">
+            Date de début
+          </label>
+
+          <input
+            id="dateDebut"
+            type="date"
+            formControlName="dateDebut"
+          >
+
+          <div class="field-error">
+
+            @if(
+              !educationForm.get('dateDebut')?.valid &&
+              educationForm.get('dateDebut')?.touched
+            ){
+
+              <span>
+                S'il vous plaît entrer une date de début valide!
+              </span>
+
+            }
+
+          </div>
+
+        </div>
+
+
+        <div class="form-field">
+
+          <label for="dateFin">
+            Date de fin
+          </label>
+
+          <input
+            id="dateFin"
+            type="date"
+            formControlName="dateFin"
+          >
+
+          <div class="field-error">
+
+            @if(
+              !educationForm.get('dateFin')?.valid &&
+              educationForm.get('dateFin')?.touched
+            ){
+
+              <span>
+                S'il vous plaît entrer une date de fin valide!
+              </span>
+
+            }
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Location -->
+
+    <div class="form-section">
+
+      <div class="form-section-title">
+
+        <span
+          nz-icon
+          nzType="environment"
+          nzTheme="outline">
+        </span>
+
+        <h3>
+          Localisation
+        </h3>
+
+      </div>
+
+
+      <div class="form-field">
+
+        <label for="adresse">
+          Adresse
+        </label>
+
+        <input
+          id="adresse"
+          type="text"
+          formControlName="adresse"
+          placeholder="Adresse de l'institut"
+        >
+
+        <div class="field-error">
+
+          @if(
+            !educationForm.get('adresse')?.valid &&
+            educationForm.get('adresse')?.touched
+          ){
+
+            <span>
+              S'il vous plaît entrer une adresse valide!
+            </span>
+
+          }
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Details -->
+
+    <div class="form-section">
+
+      <div class="form-section-title">
+
+        <span
+          nz-icon
+          nzType="file-text"
+          nzTheme="outline">
+        </span>
+
+        <h3>
+          Détails
+        </h3>
+
+      </div>
+
+
+      <div class="form-field">
+
+        <label>
+          Détails
+        </label>
+
+
+        <div formGroupName="details">
+
+          <div class="translation-field">
+
+            <label for="detailsFr">
+              🇫🇷 Français
+            </label>
+
+            <textarea
+              id="detailsFr"
+              formControlName="fr"
+              rows="5"
+              placeholder="Détails de la formation en français"
+            ></textarea>
+
+          </div>
+
+
+          <div class="translation-field">
+
+            <label for="detailsEn">
+              🇬🇧 English
+            </label>
+
+            <textarea
+              id="detailsEn"
+              formControlName="en"
+              rows="5"
+              placeholder="Education details in English"
+            ></textarea>
+
+          </div>
+
+        </div>
+
+
+        <div class="field-error">
+
+          @if(
+            !educationForm.get('details')?.valid &&
+            educationForm.get('details')?.touched
+          ){
+
+            <span>
+              S'il vous plaît entrer des détails valides!
+            </span>
+
+          }
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Bottom actions -->
+
+    <div class="form-footer">
+
+      <button
+        nz-button
+        nzType="default"
+        nzSize="large"
+        type="button"
+        (click)="onCancel()"
+      >
+
+        <span
+          nz-icon
+          nzType="close"
+          nzTheme="outline">
+        </span>
+
+        Cancel
+
+      </button>
+
+
+      <button
+        nz-button
+        nzType="primary"
+        nzSize="large"
+        type="submit"
+        [disabled]="!educationForm.valid"
+      >
+
+        <span
+          nz-icon
+          nzType="save"
+          nzTheme="outline">
+        </span>
+
+        Enregistrer
+
+      </button>
+
+    </div>
+
+
+  </form>
+
 </div>

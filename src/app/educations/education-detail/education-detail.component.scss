@@ -1,0 +1,212 @@
+.education-detail {
+  width: 100%;
+}
+
+
+/* Header */
+
+.detail-header {
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 25px;
+
+  padding-bottom: 25px;
+
+  margin-bottom: 25px;
+
+  border-bottom: 1px solid #f0f0f0;
+}
+
+
+.detail-title {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 15px;
+
+  min-width: 0;
+
+
+  > span {
+    flex-shrink: 0;
+
+    margin-top: 4px;
+
+    font-size: 28px;
+
+    color: #b45309;
+  }
+
+
+  h2 {
+    margin: 0 0 6px;
+
+    font-size: 24px;
+
+    font-weight: 600;
+
+    color: #262626;
+  }
+
+
+  p {
+    margin: 0;
+
+    color: #8c8c8c;
+
+    font-size: 14px;
+  }
+}
+
+
+/* Actions */
+
+.detail-actions {
+  display: flex;
+
+  gap: 10px;
+
+  flex-shrink: 0;
+
+
+  button {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+  }
+}
+
+
+/* Content */
+
+.detail-content {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+
+/* Sections */
+
+.detail-section {
+  padding: 18px 20px;
+
+  background: #fafafa;
+
+  border: 1px solid #f0f0f0;
+
+  border-radius: 10px;
+}
+
+
+.detail-section-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 10px;
+
+
+  span {
+    color: #b45309;
+
+    font-size: 18px;
+  }
+
+
+  h3 {
+    margin: 0;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    color: #595959;
+  }
+}
+
+
+/* Values */
+
+.detail-value {
+  color: #262626;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+}
+
+
+.detail-description {
+  color: #434343;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+
+  white-space: pre-line;
+
+  text-align: justify;
+}
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+  .detail-header {
+    flex-direction: column;
+  }
+
+
+  .detail-actions {
+    width: 100%;
+
+
+    button {
+      flex: 1;
+
+      justify-content: center;
+    }
+  }
+
+}
+
+
+@media (max-width: 576px) {
+
+  .detail-title {
+
+    h2 {
+      font-size: 20px;
+    }
+
+  }
+
+
+  .detail-actions {
+    flex-direction: column;
+
+
+    button {
+      width: 100%;
+    }
+  }
+
+
+  .detail-section {
+    padding: 15px;
+  }
+
+}
