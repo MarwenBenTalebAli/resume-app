@@ -1,93 +1,45 @@
 @if (isAdmin()) {
-<!--  *ngIf="isAdmin; else defaultTemplate" -->
-<ng-container>
   <app-skill-list></app-skill-list>
-</ng-container>
-}
-@else {
-<!-- <ng-template #defaultTemplate> -->
-  <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="skills">
+} @else {
+  <section
+    class="resume-section p-3 p-lg-5 d-flex align-items-center"
+    id="skills"
+  >
     <div class="w-100">
-      <h2 class="mb-5">{{pageName | translate}} </h2>
+      <h2 class="mb-5">{{ pageName | translate }}</h2>
 
-      <div class="subheading mb-3">{{ subTitle | translate }}</div>
-      <!-- <ul class="list-inline dev-icons"> -->
-        <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+      <div class="subheading mb-3">
+        {{ subTitle | translate }}
+      </div>
+
+      <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
         @for (competence of competences; track $index) {
           <div nz-col class="gutter-row" [nzSpan]="6">
             <div class="inner-box" nz-row>
               <div nz-col nzSpan="4">
-                <i style="height: 60px; width: 46px;"
-                [innerHTML]="(competence && competence.svg) ? sanitizedSvg(competence.svg, '3em', '3em', 'blue', 'blue') : null"></i>
-                </div>
-              <div nz-col nzSpan="4">{{competence.nomCompetence}}</div>
+                <i
+                  style="height: 60px; width: 46px"
+                  [innerHTML]="
+                    competence?.svg
+                      ? sanitizedSvg(
+                          competence.svg!,
+                          '3em',
+                          '3em',
+                          'blue',
+                          'blue'
+                        )
+                      : null
+                  "
+                ></i>
+              </div>
+
+              <div nz-col nzSpan="20">
+                {{ competence.nomCompetence }}
+              </div>
             </div>
           </div>
         }
       </div>
-      <!-- </ul> -->
-      <!-- <ul class="list-inline dev-icons">
-          <li class="list-inline-item">
-            <i class="fab fa-html5"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-css3-alt"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-js-square"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-java"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-bootstrap"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-angular"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-react"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-node-js"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-sass"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-less"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-gulp"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-symfony"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-npm"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-git-square"></i>
-          </li>
-        </ul> -->
-
-      <!-- <div class="subheading mb-3">Workflow</div>
-      <ul class="fa-ul mb-0">
-        <li>
-          <i class="fa-li fa fa-check"></i>
-          Mobile-First, Responsive Design
-        </li>
-        <li>
-          <i class="fa-li fa fa-check"></i>
-          Cross Browser Testing &amp; Debugging
-        </li>
-        <li>
-          <i class="fa-li fa fa-check"></i>
-          Cross Functional Teams
-        </li>
-      </ul> -->
     </div>
   </section>
-  <!-- <hr class="m-0"> -->
-<!-- </ng-template> -->
 }

@@ -16,9 +16,6 @@
         "AWARDS": "Manage Training",
         "LOGOUT": "Logout"
     },
-    "ADMIN_EXPERIENCES_START_COMPONENT": {
-        "SELECT_EXPERIENCE_TEXT": "Please select an experience!"
-    },
     "LANGUAGE": {
         "FRENCH": "French",
         "ENGLISH": "English"
@@ -37,6 +34,24 @@
         "CV": "See my CV",
         "SOURCE_CODE": "Source code",
         "ONLINE_DEMO": "Online demo"
+    },
+    "HOME_PAGE": {
+        "DETAIL_1": "Welcome to my portfolio, I am Ben taleb Ali MARWEN. Nice to meet you.",
+        "DETAIL_2": "I am a Full Stack Developer."
+    },
+    "EXPERIENCES_PAGE": {
+        "SOCIETY": "Society",
+        "ADDRESS": "Address",
+        "EXPERIENCE": "Experience"
+    },
+    "SKILLS_PAGE": {
+        "SUB_TITLE": "Programming Languages & Tools"
+    },
+    "NOT_FOUND_PAGE": {
+        "NOT_FOUND_LABEL": "Page not found 404."
+    },
+    "ADMIN_EXPERIENCES_START_COMPONENT": {
+        "SELECT_EXPERIENCE_TEXT": "Please select an experience!"
     },
     "ADMIN_EXPERIENCES_HEADER": {
         "HEADER_TITLE": "Experience Management",
@@ -60,21 +75,6 @@
         "LIST_TITLE": "Experiences",
         "DETAILS_TITLE": "Experience Details"
     },
-    "HOME_PAGE": {
-        "DETAIL_1": "Welcome to my portfolio, I am Ben taleb Ali MARWEN. Nice to meet you.",
-        "DETAIL_2": "I am a Full Stack Developer."
-    },
-    "EXPERIENCES_PAGE": {
-        "SOCIETY": "Society",
-        "ADDRESS": "Address",
-        "EXPERIENCE": "Experience"
-    },
-    "SKILLS_PAGE": {
-        "SUB_TITLE": "Programming Languages & Tools"
-    },
-    "NOT_FOUND_PAGE": {
-        "NOT_FOUND_LABEL": "Page not found 404."
-    },
     "ADMIN_EDUCATIONS_BUTTONS": {
         "NEW_EDUCATION": "New Education",
         "SAVE_DATA": "Save Data",
@@ -91,5 +91,41 @@
     "ADMIN_EDUCATION_DETAIL_BUTTONS": {
         "EDIT_EDUCATION": "Edit Education",
         "DELETE_EDUCATION": "Delete Education"
+    },
+    "ADMIN_SKILLS_START_COMPONENT": {
+        "SELECT_SKILL_TEXT": "Please select a skill!"
+    },
+    "ADMIN_SKILLS_HEADER": {
+        "HEADER_TITLE": "Skills Management",
+        "HEADER_SUBTITLE": "Manage your technical skills and competencies."
+    },
+    "ADMIN_SKILLS_BUTTONS": {
+        "NEW_SKILL": "New Skill",
+        "SAVE_DATA": "Save Data",
+        "FETCH_DATA": "Fetch Data"
+    },
+    "ADMIN_SKILL_DETAIL": {
+        "LIST_TITLE": "Skills",
+        "DETAILS_TITLE": "Skill Details",
+        "LEVEL": "Level",
+        "DESCRIPTION": "Description"
+    },
+    "ADMIN_SKILL_DETAIL_BUTTONS": {
+        "MANAGE_SKILL": "Manage Skill",
+        "EDIT_SKILL": "Edit Skill",
+        "DELETE_SKILL": "Delete Skill"
+    },
+    "ADMIN_SKILL_EDIT": {
+        "TITLE": "Edit Skill",
+        "SUBTITLE": "Modify the information for this skill.",
+        "BUTTONS": {
+            "SAVE": "Save",
+            "CANCEL": "Cancel"
+        },
+        "GENERAL_INFORMATION": "General Information",
+        "COMPETENCE": "Skill",
+        "LEVEL": "Level",
+        "DESCRIPTION": "Description",
+        "DESCRIPTION_LABEL": "Description"
     }
 }

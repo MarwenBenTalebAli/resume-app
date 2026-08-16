@@ -1,8 +1,31 @@
-<a style="cursor: pointer" [routerLink]="[index()]" routerLinkActive="active"
-  class="list-group-item list-group-item-action flex-column align-items-start">
-  <div class="d-flex w-100 justify-content-between">
-    <h5 class="mb-1">{{ competence()?.nomCompetence }}</h5>
-    <small>{{ competence()?.niveau }}</small>
+<a
+  [routerLink]="[index()]"
+  routerLinkActive="selected"
+  class="skill-item"
+>
+  <div class="skill-main">
+
+    <div class="skill-title">
+      <h4>
+        {{ competence()?.nomCompetence }}
+      </h4>
+
+      <span class="skill-level">
+        {{ competence()?.niveau | translateField }}
+      </span>
+    </div>
+
+    <div class="skill-description">
+      {{ competence()?.description | translateField }}
+    </div>
+
   </div>
-  <p class="mb-1">{{ competence()?.description }}</p>
+
+  <span
+    nz-icon
+    nzType="right"
+    nzTheme="outline"
+    class="skill-arrow"
+  ></span>
+
 </a>

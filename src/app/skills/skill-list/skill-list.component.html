@@ -1,27 +1,116 @@
-<div class="card">
-  <div class="card-header">
-    <h5 class="mb-0">
-      Gestion des competences
-    </h5>
-  </div>
-  <div class="card-body">
-    <button type="button" class="btn btn-success" (click)="onNewCompetence()">New Experience</button>
-    <button type="button" class="btn btn-primary" (click)="onSaveCompetencesData()">Save Data</button>
-    <button type="button" class="btn btn-primary" (click)="onFetchCompetencesData()">Fetch Data</button>
-  </div>
-  <div class="row">
-    <div class="col-xl-7">
-      <div class="list-group" id="list-tab" role="tablist">
-        <!--  *ngFor="let competenceEl of competences; let i=index" -->
-        @for (competenceEl of competences; track $index) {
-          <app-skill-item [competence]="competenceEl" [index]="$index">
-          </app-skill-item>
-        }
-      </div>
+<div class="skills-management">
+
+  <!-- Header -->
+
+  <div class="management-header">
+
+    <div>
+      <h2>{{ headerTitle | translate }}</h2>
+      <p>{{ headerSubtitle | translate }}</p>
     </div>
 
-    <div class="col-xl-5">
-      <router-outlet></router-outlet>
+    <div class="management-actions">
+
+      <button
+        nz-button
+        nzType="primary"
+        nzSize="large"
+        (click)="onNewCompetence()"
+      >
+        <span nz-icon nzType="plus" nzTheme="outline"></span>
+        {{ newSkillButtonLabel | translate }}
+      </button>
+
+      <button
+        nz-button
+        nzType="default"
+        nzSize="large"
+        (click)="onSaveCompetencesData()"
+      >
+        <span nz-icon nzType="save" nzTheme="outline"></span>
+        {{ saveDataButtonLabel | translate }}
+      </button>
+
+      <button
+        nz-button
+        nzType="default"
+        nzSize="large"
+        (click)="onFetchCompetencesData()"
+      >
+        <span nz-icon nzType="cloud-download" nzTheme="outline"></span>
+        {{ fetchDataButtonLabel | translate }}
+      </button>
+
     </div>
+
   </div>
+
+
+  <!-- Main content -->
+
+  <div class="skills-content">
+
+    <!-- Skills list -->
+
+    <div class="skills-list">
+
+      <div class="section-title">
+
+        <span
+          nz-icon
+          nzType="profile"
+          nzTheme="outline"
+        ></span>
+
+        <h3>
+          {{ listTitle | translate }}
+        </h3>
+
+      </div>
+
+      <div class="skills-items">
+
+        @for (competenceEl of competences; track $index) {
+
+          <app-skill-item
+            [competence]="competenceEl"
+            [index]="$index"
+          >
+          </app-skill-item>
+
+        }
+
+      </div>
+
+    </div>
+
+
+    <!-- Skill details -->
+
+    <div class="skills-details">
+
+      <div class="section-title">
+
+        <span
+          nz-icon
+          nzType="file-text"
+          nzTheme="outline"
+        ></span>
+
+        <h3>
+          {{ detailsTitle | translate }}
+        </h3>
+
+      </div>
+
+      <div class="details-content">
+
+        <router-outlet></router-outlet>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </div>

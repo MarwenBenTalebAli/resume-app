@@ -1,24 +1,60 @@
-<div class="tab-content" id="nav-tabContentExperience">
-  <div class="tab-pane fade show active" id="list-experience" role="tabpanel" aria-labelledby="list-experience-list">
-    <div class="row">
-      <div class="col-xs-12">
-        <h4>{{ competence.nomCompetence }}</h4>
-        <p class="mb-1">{{ competence.niveau }}</p>
-        <p class="mb-1">{{ competence.description }}</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="btn-group" appDropdown>
-          <button type="button" class="btn btn-primary dropdown-toggle">
-            Gérer la competence <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a style="cursor: pointer;" (click)="onEditCompetence()">Modifier la competence</a></li>
-            <li><a style="cursor: pointer;" (click)="onDeleteCompetence()">Supprimer la competence</a></li>
-          </ul>
-        </div>
-      </div>
+<div class="skill-detail">
+
+  <!-- Header -->
+  <div class="detail-header">
+    <div>
+      <h2>{{ competence?.nomCompetence }}</h2>
+      <p>{{ 'ADMIN_SKILL_DETAIL.DETAILS_TITLE' | translate }}</p>
     </div>
   </div>
+
+  <!-- Information -->
+  <div class="detail-content">
+
+    <div class="detail-section">
+      <div class="detail-label">
+        {{ 'ADMIN_SKILL_DETAIL.LEVEL' | translate }}
+      </div>
+
+      <div class="detail-value">
+        {{ competence?.niveau | translateField }}
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-label">
+        {{ 'ADMIN_SKILL_DETAIL.DESCRIPTION' | translate }}
+      </div>
+
+      <div class="detail-value description">
+        {{ competence?.description | translateField }}
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Actions -->
+  <div class="detail-actions">
+
+    <button
+      nz-button
+      nzType="primary"
+      nzDanger
+      (click)="onDeleteCompetence()"
+    >
+      <span nz-icon nzType="delete" nzTheme="outline"></span>
+      {{ 'ADMIN_SKILL_DETAIL_BUTTONS.DELETE_SKILL' | translate }}
+    </button>
+
+    <button
+      nz-button
+      nzType="primary"
+      (click)="onEditCompetence()"
+    >
+      <span nz-icon nzType="edit" nzTheme="outline"></span>
+      {{ 'ADMIN_SKILL_DETAIL_BUTTONS.EDIT_SKILL' | translate }}
+    </button>
+
+  </div>
+
 </div>

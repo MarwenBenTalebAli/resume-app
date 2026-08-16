@@ -1,56 +1,215 @@
-<div class="row">
-  <div class="col-xs-12">
-    <form [formGroup]="competenceForm" (ngSubmit)="onSubmitCompetence()">
-      <div class="row">
-        <div class="col-xs-12">
-          <button type="submit" class="btn btn-success" [disabled]="!competenceForm.valid">Enregistrer</button>
-          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
-        </div>
-      </div>
+<div class="skill-edit">
 
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Compétence:</label>
-            <input type="text" formControlName="nomCompetence">
-            <br>
-            <!--  *ngIf="!competenceForm.get('nomCompetence').valid &&
-  competenceForm.get('nomCompetence').touched" -->
-            @if(!competenceForm.get('nomCompetence')?.valid &&
-            competenceForm.get('nomCompetence')?.touched){<span>S'il vous plaît entrer une compétence valide!</span>}
-          </div>
-        </div>
-      </div>
+  <!-- Header -->
 
+  <div class="edit-header">
 
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Niveau:</label>
-            <input type="text" formControlName="niveau">
-            <br>
-            <!--  *ngIf="!competenceForm.get('niveau').valid &&
-  competenceForm.get('niveau').touched" -->
-            @if(!competenceForm.get('niveau')?.valid &&
-            competenceForm.get('niveau')?.touched){<span>S'il vous plaît entrer un niveau valide!</span>}
-          </div>
-        </div>
-      </div>
+    <div>
+      <h2>
+        {{ 'ADMIN_SKILL_EDIT.TITLE' | translate }}
+      </h2>
 
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Description:</label>
-            <input type="text" formControlName="description">
-            <br>
-            <!--  *ngIf="!competenceForm.get('description').valid &&
-  competenceForm.get('description').touched" -->
-            @if(!competenceForm.get('description')?.valid &&
-            competenceForm.get('description')?.touched){<span>S'il vous plaît entrer une description valide!</span>}
-          </div>
-        </div>
-      </div>
+      <p>
+        {{ 'ADMIN_SKILL_EDIT.SUBTITLE' | translate }}
+      </p>
+    </div>
 
-    </form>
   </div>
+
+
+  <!-- Form -->
+
+  <form
+    [formGroup]="competenceForm"
+    (ngSubmit)="onSubmitCompetence()"
+    class="edit-form"
+  >
+
+    <!-- General information -->
+
+    <div class="form-section">
+
+      <h3>
+        {{ 'ADMIN_SKILL_EDIT.GENERAL_INFORMATION' | translate }}
+      </h3>
+
+
+      <!-- Skill -->
+
+      <div class="form-field">
+
+        <label for="nomCompetence">
+          {{ 'ADMIN_SKILL_EDIT.COMPETENCE' | translate }}
+        </label>
+
+        <input
+          id="nomCompetence"
+          type="text"
+          formControlName="nomCompetence"
+        />
+
+        @if (
+          !competenceForm.get('nomCompetence')?.valid &&
+          competenceForm.get('nomCompetence')?.touched
+        ) {
+          <span class="validation-error">
+            {{ 'ADMIN_SKILL_FORM.SKILL_REQUIRED' | translate }}
+          </span>
+        }
+
+      </div>
+
+
+      <!-- Level -->
+
+      <div class="form-field">
+
+        <label>
+          {{ 'ADMIN_SKILL_EDIT.LEVEL' | translate }}
+        </label>
+
+        <div
+          formGroupName="niveau"
+          class="translation-fields"
+        >
+
+          <div class="translation-field">
+
+            <label for="niveau-fr">
+              {{ 'LANGUAGE.FRENCH' | translate }}
+            </label>
+
+            <input
+              id="niveau-fr"
+              type="text"
+              formControlName="fr"
+            />
+
+          </div>
+
+          <div class="translation-field">
+
+            <label for="niveau-en">
+              {{ 'LANGUAGE.ENGLISH' | translate }}
+            </label>
+
+            <input
+              id="niveau-en"
+              type="text"
+              formControlName="en"
+            />
+
+          </div>
+
+        </div>
+
+        @if (
+          !competenceForm.get('niveau')?.valid &&
+          competenceForm.get('niveau')?.touched
+        ) {
+          <span class="validation-error">
+            {{ 'ADMIN_SKILL_FORM.LEVEL_REQUIRED' | translate }}
+          </span>
+        }
+
+      </div>
+
+    </div>
+
+
+    <!-- Description -->
+
+    <div class="form-section">
+
+      <h3>
+        {{ 'ADMIN_SKILL_EDIT.DESCRIPTION' | translate }}
+      </h3>
+
+      <div class="form-field">
+
+        <label>
+          {{ 'ADMIN_SKILL_EDIT.DESCRIPTION_LABEL' | translate }}
+        </label>
+
+        <div
+          formGroupName="description"
+          class="translation-fields"
+        >
+
+          <div class="translation-field">
+
+            <label for="description-fr">
+              {{ 'LANGUAGE.FRENCH' | translate }}
+            </label>
+
+            <textarea
+              id="description-fr"
+              formControlName="fr"
+              rows="5"
+            ></textarea>
+
+          </div>
+
+
+          <div class="translation-field">
+
+            <label for="description-en">
+              {{ 'LANGUAGE.ENGLISH' | translate }}
+            </label>
+
+            <textarea
+              id="description-en"
+              formControlName="en"
+              rows="5"
+            ></textarea>
+
+          </div>
+
+        </div>
+
+        @if (
+          !competenceForm.get('description')?.valid &&
+          competenceForm.get('description')?.touched
+        ) {
+          <span class="validation-error">
+            {{ 'ADMIN_SKILL_FORM.DESCRIPTION_REQUIRED' | translate }}
+          </span>
+        }
+
+      </div>
+
+    </div>
+
+
+    <!-- Buttons -->
+
+    <div class="form-actions">
+
+      <button
+        nz-button
+        nzType="default"
+        type="button"
+        (click)="onCancel()"
+      >
+        <span nz-icon nzType="close" nzTheme="outline"></span>
+
+        {{ 'ADMIN_SKILL_EDIT.BUTTONS.CANCEL' | translate }}
+      </button>
+
+
+      <button
+        nz-button
+        nzType="primary"
+        type="submit"
+        [disabled]="!competenceForm.valid"
+      >
+        <span nz-icon nzType="save" nzTheme="outline"></span>
+
+        {{ 'ADMIN_SKILL_EDIT.BUTTONS.SAVE' | translate }}
+      </button>
+
+    </div>
+
+  </form>
+
 </div>

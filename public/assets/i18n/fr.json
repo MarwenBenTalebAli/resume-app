@@ -16,8 +16,42 @@
         "AWARDS": "Gestion des formations",
         "LOGOUT": "Déconnexion"
     },
+    "LANGUAGE": {
+        "FRENCH": "Français",
+        "ENGLISH": "Anglais"
+    },
+    "PAGES": {
+        "HOME": "Accueil",
+        "ABOUT": "À propos",
+        "PROJECTS": "Projets",
+        "EXPERIENCES": "Expérience",
+        "EDUCATIONS": "Éducation",
+        "SKILLS": "Compétences",
+        "INTERESTS": "Intérêts",
+        "AWARDS": "Formations & Certifications"
+    },
+    "BUTTONS": {
+        "CV": "Voir mon CV",
+        "SOURCE_CODE": "Code source",
+        "ONLINE_DEMO": "Démo en ligne"
+    },
+    "HOME_PAGE": {
+        "DETAIL_1": "Bienvenue dans mon portfolio, Je suis Ben taleb Ali MARWEN. Ravi de vous rencontrer.",
+        "DETAIL_2": "Je suis un Développeur Full stack."
+    },
+    "EXPERIENCES_PAGE": {
+        "SOCIETY": "Société",
+        "ADDRESS": "Adresse",
+        "EXPERIENCE": "Expérience"
+    },
+    "SKILLS_PAGE": {
+        "SUB_TITLE": "Langages de programmation & Outils"
+    },
+    "NOT_FOUND_PAGE": {
+        "NOT_FOUND_LABEL": "Page non trouvée 404."
+    },
     "ADMIN_EXPERIENCES_START_COMPONENT": {
-        "SELECT_EXPERIENCE_TEXT": "S'il vous plaît sélectionnez une experience!"
+        "SELECT_EXPERIENCE_TEXT": "S'il vous plaît sélectionnez une expérience !"
     },
     "ADMIN_EXPERIENCES_HEADER": {
         "HEADER_TITLE": "Gestion des expériences",
@@ -41,40 +75,6 @@
         "LIST_TITLE": "Expériences",
         "DETAILS_TITLE": "Détails de l'expérience"
     },
-    "LANGUAGE": {
-        "FRENCH": "Français",
-        "ENGLISH": "Anglais"
-    },
-    "PAGES": {
-        "HOME": "Accueil",
-        "ABOUT": "À propos",
-        "PROJECTS": "Projets",
-        "EXPERIENCES": "Expérience",
-        "EDUCATIONS": "Éducation",
-        "SKILLS": "Compétences",
-        "INTERESTS": "Intérêts",
-        "AWARDS": "Formations & Certifications"
-    },
-    "BUTTONS": {
-        "CV": "Voir mon CV",
-        "SOURCE_CODE": "Code source",
-        "ONLINE_DEMO": "Demo enligne"
-    },
-    "HOME_PAGE": {
-        "DETAIL_1": "Bienvenue dans mon portfolio, Je suis Ben taleb Ali MARWEN. Ravi de vous rencontrer.",
-        "DETAIL_2": "Je suis un Développeur Full stack."
-    },
-    "EXPERIENCES_PAGE": {
-        "SOCIETY": "Société",
-        "ADDRESS": "Adresse",
-        "EXPERIENCE": "Expérience"
-    },
-    "SKILLS_PAGE": {
-        "SUB_TITLE": "Langages de programmation & Outils"
-    },
-    "NOT_FOUND_PAGE": {
-        "NOT_FOUND_LABEL": "Page non trouvée 404."
-    },
     "ADMIN_EDUCATIONS_BUTTONS": {
         "NEW_EDUCATION": "Nouvelle éducation",
         "SAVE_DATA": "Enregistrer les données",
@@ -91,5 +91,41 @@
     "ADMIN_EDUCATION_DETAIL_BUTTONS": {
         "EDIT_EDUCATION": "Modifier l'éducation",
         "DELETE_EDUCATION": "Supprimer l'éducation"
+    },
+    "ADMIN_SKILLS_START_COMPONENT": {
+        "SELECT_SKILL_TEXT": "S'il vous plaît sélectionnez une compétence !"
+    },
+    "ADMIN_SKILLS_HEADER": {
+        "HEADER_TITLE": "Gestion des compétences",
+        "HEADER_SUBTITLE": "Gérez vos compétences techniques et professionnelles."
+    },
+    "ADMIN_SKILLS_BUTTONS": {
+        "NEW_SKILL": "Nouvelle compétence",
+        "SAVE_DATA": "Enregistrer les données",
+        "FETCH_DATA": "Récupérer les données"
+    },
+    "ADMIN_SKILL_DETAIL": {
+        "LIST_TITLE": "Compétences",
+        "DETAILS_TITLE": "Détails de la compétence",
+        "LEVEL": "Niveau",
+        "DESCRIPTION": "Description"
+    },
+    "ADMIN_SKILL_DETAIL_BUTTONS": {
+        "MANAGE_SKILL": "Gérer la compétence",
+        "EDIT_SKILL": "Modifier la compétence",
+        "DELETE_SKILL": "Supprimer la compétence"
+    },
+    "ADMIN_SKILL_EDIT": {
+        "TITLE": "Modifier la compétence",
+        "SUBTITLE": "Modifiez les informations de cette compétence.",
+        "BUTTONS": {
+            "SAVE": "Enregistrer",
+            "CANCEL": "Annuler"
+        },
+        "GENERAL_INFORMATION": "Informations générales",
+        "COMPETENCE": "Compétence",
+        "LEVEL": "Niveau",
+        "DESCRIPTION": "Description",
+        "DESCRIPTION_LABEL": "Description"
     }
 }
