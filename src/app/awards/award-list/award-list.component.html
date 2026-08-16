@@ -1,27 +1,91 @@
-<div class="card">
-  <div class="card-header">
-    <h5 class="mb-0">
-      Gestion des formations
-    </h5>
-  </div>
-  <div class="card-body">
-    <button type="button" class="btn btn-success" (click)="onNewFormation()">New Experience</button>
-    <button type="button" class="btn btn-primary" (click)="onSaveFormationsData()">Save Data</button>
-    <button type="button" class="btn btn-primary" (click)="onFetchFormationsData()">Fetch Data</button>
-  </div>
-  <div class="row">
-    <div class="col-xl-7">
-      <div class="list-group" id="list-tab" role="tablist">
-        <!--  *ngFor="let formationEl of formations; let i=index" -->
-        @for(formationEl of formations; track $index)
-        {<app-award-item [formation]="formationEl"
-          [index]="$index">
-        </app-award-item>}
-      </div>
+<div class="awards-management">
+
+  <!-- Header -->
+  <div class="management-header">
+
+    <div>
+      <h2>{{ headerTitle | translate }}</h2>
+      <p>{{ headerSubtitle | translate }}</p>
     </div>
 
-    <div class="col-xl-5">
-      <router-outlet></router-outlet>
+    <div class="management-actions">
+
+      <button
+        nz-button
+        nzType="primary"
+        nzSize="large"
+        (click)="onNewFormation()"
+      >
+        <span nz-icon nzType="plus" nzTheme="outline"></span>
+        {{ newAwardButtonLabel | translate }}
+      </button>
+
+      <button
+        nz-button
+        nzType="default"
+        nzSize="large"
+        (click)="onSaveFormationsData()"
+      >
+        <span nz-icon nzType="save" nzTheme="outline"></span>
+        {{ saveDataButtonLabel | translate }}
+      </button>
+
+      <button
+        nz-button
+        nzType="default"
+        nzSize="large"
+        (click)="onFetchFormationsData()"
+      >
+        <span nz-icon nzType="cloud-download" nzTheme="outline"></span>
+        {{ fetchDataButtonLabel | translate }}
+      </button>
+
     </div>
+
   </div>
+
+  <!-- Main content -->
+  <div class="awards-content">
+
+    <!-- Awards list -->
+    <div class="awards-list">
+
+      <div class="section-title">
+        <span nz-icon nzType="trophy" nzTheme="outline"></span>
+        <h3>{{ listTitle | translate }}</h3>
+      </div>
+
+      <div class="awards-items">
+
+        @for (formationEl of formations; track $index) {
+
+          <app-award-item
+            [formation]="formationEl"
+            [index]="$index">
+          </app-award-item>
+
+        }
+
+      </div>
+
+    </div>
+
+    <!-- Award details -->
+    <div class="awards-details">
+
+      <div class="section-title">
+        <span nz-icon nzType="file-text" nzTheme="outline"></span>
+        <h3>{{ detailsTitle | translate }}</h3>
+      </div>
+
+      <div class="details-content">
+
+        <router-outlet></router-outlet>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </div>

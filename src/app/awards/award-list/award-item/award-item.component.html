@@ -1,12 +1,25 @@
 <a
-  style="cursor: pointer"
   [routerLink]="[index()]"
   routerLinkActive="active"
-  class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">{{ formation()?.nomFormation }}</h5>
-      <small>{{ formation()?.dateDebut }} - {{ formation()?.dateFin }}</small>
-    </div>
-    <p class="mb-1">{{ formation()?.societe }}</p>
-    <small>{{ formation()?.adresse }}</small>
+  class="award-item"
+>
+  <div class="award-item-header">
+
+    <h5 class="award-name">
+      {{ formation()?.nomFormation | translateField }}
+    </h5>
+
+    <small class="award-dates">
+      {{ formation()?.dateDebut }} - {{ formation()?.dateFin }}
+    </small>
+
+  </div>
+
+  <p class="award-company">
+    {{ formation()?.societe }}
+  </p>
+
+  <small class="award-address">
+    {{ formation()?.adresse }}
+  </small>
 </a>

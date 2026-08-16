@@ -1,13 +1,18 @@
-import { Component, OnInit, OnDestroy, signal, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, signal } from '@angular/core';
+import { Subscription } from 'rxjs';
+
 import { FormationService } from './formation.service';
 import { Formation } from './formation.model';
-import { Subscription } from 'rxjs';
+
 import { AuthService } from '../auth/auth.service';
 import { DataStorageService } from '../shared/data-storage.service';
+
 import { AwardListComponent } from './award-list/award-list.component';
+
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+
 import { TranslatePipe } from '@ngx-translate/core';
 import { TranslateFieldPipe } from '../shared/translate-field.pipe';
 
@@ -19,22 +24,20 @@ import { TranslateFieldPipe } from '../shared/translate-field.pipe';
     NzGridModule,
     NzCardModule,
     NzIconModule,
-    TranslateFieldPipe,
     TranslatePipe,
+    TranslateFieldPipe,
   ],
   templateUrl: './awards.component.html',
   styleUrls: ['./awards.component.scss'],
 })
 export class AwardsComponent implements OnInit, OnDestroy {
-  pageName: string = 'PAGES.AWARDS';
-  formations: Formation[];
-  subscription: Subscription;
-  isAdmin = signal(false);
+  pageName = 'PAGES.AWARDS';
 
-  // using inject
-  // private formationService: FormationService = inject(FormationService);
-  // private authService: AuthService = inject(AuthService);
-  // private dataStorageService: DataStorageService = inject(DataStorageService);
+  formations: Formation[] = [];
+
+  subscription!: Subscription;
+
+  isAdmin = signal(false);
 
   constructor(
     private formationService: FormationService,
@@ -42,10 +45,13 @@ export class AwardsComponent implements OnInit, OnDestroy {
     private dataStorageService: DataStorageService,
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.isAdmin.set(this.authService.isAuthenticated());
+
     this.onFetchFormationsData();
+
     this.formations = this.formationService.getFormations();
+
     this.subscription = this.formationService.formationsChanged.subscribe(
       (formations: Formation[]) => {
         this.formations = formations;
@@ -53,12 +59,11 @@ export class AwardsComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  onFetchFormationsData(): void {
+    this.dataStorageService.getFormations();
   }
 
-  onFetchFormationsData() {
-    console.log('onFetchFormationsData1234');
-    this.dataStorageService.getFormations();
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 }

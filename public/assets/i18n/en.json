@@ -127,5 +127,47 @@
         "LEVEL": "Level",
         "DESCRIPTION": "Description",
         "DESCRIPTION_LABEL": "Description"
+    },
+    "ADMIN_AWARDS_START_COMPONENT": {
+        "SELECT_AWARD_TEXT": "Please select a training!"
+    },
+    "ADMIN_AWARDS_HEADER": {
+        "HEADER_TITLE": "Training Management",
+        "HEADER_SUBTITLE": "Manage your training and certifications."
+    },
+    "ADMIN_AWARDS_BUTTONS": {
+        "NEW_AWARD": "New Training",
+        "SAVE_DATA": "Save Data",
+        "FETCH_DATA": "Fetch Data"
+    },
+    "ADMIN_AWARD_DETAIL": {
+        "LIST_TITLE": "Training",
+        "DETAILS_TITLE": "Training Details",
+        "COMPANY": "Company",
+        "ADDRESS": "Address",
+        "WEBSITE": "Website"
+    },
+    "ADMIN_AWARD_DETAIL_BUTTONS": {
+        "EDIT_AWARD": "Edit Training",
+        "DELETE_AWARD": "Delete Training"
+    },
+    "ADMIN_AWARD_EDIT": {
+        "TITLE_EDIT": "Edit Training",
+        "TITLE_NEW": "New Training",
+        "SUBTITLE": "Manage the information for this training or certification.",
+        "BUTTONS": {
+            "SAVE": "Save",
+            "CANCEL": "Cancel"
+        },
+        "GENERAL_INFORMATION": "General Information",
+        "FORMATION": "Training",
+        "COMPANY": "Company",
+        "START_DATE": "Start Date",
+        "END_DATE": "End Date",
+        "ADDRESS": "Address",
+        "WEBSITE": "Website",
+        "IMAGE_URL": "Image URL",
+        "FRENCH": "French",
+        "ENGLISH": "English"
     }
 }

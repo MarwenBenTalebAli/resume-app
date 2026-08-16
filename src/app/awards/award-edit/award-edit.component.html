@@ -1,109 +1,195 @@
-<div class="row">
-  <div class="col-xs-12">
-    <!-- [formGroup]="formationForm"  -->
-    <!-- 
-    #formationForm="ngForm"
-     (ngSubmit)="onSubmitFormation()"
-      -->
-    <form #formationForm="ngForm"
-    (ngSubmit)="onSubmitFormation(formationForm)">
+<div class="award-edit-container">
 
-      <div class="row">
-        <div class="col-xs-12">
-          <button type="submit" class="btn btn-success" [disabled]="!formationForm.valid">Enregistrer</button>
-          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
-        </div>
-      </div>
+  <div class="award-edit-header">
+    <h2>
+      {{
+        editMode
+          ? ('ADMIN_AWARD_EDIT.TITLE_EDIT' | translate)
+          : ('ADMIN_AWARD_EDIT.NEW_TITLE' | translate)
+      }}
+    </h2>
 
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Formation:</label>
-            <input type="text" formControlName="nomFormation">
-            <br>
-            @if (!formationForm.getError('nomFormation')?.valid &&
-            formationForm.getError('nomFormation')?.touched) {
-            <!--  *ngIf="!formationForm.getError('nomFormation').valid &&
-  formationForm.getError('nomFormation').touched" -->
-            <span>S'il vous plaît entrer une formation valide!</span>
-            }
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Société:</label>
-            <input type="text" formControlName="societe">
-            <br>
-            <!--  *ngIf="!formationForm.getError('societe').valid &&
-  formationForm.getError('societe').touched" -->
-            @if (!formationForm.getError('societe').valid &&
-            formationForm.getError('societe').touched) {
-            <span>S'il vous plaît entrer une société valide!</span>
-            }
-          </div>
-        </div>
-      </div>
-
-
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Date de début:</label>
-            <input type="date" formControlName="dateDebut">
-            <br>
-            <!--  *ngIf="" -->
-            @if (!formationForm.getError('dateDebut').valid &&
-            formationForm.getError('dateDebut').touched) {
-            <span>S'il vous plaît entrer une date de début valide!</span>
-            }
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Date de fin:</label>
-            <input type="date" formControlName="dateFin">
-            <br>
-            <!--  *ngIf="!formationForm.getError('dateFin').valid &&
-  formationForm.getError('dateFin').touched" -->
-            @if (!formationForm.getError('dateFin').valid &&
-            formationForm.getError('dateFin').touched) {
-            <span>S'il vous plaît entrer une date de fin valide!</span>
-            }
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Adresse:</label>
-            <input type="text" formControlName="adresse">
-            <br>
-            <!--  *ngIf="!formationForm.getError('adresse').valid &&
-  formationForm.getError('adresse').touched" -->
-            @if (!formationForm.getError('adresse').valid &&
-            formationForm.getError('adresse').touched) {
-            <span>S'il vous plaît entrer une adresse valide!</span>
-            }
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Site web:</label>
-            <input type="text" formControlName="siteWeb">
-          </div>
-        </div>
-      </div>
-
-    </form>
+    <p>
+      {{ 'ADMIN_AWARD_EDIT.SUBTITLE' | translate }}
+    </p>
   </div>
+
+  <form
+    [formGroup]="formationForm"
+    (ngSubmit)="onSubmitFormation()"
+    class="award-form"
+  >
+
+    <!-- Buttons -->
+    <div class="form-actions">
+
+      <button
+        type="submit"
+        class="btn btn-save"
+        [disabled]="formationForm.invalid"
+      >
+        {{ 'ADMIN_AWARD_EDIT.BUTTONS.SAVE' | translate }}
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-cancel"
+        (click)="onCancel()"
+      >
+        {{ 'ADMIN_AWARD_EDIT.BUTTONS.CANCEL' | translate }}
+      </button>
+
+    </div>
+
+    <!-- General Information -->
+    <section class="form-section">
+
+      <h3>
+        {{ 'ADMIN_AWARD_EDIT.GENERAL_INFORMATION' | translate }}
+      </h3>
+
+      <!-- Formation -->
+      <div class="form-group">
+
+        <label for="nomFormation">
+          {{ 'ADMIN_AWARD_EDIT.FORMATION' | translate }}
+        </label>
+
+        <input
+          id="nomFormation"
+          type="text"
+          formControlName="nomFormation"
+        />
+
+        @if (
+          !formationForm.get('nomFormation')?.valid &&
+          formationForm.get('nomFormation')?.touched
+        ) {
+          <span class="error">
+            {{ 'ADMIN_AWARD_EDIT.FORMATION_REQUIRED' | translate }}
+          </span>
+        }
+
+      </div>
+
+      <!-- Société -->
+      <div class="form-group">
+
+        <label for="societe">
+          {{ 'ADMIN_AWARD_EDIT.COMPANY' | translate }}
+        </label>
+
+        <input
+          id="societe"
+          type="text"
+          formControlName="societe"
+        />
+
+        @if (
+          !formationForm.get('societe')?.valid &&
+          formationForm.get('societe')?.touched
+        ) {
+          <span class="error">
+            {{ 'ADMIN_AWARD_EDIT.COMPANY_REQUIRED' | translate }}
+          </span>
+        }
+
+      </div>
+
+      <!-- Dates -->
+      <div class="date-row">
+
+        <!-- Start date -->
+        <div class="form-group">
+
+          <label for="dateDebut">
+            {{ 'ADMIN_AWARD_EDIT.START_DATE' | translate }}
+          </label>
+
+          <input
+            id="dateDebut"
+            type="date"
+            formControlName="dateDebut"
+          />
+
+          @if (
+            !formationForm.get('dateDebut')?.valid &&
+            formationForm.get('dateDebut')?.touched
+          ) {
+            <span class="error">
+              {{ 'ADMIN_AWARD_EDIT.START_DATE_REQUIRED' | translate }}
+            </span>
+          }
+
+        </div>
+
+        <!-- End date -->
+        <div class="form-group">
+
+          <label for="dateFin">
+            {{ 'ADMIN_AWARD_EDIT.END_DATE' | translate }}
+          </label>
+
+          <input
+            id="dateFin"
+            type="date"
+            formControlName="dateFin"
+          />
+
+          @if (
+            !formationForm.get('dateFin')?.valid &&
+            formationForm.get('dateFin')?.touched
+          ) {
+            <span class="error">
+              {{ 'ADMIN_AWARD_EDIT.END_DATE_REQUIRED' | translate }}
+            </span>
+          }
+
+        </div>
+
+      </div>
+
+      <!-- Address -->
+      <div class="form-group">
+
+        <label for="adresse">
+          {{ 'ADMIN_AWARD_EDIT.ADDRESS' | translate }}
+        </label>
+
+        <input
+          id="adresse"
+          type="text"
+          formControlName="adresse"
+        />
+
+        @if (
+          !formationForm.get('adresse')?.valid &&
+          formationForm.get('adresse')?.touched
+        ) {
+          <span class="error">
+            {{ 'ADMIN_AWARD_EDIT.ADDRESS_REQUIRED' | translate }}
+          </span>
+        }
+
+      </div>
+
+      <!-- Website -->
+      <div class="form-group">
+
+        <label for="siteWeb">
+          {{ 'ADMIN_AWARD_EDIT.WEBSITE' | translate }}
+        </label>
+
+        <input
+          id="siteWeb"
+          type="text"
+          formControlName="siteWeb"
+        />
+
+      </div>
+
+    </section>
+
+  </form>
+
 </div>

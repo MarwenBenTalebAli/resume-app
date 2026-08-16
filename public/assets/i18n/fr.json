@@ -127,5 +127,47 @@
         "LEVEL": "Niveau",
         "DESCRIPTION": "Description",
         "DESCRIPTION_LABEL": "Description"
+    },
+    "ADMIN_AWARDS_START_COMPONENT": {
+        "SELECT_AWARD_TEXT": "Veuillez sélectionner une formation !"
+    },
+    "ADMIN_AWARDS_HEADER": {
+        "HEADER_TITLE": "Gestion des formations",
+        "HEADER_SUBTITLE": "Gérez vos formations et certifications."
+    },
+    "ADMIN_AWARDS_BUTTONS": {
+        "NEW_AWARD": "Nouvelle formation",
+        "SAVE_DATA": "Enregistrer les données",
+        "FETCH_DATA": "Récupérer les données"
+    },
+    "ADMIN_AWARD_DETAIL": {
+        "LIST_TITLE": "Formations",
+        "DETAILS_TITLE": "Détails de la formation",
+        "COMPANY": "Société",
+        "ADDRESS": "Adresse",
+        "WEBSITE": "Site web"
+    },
+    "ADMIN_AWARD_DETAIL_BUTTONS": {
+        "EDIT_AWARD": "Modifier la formation",
+        "DELETE_AWARD": "Supprimer la formation"
+    },
+    "ADMIN_AWARD_EDIT": {
+        "TITLE_EDIT": "Modifier la formation",
+        "TITLE_NEW": "Nouvelle formation",
+        "SUBTITLE": "Gérez les informations de cette formation ou certification.",
+        "BUTTONS": {
+            "SAVE": "Enregistrer",
+            "CANCEL": "Annuler"
+        },
+        "GENERAL_INFORMATION": "Informations générales",
+        "FORMATION": "Formation",
+        "COMPANY": "Société",
+        "START_DATE": "Date de début",
+        "END_DATE": "Date de fin",
+        "ADDRESS": "Adresse",
+        "WEBSITE": "Site web",
+        "IMAGE_URL": "URL de l'image",
+        "FRENCH": "Français",
+        "ENGLISH": "Anglais"
     }
 }

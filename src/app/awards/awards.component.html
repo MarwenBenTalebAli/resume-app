@@ -1,36 +1,77 @@
-<!--  *ngIf="isAdmin; else defaultExperienceTemplate" -->
 @if (isAdmin()) {
-  <ng-container>
-    <app-award-list></app-award-list>
-  </ng-container>
+  <app-award-list></app-award-list>
 }
 @else {
-  <!-- <ng-template #defaultExperienceTemplate> -->
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="awards">
-      <div class="w-100">
-        <h2 class="mb-5">{{ pageName | translate}}</h2>
-        <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
-          <!--  *ngFor="let formation of formations" -->
-          @for (formation of formations; track $index){
-            <div nz-col nzSpan="4">
-              <nz-card nzHoverable style="width:270px;margin-bottom: 12px;" [nzCover]="coverTemplate">
-                <nz-card-meta [nzTitle]="title" [nzDescription]="description"></nz-card-meta>
-              </nz-card>
-            <ng-template #coverTemplate>              
-              <img alt="formationImage" [src]="formation.urlImage" />
+  <section class="resume-section awards-section" id="awards">
+    <div class="awards-container">
+
+      <h2 class="mb-5">{{ pageName | translate }}</h2>
+
+      <div
+        nz-row
+        [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }"
+      >
+        @for (formation of formations; track $index) {
+          <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8" [nzLg]="6">
+
+            <nz-card
+              nzHoverable
+              class="award-card"
+              [nzCover]="coverTemplate"
+            >
+              <nz-card-meta
+                [nzTitle]="title"
+                [nzDescription]="description"
+              ></nz-card-meta>
+            </nz-card>
+
+            <ng-template #coverTemplate>
+              <img
+                class="award-image"
+                alt="formation"
+                [src]="formation.urlImage"
+              />
             </ng-template>
+
             <ng-template #title>
-              <span nz-icon nzType="trophy" nzTheme="outline" style="color: darkgoldenrod;"></span>
-              <div class="subheading">{{ formation.nomFormation | translateField }}</div>
-              <span class="text-primary">{{ formation.dateDebut }} - {{ formation.dateFin }}</span>
+              <div class="award-title">
+                <span
+                  nz-icon
+                  nzType="trophy"
+                  nzTheme="outline"
+                  class="award-icon"
+                ></span>
+
+                <div class="award-name">
+                  {{ formation.nomFormation | translateField }}
+                </div>
+              </div>
+
+              <div class="award-date">
+                {{ formation.dateDebut }} - {{ formation.dateFin }}
+              </div>
             </ng-template>
+
             <ng-template #description>
-              <div class="col-3"><a href="{{ formation.siteWeb }}">{{ formation.societe }}</a></div>
-              <div class="col-9">{{ formation.adresse }}</div>
+              <div class="award-company">
+                <a
+                  [href]="formation.siteWeb"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {{ formation.societe }}
+                </a>
+              </div>
+
+              <div class="award-address">
+                {{ formation.adresse }}
+              </div>
             </ng-template>
-          </div>}
-        </div>
+
+          </div>
+        }
       </div>
-    </section>
-  <!-- </ng-template> -->
+
+    </div>
+  </section>
 }

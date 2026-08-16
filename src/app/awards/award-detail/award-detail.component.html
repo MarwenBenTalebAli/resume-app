@@ -1,26 +1,98 @@
-<div class="row">
-  <div class="col-6">
-    <i class="fa-li fa fa-trophy text-warning"></i>
-    <div class="subheading">{{ formation.nomFormation }}</div>
-    <span class="text-primary">{{ formation.dateDebut }} - {{ formation.dateFin }}</span>
-  </div>
-  <div class="col-6">
-    <div class="row">
-      <div class="col-3"><a href="{{ formation.siteWeb }}">{{ formation.societe }}</a></div>
-      <div class="col-9">{{ formation.adresse }}</div>
-    </div>
-  </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
-      <div class="btn-group" appDropdown>
-        <button type="button" class="btn btn-primary dropdown-toggle">
-          Gérer la formation <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <li><a style="cursor: pointer;" (click)="onEditFormation()">Modifier la formation</a></li>
-          <li><a style="cursor: pointer;" (click)="onDeleteFormation()">Supprimer la formation</a></li>
-        </ul>
+@if (formation) {
+
+  <div class="award-detail-container">
+
+    <div class="award-detail-header">
+
+      <div class="award-detail-title">
+
+        <span
+          nz-icon
+          nzType="trophy"
+          nzTheme="outline"
+          class="award-detail-icon"
+        ></span>
+
+        <div>
+          <h3>
+            {{ formation.nomFormation | translateField }}
+          </h3>
+
+          <div class="award-detail-date">
+            {{ formation.dateDebut }} - {{ formation.dateFin }}
+          </div>
+        </div>
+
       </div>
+
     </div>
+
+    <div class="award-detail-information">
+
+      <div class="information-item">
+        <span class="information-label">
+          {{ 'ADMIN_AWARD_DETAIL.COMPANY' | translate }}
+        </span>
+
+        <a
+          [href]="formation.siteWeb"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{ formation.societe }}
+        </a>
+      </div>
+
+      <div class="information-item">
+        <span class="information-label">
+          {{ 'ADMIN_AWARD_DETAIL.ADDRESS' | translate }}
+        </span>
+
+        <span>
+          {{ formation.adresse }}
+        </span>
+      </div>
+
+      @if (formation.siteWeb) {
+        <div class="information-item">
+          <span class="information-label">
+            {{ 'ADMIN_AWARD_DETAIL.WEBSITE' | translate }}
+          </span>
+
+          <a
+            [href]="formation.siteWeb"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ formation.siteWeb }}
+          </a>
+        </div>
+      }
+
+    </div>
+
+    <div class="award-detail-actions">
+
+      <button
+        nz-button
+        nzType="primary"
+        (click)="onEditFormation()"
+      >
+        <span nz-icon nzType="edit"></span>
+        {{ 'ADMIN_AWARD_DETAIL_BUTTONS.EDIT_AWARD' | translate }}
+      </button>
+
+      <button
+        nz-button
+        nzDanger
+        (click)="onDeleteFormation()"
+      >
+        <span nz-icon nzType="delete"></span>
+        {{ 'ADMIN_AWARD_DETAIL_BUTTONS.DELETE_AWARD' | translate }}
+      </button>
+
+    </div>
+
   </div>
+
+}
