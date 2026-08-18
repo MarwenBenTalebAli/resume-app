@@ -1,0 +1,621 @@
+/* =========================================================
+   HOME PAGE
+   ========================================================= */
+
+.home {
+  min-height: calc(100vh - 32px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+
+  overflow: hidden;
+
+  background: #ffffff;
+}
+
+.home-content {
+  width: 100%;
+  max-width: 1200px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 60px;
+}
+
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+.home-text {
+  flex: 1;
+
+  animation: homeTextIn 0.9s ease-out both;
+}
+
+.home-text h1 {
+  margin: 0 0 15px;
+
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.home-text h1:last-child {
+  color: #1677ff;
+}
+
+
+/* =========================================================
+   SVG CONTAINER
+   ========================================================= */
+
+.home-illustration {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  animation: illustrationIn 1s ease-out 0.2s both;
+}
+
+.home-svg {
+  display: block;
+
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+
+  transform-origin: center;
+
+  /* Slight movement of the complete illustration */
+  // animation: svgFloat 5s ease-in-out 1s infinite;
+}
+
+
+/* =========================================================
+   SCREEN / UI CONTENT
+   ========================================================= */
+
+/*
+ * These classes are animated separately so the content
+ * inside the illustration feels alive.
+ */
+
+.home-svg .zrpfIRpo_19,
+.home-svg .zrpfIRpo_20 {
+  animation: screenContentPulse 3s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   THREE COLORED UI ELEMENTS
+   ========================================================= */
+
+/*
+ * Sequential animation.
+ * Each element starts slightly after the previous one.
+ */
+
+.home-svg .zrpfIRpo_21 {
+  animation: uiIndicator 2.5s ease-in-out infinite;
+}
+
+.home-svg .zrpfIRpo_22 {
+  animation: uiIndicator 2.5s ease-in-out 0.35s infinite;
+}
+
+.home-svg .zrpfIRpo_23 {
+  animation: uiIndicator 2.5s ease-in-out 0.7s infinite;
+}
+
+
+/* =========================================================
+   KEYBOARD
+   ========================================================= */
+
+.home-svg .zrpfIRpo_3 {
+  animation: keyboardTyping 2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   MONITOR BUTTON / SMALL UI ELEMENT
+   ========================================================= */
+
+.home-svg .zrpfIRpo_4 {
+  animation: smallPulse 2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   PHONE ELEMENTS
+   ========================================================= */
+
+.home-svg .zrpfIRpo_5,
+.home-svg .zrpfIRpo_6 {
+  animation: phoneActivity 4s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   LARGE DECORATIVE CIRCLE
+   ========================================================= */
+
+.home-svg .zrpfIRpo_13 {
+  animation: decorationFade 4s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   LAPTOP / SECOND SCREEN
+   ========================================================= */
+
+.home-svg .zrpfIRpo_14,
+.home-svg .zrpfIRpo_15,
+.home-svg .zrpfIRpo_17 {
+  animation: laptopActivity 4.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   ENTRANCE ANIMATIONS
+   ========================================================= */
+
+@keyframes homeTextIn {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes illustrationIn {
+  from {
+    opacity: 0;
+    transform: translateX(40px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+
+/* =========================================================
+   COMPLETE SVG FLOAT
+   ========================================================= */
+
+@keyframes svgFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+
+/* =========================================================
+   SCREEN CONTENT
+   ========================================================= */
+
+@keyframes screenContentPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.78;
+  }
+}
+
+
+/* =========================================================
+   UI INDICATORS
+   ========================================================= */
+
+@keyframes uiIndicator {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   KEYBOARD
+   ========================================================= */
+
+@keyframes keyboardTyping {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.72;
+  }
+}
+
+
+/* =========================================================
+   SMALL PULSE
+   ========================================================= */
+
+@keyframes smallPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.35;
+  }
+}
+
+
+/* =========================================================
+   PHONE
+   ========================================================= */
+
+@keyframes phoneActivity {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.85;
+  }
+}
+
+
+/* =========================================================
+   LAPTOP
+   ========================================================= */
+
+@keyframes laptopActivity {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+}
+
+
+/* =========================================================
+   DECORATION
+   ========================================================= */
+
+@keyframes decorationFade {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.65;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 992px) {
+  .home {
+    min-height: auto;
+
+    padding: 30px;
+  }
+
+  .home-content {
+    flex-direction: column;
+
+    gap: 30px;
+
+    text-align: center;
+  }
+
+  .home-text,
+  .home-illustration {
+    width: 100%;
+  }
+
+  .home-svg {
+    max-width: 650px;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .home {
+    padding: 20px;
+  }
+
+  .home-text h1 {
+    font-size: 24px;
+  }
+
+  .home-svg {
+    max-width: 100%;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .home-text,
+  .home-illustration,
+  .home-svg,
+  .home-svg .zrpfIRpo_3,
+  .home-svg .zrpfIRpo_4,
+  .home-svg .zrpfIRpo_5,
+  .home-svg .zrpfIRpo_6,
+  .home-svg .zrpfIRpo_13,
+  .home-svg .zrpfIRpo_14,
+  .home-svg .zrpfIRpo_15,
+  .home-svg .zrpfIRpo_17,
+  .home-svg .zrpfIRpo_19,
+  .home-svg .zrpfIRpo_20,
+  .home-svg .zrpfIRpo_21,
+  .home-svg .zrpfIRpo_22,
+  .home-svg .zrpfIRpo_23 {
+    animation: none;
+  }
+}
+
+
+/* =========================================================
+   THREE STATUS RECTANGLES
+   ========================================================= */
+
+.home-svg .zrpfIRpo_65,
+.home-svg .zrpfIRpo_66,
+.home-svg .zrpfIRpo_67 {
+  transform-box: fill-box;
+  transform-origin: center;
+
+  opacity: 0.35;
+
+  animation: statusScan 3s ease-in-out infinite;
+}
+
+.home-svg .zrpfIRpo_65 {
+  animation-delay: 0s;
+}
+
+.home-svg .zrpfIRpo_66 {
+  animation-delay: 0.5s;
+}
+
+.home-svg .zrpfIRpo_67 {
+  animation-delay: 1s;
+}
+
+@keyframes statusScan {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+
+  25% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+
+  70% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+}
+
+
+/* =========================================
+   CODE SCREEN LINES ANIMATION
+========================================= */
+
+:host ::ng-deep .zrpfIRpo_24,
+:host ::ng-deep .zrpfIRpo_25,
+:host ::ng-deep .zrpfIRpo_26,
+:host ::ng-deep .zrpfIRpo_27,
+:host ::ng-deep .zrpfIRpo_28,
+:host ::ng-deep .zrpfIRpo_29,
+:host ::ng-deep .zrpfIRpo_30,
+:host ::ng-deep .zrpfIRpo_31,
+:host ::ng-deep .zrpfIRpo_32,
+:host ::ng-deep .zrpfIRpo_33,
+:host ::ng-deep .zrpfIRpo_34,
+:host ::ng-deep .zrpfIRpo_35,
+:host ::ng-deep .zrpfIRpo_36,
+:host ::ng-deep .zrpfIRpo_37,
+:host ::ng-deep .zrpfIRpo_38,
+:host ::ng-deep .zrpfIRpo_39,
+:host ::ng-deep .zrpfIRpo_40,
+:host ::ng-deep .zrpfIRpo_41,
+:host ::ng-deep .zrpfIRpo_42,
+:host ::ng-deep .zrpfIRpo_43,
+:host ::ng-deep .zrpfIRpo_44,
+:host ::ng-deep .zrpfIRpo_45,
+:host ::ng-deep .zrpfIRpo_46,
+:host ::ng-deep .zrpfIRpo_47,
+:host ::ng-deep .zrpfIRpo_48,
+:host ::ng-deep .zrpfIRpo_49,
+:host ::ng-deep .zrpfIRpo_50 {
+  transform-box: fill-box;
+  transform-origin: left center;
+
+  animation: codeLineAppear 5s ease-in-out infinite;
+}
+
+
+/* =========================================
+   ANIMATION DELAYS
+========================================= */
+
+:host ::ng-deep .zrpfIRpo_24 {
+  animation-delay: 0s;
+}
+
+:host ::ng-deep .zrpfIRpo_25 {
+  animation-delay: 0.1s;
+}
+
+:host ::ng-deep .zrpfIRpo_26 {
+  animation-delay: 0.2s;
+}
+
+:host ::ng-deep .zrpfIRpo_27 {
+  animation-delay: 0.3s;
+}
+
+:host ::ng-deep .zrpfIRpo_28 {
+  animation-delay: 0.4s;
+}
+
+:host ::ng-deep .zrpfIRpo_29 {
+  animation-delay: 0.5s;
+}
+
+:host ::ng-deep .zrpfIRpo_30 {
+  animation-delay: 0.6s;
+}
+
+:host ::ng-deep .zrpfIRpo_31 {
+  animation-delay: 0.7s;
+}
+
+:host ::ng-deep .zrpfIRpo_32 {
+  animation-delay: 0.8s;
+}
+
+:host ::ng-deep .zrpfIRpo_33 {
+  animation-delay: 0.9s;
+}
+
+:host ::ng-deep .zrpfIRpo_34 {
+  animation-delay: 1s;
+}
+
+:host ::ng-deep .zrpfIRpo_35 {
+  animation-delay: 1.1s;
+}
+
+:host ::ng-deep .zrpfIRpo_36 {
+  animation-delay: 1.2s;
+}
+
+:host ::ng-deep .zrpfIRpo_37 {
+  animation-delay: 1.3s;
+}
+
+:host ::ng-deep .zrpfIRpo_38 {
+  animation-delay: 1.4s;
+}
+
+:host ::ng-deep .zrpfIRpo_39 {
+  animation-delay: 1.5s;
+}
+
+:host ::ng-deep .zrpfIRpo_40 {
+  animation-delay: 1.6s;
+}
+
+:host ::ng-deep .zrpfIRpo_41 {
+  animation-delay: 1.7s;
+}
+
+:host ::ng-deep .zrpfIRpo_42 {
+  animation-delay: 1.8s;
+}
+
+:host ::ng-deep .zrpfIRpo_43 {
+  animation-delay: 1.9s;
+}
+
+:host ::ng-deep .zrpfIRpo_44 {
+  animation-delay: 2s;
+}
+
+:host ::ng-deep .zrpfIRpo_45 {
+  animation-delay: 2.1s;
+}
+
+:host ::ng-deep .zrpfIRpo_46 {
+  animation-delay: 2.2s;
+}
+
+:host ::ng-deep .zrpfIRpo_47 {
+  animation-delay: 2.3s;
+}
+
+:host ::ng-deep .zrpfIRpo_48 {
+  animation-delay: 2.4s;
+}
+
+:host ::ng-deep .zrpfIRpo_49 {
+  animation-delay: 2.5s;
+}
+
+:host ::ng-deep .zrpfIRpo_50 {
+  animation-delay: 2.6s;
+}
+
+
+/* =========================================
+   KEYFRAMES
+========================================= */
+
+@keyframes codeLineAppear {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  15% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  80% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+}
