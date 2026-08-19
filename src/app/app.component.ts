@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { SidenavComponent } from './core/sidenav/sidenav.component';
 import {
@@ -25,17 +25,23 @@ import { LanguageService } from './shared/language.service';
     NzIconModule,
     NzFooterComponent,
   ],
+  providers: [DatePipe],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   isCollapsed = false;
   // currentLanguage: 'fr' | 'en' = 'fr';
+  currentYear: string | null;
 
   constructor(
     private translate: TranslateService,
     public languageService: LanguageService,
-  ) {}
+    private datePipe: DatePipe,
+  ) {
+    const today = new Date();
+    this.currentYear = this.datePipe.transform(today, 'yyyy');
+  }
 
   changeLanguage(lang: 'fr' | 'en') {
     // this.currentLanguage = lang;
