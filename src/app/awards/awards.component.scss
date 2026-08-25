@@ -1,60 +1,546 @@
+/* --------------------------------
+   Awards section
+--------------------------------- */
+
 .awards-section {
   width: 100%;
-  min-height: 100%;
 }
+
+
+/* --------------------------------
+   Awards container
+--------------------------------- */
 
 .awards-container {
   width: 100%;
 }
 
-.award-card {
-  width: 100%;
-  margin-bottom: 24px;
-  height: 100%;
+
+/* --------------------------------
+   Awards page title
+--------------------------------- */
+
+.awards-title {
+  position: relative;
+
+  display: inline-block;
+
+  margin-top: 0;
+  margin-bottom: 48px;
+
+  font-size: 32px;
+  font-weight: 600;
+
+  line-height: 1.2;
+
+  cursor: default;
+
+  animation: titleFadeIn 0.7s ease both;
 }
 
+
+/* --------------------------------
+   Awards title underline
+--------------------------------- */
+
+.awards-title::after {
+  content: '';
+
+  position: absolute;
+
+  left: 0;
+  bottom: -10px;
+
+  width: 45px;
+  height: 3px;
+
+  border-radius: 3px;
+
+  background: #40a9ff;
+
+  transform-origin: left;
+
+  animation: titleUnderline 0.7s ease 0.3s both;
+
+  transition:
+    width 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.awards-title:hover::after {
+  width: 100%;
+
+  box-shadow:
+    0 2px 8px rgba(64, 169, 255, 0.4);
+}
+
+
+/* --------------------------------
+   Award card
+--------------------------------- */
+
+.award-card {
+  width: 100%;
+  height: 100%;
+
+  margin-bottom: 24px;
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  transform: translateY(18px);
+
+  animation:
+    awardCardFadeIn 0.6s ease forwards;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+
+/* --------------------------------
+   Award card hover
+--------------------------------- */
+
+.award-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+
+/* --------------------------------
+   Award image container
+--------------------------------- */
+
+.award-image-container {
+  width: 100%;
+
+  height: 180px;
+
+  overflow: hidden;
+}
+
+
+/* --------------------------------
+   Award image
+--------------------------------- */
+
 .award-image {
+  display: block;
+
   width: 100%;
   height: 180px;
+
   object-fit: cover;
+
+  transition:
+    transform 0.6s ease;
 }
+
+
+/* --------------------------------
+   Award image hover
+--------------------------------- */
+
+.award-card:hover .award-image {
+  transform: scale(1.06);
+}
+
+
+/* --------------------------------
+   Award title
+--------------------------------- */
 
 .award-title {
   display: flex;
+
   align-items: flex-start;
-  gap: 8px;
+
+  gap: 9px;
+
+  transition:
+    transform 0.35s ease;
 }
 
-.award-icon {
-  color: darkgoldenrod;
-  font-size: 20px;
-  margin-top: 2px;
+
+/* --------------------------------
+   Award title hover
+--------------------------------- */
+
+.award-card:hover .award-title {
+  transform: translateX(3px);
 }
+
+
+/* --------------------------------
+   Trophy icon
+--------------------------------- */
+
+.award-icon {
+  flex-shrink: 0;
+
+  margin-top: 2px;
+
+  font-size: 20px;
+
+  color: darkgoldenrod;
+
+  transition:
+    transform 0.35s ease,
+    color 0.35s ease;
+}
+
+
+/* --------------------------------
+   Trophy hover
+--------------------------------- */
+
+.award-card:hover .award-icon {
+  transform:
+    translateY(-2px)
+    rotate(-8deg)
+    scale(1.1);
+
+  color: #d4a017;
+}
+
+
+/* --------------------------------
+   Award name
+--------------------------------- */
 
 .award-name {
   font-size: 16px;
+
   font-weight: 600;
+
+  line-height: 1.4;
+
+  color: #262626;
+
+  transition:
+    color 0.35s ease;
 }
+
+.award-card:hover .award-name {
+  color: #1890ff;
+}
+
+
+/* --------------------------------
+   Award date
+--------------------------------- */
 
 .award-date {
-  margin-top: 8px;
-  color: #1890ff;
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  margin-top: 9px;
+
+  padding: 4px 8px;
+
+  width: fit-content;
+
+  border-radius: 4px;
+
   font-size: 14px;
+
+  font-weight: 500;
+
+  color: #1890ff;
+
+  background: rgba(64, 169, 255, 0.10);
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
-.award-company {
-  margin-bottom: 6px;
+
+/* --------------------------------
+   Date hover
+--------------------------------- */
+
+.award-card:hover .award-date {
+  transform: translateX(3px);
+
+  background: rgba(64, 169, 255, 0.17);
+
+  box-shadow:
+    0 2px 7px rgba(24, 144, 255, 0.10);
 }
+
+
+/* --------------------------------
+   Calendar icon
+--------------------------------- */
+
+.award-date-icon {
+  font-size: 14px;
+
+  transition:
+    transform 0.35s ease;
+}
+
+.award-card:hover .award-date-icon {
+  transform:
+    rotate(-8deg)
+    scale(1.1);
+}
+
+
+/* --------------------------------
+   Award company
+--------------------------------- */
+
+.award-company {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin-bottom: 7px;
+
+  font-size: 14px;
+
+  font-weight: 500;
+}
+
+
+/* --------------------------------
+   Company link
+--------------------------------- */
 
 .award-company a {
   color: #1890ff;
+
   text-decoration: none;
+
+  transition:
+    color 0.3s ease;
 }
 
 .award-company a:hover {
+  color: #096dd9;
+
   text-decoration: underline;
 }
 
+
+/* --------------------------------
+   Company icon
+--------------------------------- */
+
+.award-company-icon {
+  color: #1890ff;
+
+  font-size: 15px;
+
+  transition:
+    transform 0.35s ease;
+}
+
+.award-card:hover .award-company-icon {
+  transform:
+    scale(1.1);
+}
+
+
+/* --------------------------------
+   Award address
+--------------------------------- */
+
 .award-address {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
   color: #666;
+
+  transition:
+    color 0.3s ease;
+}
+
+.award-card:hover .award-address {
+  color: #444;
+}
+
+
+/* --------------------------------
+   Address icon
+--------------------------------- */
+
+.award-address-icon {
+  flex-shrink: 0;
+
+  font-size: 15px;
+
+  color: #888;
+
+  transition:
+    transform 0.35s ease,
+    color 0.35s ease;
+}
+
+.award-card:hover .award-address-icon {
+  color: #1890ff;
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* --------------------------------
+   Award card entrance animation
+--------------------------------- */
+
+@keyframes awardCardFadeIn {
+
+  from {
+    opacity: 0;
+
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+
+}
+
+
+/* --------------------------------
+   Page title entrance animation
+--------------------------------- */
+
+@keyframes titleFadeIn {
+
+  from {
+    opacity: 0;
+
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+
+}
+
+
+/* --------------------------------
+   Page title underline animation
+--------------------------------- */
+
+@keyframes titleUnderline {
+
+  from {
+    opacity: 0;
+
+    transform: scaleX(0);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scaleX(1);
+  }
+
+}
+
+
+/* --------------------------------
+   Responsive - Tablet
+--------------------------------- */
+
+@media (max-width: 768px) {
+
+  .awards-title {
+    font-size: 28px;
+  }
+
+  .award-image-container,
+  .award-image {
+    height: 200px;
+  }
+
+}
+
+
+/* --------------------------------
+   Responsive - Mobile
+--------------------------------- */
+
+@media (max-width: 576px) {
+
+  .awards-title {
+    font-size: 26px;
+
+    margin-bottom: 42px;
+  }
+
+  .award-image-container,
+  .award-image {
+    height: 220px;
+  }
+
+  .award-name {
+    font-size: 15px;
+  }
+
+  .award-date {
+    font-size: 13px;
+  }
+
+  .award-company,
+  .award-address {
+    font-size: 13px;
+  }
+
+}
+
+
+/* --------------------------------
+   Accessibility
+--------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .awards-title,
+  .awards-title::after,
+  .award-card,
+  .award-image,
+  .award-title,
+  .award-icon,
+  .award-date,
+  .award-date-icon,
+  .award-company-icon,
+  .award-address,
+  .award-address-icon {
+
+    animation: none;
+
+    transition: none;
+  }
+
 }
