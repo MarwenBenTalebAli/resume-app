@@ -2,23 +2,45 @@
   <app-skill-list></app-skill-list>
 } @else {
   <section
-    class="resume-section p-3 p-lg-5 d-flex align-items-center"
+    class="resume-section"
     id="skills"
   >
-    <div class="w-100">
-      <h2 class="mb-5">{{ pageName | translate }}</h2>
+    <div class="skills-container">
 
-      <div class="subheading mb-3">
+      <!-- Page title -->
+      <h2 class="skills-title">
+        {{ pageName | translate }}
+      </h2>
+
+      <!-- Subtitle -->
+      <div class="skills-subtitle">
         {{ subTitle | translate }}
       </div>
 
-      <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+      <!-- Skills grid -->
+      <div
+        nz-row
+        [nzGutter]="[16, 16]"
+      >
         @for (competence of competences; track $index) {
-          <div nz-col class="gutter-row" [nzSpan]="6">
-            <div class="inner-box" nz-row>
-              <div nz-col nzSpan="4">
+
+          <div
+            nz-col
+            [nzXs]="24"
+            [nzSm]="12"
+            [nzMd]="8"
+            [nzLg]="6"
+          >
+
+            <div
+              class="skill-card"
+              [style.animation-delay]="$index * 0.08 + 's'"
+            >
+
+              <!-- Skill icon -->
+              <div class="skill-icon">
+
                 <i
-                  style="height: 60px; width: 46px"
                   [innerHTML]="
                     competence?.svg
                       ? sanitizedSvg(
@@ -31,15 +53,21 @@
                       : null
                   "
                 ></i>
+
               </div>
 
-              <div nz-col nzSpan="20">
+              <!-- Skill name -->
+              <span class="skill-name">
                 {{ competence.nomCompetence }}
-              </div>
+              </span>
+
             </div>
+
           </div>
+
         }
       </div>
+
     </div>
   </section>
 }

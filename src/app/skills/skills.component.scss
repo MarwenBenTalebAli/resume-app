@@ -1,107 +1,280 @@
-.skills-section {
-  width: 100%;
-  min-height: 100%;
-
-  padding: 60px 40px;
-
-  background: #ffffff;
-}
+/* --------------------------------
+   Skills page
+--------------------------------- */
 
 .skills-container {
   width: 100%;
-  max-width: 1200px;
-
-  margin: 0 auto;
 }
 
+
+/* --------------------------------
+   Skills page title
+--------------------------------- */
+
 .skills-title {
-  margin: 0 0 30px;
+  position: relative;
+
+  display: inline-block;
+
+  margin-top: 0;
+  margin-bottom: 16px;
 
   font-size: 32px;
   font-weight: 600;
+  line-height: 1.2;
 
-  color: #262626;
+  cursor: default;
+
+  animation: titleFadeIn 0.7s ease both;
 }
 
+
+/* --------------------------------
+   Skills title underline
+--------------------------------- */
+
+.skills-title::after {
+  content: '';
+
+  position: absolute;
+
+  left: 0;
+  bottom: -10px;
+
+  width: 45px;
+  height: 3px;
+
+  border-radius: 3px;
+
+  background: #40a9ff;
+
+  transform-origin: left;
+
+  animation: titleUnderline 0.7s ease 0.3s both;
+
+  transition:
+    width 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.skills-title:hover::after {
+  width: 100%;
+
+  box-shadow: 0 2px 8px rgba(64, 169, 255, 0.4);
+}
+
+
+/* --------------------------------
+   Skills subtitle
+--------------------------------- */
+
 .skills-subtitle {
-  margin-bottom: 25px;
+  margin-top: 26px;
+  margin-bottom: 28px;
 
   font-size: 18px;
   font-weight: 500;
+  line-height: 1.5;
 
   color: #595959;
+
+  opacity: 0;
+
+  transform: translateY(10px);
+
+  animation: subtitleFadeIn 0.6s ease 0.25s forwards;
 }
 
-.skills-grid {
-  width: 100%;
-}
 
-.skill-column {
-  margin-bottom: 20px;
-}
+/* --------------------------------
+   Skill card
+--------------------------------- */
 
 .skill-card {
   display: flex;
+
   align-items: center;
 
   min-height: 90px;
 
-  padding: 20px;
+  padding: 18px;
 
   background: #ffffff;
 
   border: 1px solid #f0f0f0;
   border-radius: 10px;
 
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.05);
+
+  opacity: 0;
+
+  transform: translateY(18px);
+
+  animation: skillCardFadeIn 0.5s ease forwards;
 
   transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
-
-  &:hover {
-    border-color: #d9d9d9;
-
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-
-    transform: translateY(-2px);
-  }
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
+
+
+/* --------------------------------
+   Skill card hover
+--------------------------------- */
+
+.skill-card:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(64, 169, 255, 0.5);
+
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+
+/* --------------------------------
+   Skill icon
+--------------------------------- */
 
 .skill-icon {
   display: flex;
+
   align-items: center;
   justify-content: center;
 
-  width: 55px;
-  min-width: 55px;
-  height: 55px;
+  width: 58px;
+  min-width: 58px;
+  height: 58px;
 
-  margin-right: 15px;
+  margin-right: 16px;
 
-  color: #1890ff;
+  transition:
+    transform 0.35s ease;
 }
+
+.skill-icon i {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-card:hover .skill-icon {
+  transform:
+    translateY(-3px)
+    scale(1.08);
+}
+
+
+/* --------------------------------
+   Skill name
+--------------------------------- */
 
 .skill-name {
   min-width: 0;
 
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
+
+  line-height: 1.4;
 
   color: #262626;
 
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
-/* Responsive */
+.skill-card:hover .skill-name {
+  color: #1890ff;
 
-@media (max-width: 768px) {
-  .skills-section {
-    padding: 40px 25px;
+  transform: translateX(4px);
+}
+
+
+/* --------------------------------
+   Skills entrance animation
+--------------------------------- */
+
+@keyframes skillCardFadeIn {
+  from {
+    opacity: 0;
+
+    transform: translateY(18px);
   }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+
+/* --------------------------------
+   Subtitle entrance animation
+--------------------------------- */
+
+@keyframes subtitleFadeIn {
+  from {
+    opacity: 0;
+
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+
+/* --------------------------------
+   Page title entrance animation
+--------------------------------- */
+
+@keyframes titleFadeIn {
+  from {
+    opacity: 0;
+
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+
+/* --------------------------------
+   Page title underline animation
+--------------------------------- */
+
+@keyframes titleUnderline {
+  from {
+    opacity: 0;
+
+    transform: scaleX(0);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scaleX(1);
+  }
+}
+
+
+/* --------------------------------
+   Responsive
+--------------------------------- */
+
+@media (max-width: 576px) {
 
   .skills-title {
     font-size: 28px;
@@ -110,36 +283,42 @@
   .skills-subtitle {
     font-size: 16px;
   }
-}
-
-@media (max-width: 576px) {
-  .skills-section {
-    padding: 30px 15px;
-  }
-
-  .skills-title {
-    font-size: 24px;
-    margin-bottom: 25px;
-  }
-
-  .skills-subtitle {
-    font-size: 15px;
-  }
 
   .skill-card {
-    min-height: 75px;
+    min-height: 78px;
+
     padding: 15px;
   }
 
   .skill-icon {
-    width: 45px;
-    min-width: 45px;
-    height: 45px;
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
 
-    margin-right: 12px;
+    margin-right: 13px;
   }
 
   .skill-name {
-    font-size: 14px;
+    font-size: 15px;
   }
+
+}
+
+
+/* --------------------------------
+   Accessibility
+--------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .skills-title,
+  .skills-title::after,
+  .skills-subtitle,
+  .skill-card,
+  .skill-icon,
+  .skill-name {
+    animation: none;
+    transition: none;
+  }
+
 }
