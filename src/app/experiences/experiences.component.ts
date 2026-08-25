@@ -29,6 +29,7 @@ export class ExperiencesComponent implements OnInit, OnDestroy {
   experiences: Experience[];
   subscription: Subscription;
   isAdmin = signal(false);
+  hoveredExperience: number | null = null;
 
   constructor(
     private experienceService: ExperienceService,

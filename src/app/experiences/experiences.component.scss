@@ -1,204 +1,364 @@
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
+/* --------------------------------
+   Experiences page title
+--------------------------------- */
+
+.experiences-title {
+  position: relative;
+
+  display: inline-block;
+
+  margin-bottom: 48px;
+
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+
+  cursor: default;
+
+  animation: titleFadeIn 0.7s ease both;
 }
 
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+
+/* --------------------------------
+   Experiences title underline
+--------------------------------- */
+
+.experiences-title::after {
+  content: '';
+
+  position: absolute;
+
+  left: 0;
+  bottom: -10px;
+
+  width: 45px;
+  height: 3px;
+
+  border-radius: 3px;
+
+  background: #40a9ff;
+
+  transform-origin: left;
+
+  animation: titleUnderline 0.7s ease 0.3s both;
+
+  transition:
+    width 0.35s ease,
+    box-shadow 0.35s ease;
 }
-// body {
-//     font-family: Muli, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-//     padding-top: 54px;
-//     color: #868e96
-//   }
-  
-//   @media (min-width:992px) {
-//     body {
-//       padding-top: 0;
-//       padding-left: 17rem
-//     }
-//   }
-  
-//   h1,
-//   h2,
-//   h3,
-//   h4,
-//   h5,
-//   h6 {
-//     font-family: 'Saira Extra Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-//     font-weight: 700;
-//     text-transform: uppercase;
-//     color: #343a40
-//   }
-  
-//   h1 {
-//     font-size: 6rem;
-//     line-height: 5.5rem
-//   }
-  
-//   h2 {
-//     font-size: 3.5rem
-//   }
-  
-//   h3 {
-//     font-size: 2rem
-//   }
-  
-//   p.lead {
-//     font-size: 1.15rem;
-//     font-weight: 400
-//   }
-  
-//   .subheading {
-//     text-transform: uppercase;
-//     font-weight: 500;
-//     font-family: 'Saira Extra Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-//     font-size: 1.5rem
-//   }
-  
-//   .social-icons a {
-//     display: inline-block;
-//     height: 3.5rem;
-//     width: 3.5rem;
-//     background-color: #495057;
-//     color: #fff !important;
-//     border-radius: 100%;
-//     text-align: center;
-//     font-size: 1.5rem;
-//     line-height: 3.5rem;
-//     margin-right: 1rem
-//   }
-  
-//   .social-icons a:last-child {
-//     margin-right: 0
-//   }
-  
-//   .social-icons a:hover {
-//     background-color: #bd5d38
-//   }
-  
-//   .dev-icons {
-//     font-size: 3rem
-//   }
-  
-//   .dev-icons .list-inline-item i:hover {
-//     color: #bd5d38
-//   }
-  
-//   #sideNav .navbar-nav .nav-item .nav-link {
-//     font-weight: 800;
-//     letter-spacing: .05rem;
-//     text-transform: uppercase
-//   }
-  
-//   #sideNav .navbar-toggler:focus {
-//     outline-color: #d48a6e
-//   }
-  
-//   @media (min-width:992px) {
-//     #sideNav {
-//       text-align: center;
-//       position: fixed;
-//       top: 0;
-//       left: 0;
-//       display: -webkit-box;
-//       display: -ms-flexbox;
-//       display: flex;
-//       -webkit-box-orient: vertical;
-//       -webkit-box-direction: normal;
-//       -ms-flex-direction: column;
-//       flex-direction: column;
-//       width: 17rem;
-//       height: 100vh
-//     }
-  
-//     #sideNav .navbar-brand {
-//       display: -webkit-box;
-//       display: -ms-flexbox;
-//       display: flex;
-//       margin: auto auto 0;
-//       padding: .5rem
-//     }
-  
-//     #sideNav .navbar-brand .img-profile {
-//       max-width: 10rem;
-//       max-height: 10rem;
-//       border: .5rem solid rgba(255, 255, 255, .2)
-//     }
-  
-//     #sideNav .navbar-collapse {
-//       display: -webkit-box;
-//       display: -ms-flexbox;
-//       display: flex;
-//       -webkit-box-align: start;
-//       -ms-flex-align: start;
-//       align-items: flex-start;
-//       -webkit-box-flex: 0;
-//       -ms-flex-positive: 0;
-//       flex-grow: 0;
-//       width: 100%;
-//       margin-bottom: auto
-//     }
-  
-//     #sideNav .navbar-collapse .navbar-nav {
-//       -webkit-box-orient: vertical;
-//       -webkit-box-direction: normal;
-//       -ms-flex-direction: column;
-//       flex-direction: column;
-//       width: 100%
-//     }
-  
-//     #sideNav .navbar-collapse .navbar-nav .nav-item {
-//       display: block
-//     }
-  
-//     #sideNav .navbar-collapse .navbar-nav .nav-item .nav-link {
-//       display: block
-//     }
-//   }
-  
-//   section.resume-section {
-//     padding-top: 5rem !important;
-//     padding-bottom: 5rem !important;
-//     max-width: 75rem
-//   }
-  
-//   section.resume-section .resume-item .resume-date {
-//     min-width: none
-//   }
-  
-//   @media (min-width:768px) {
-//     section.resume-section {
-//       min-height: 100vh
-//     }
-  
-//     section.resume-section .resume-item .resume-date {
-//       min-width: 18rem
-//     }
-//   }
-  
-//   @media (min-width:992px) {
-//     section.resume-section {
-//       padding-top: 3rem !important;
-//       padding-bottom: 3rem !important
-//     }
-//   }
-  
-//   .bg-primary {
-//     background-color: #bd5d38 !important
-//   }
-  
-//   .text-primary {
-//     color: #bd5d38 !important
-//   }
-  
-//   a {
-//     color: #bd5d38
-//   }
-  
-//   a:active,
-//   a:focus,
-//   a:hover {
-//     color: #824027
-//   }
-  
+
+.experiences-title:hover::after {
+  width: 100%;
+
+  box-shadow: 0 2px 8px rgba(64, 169, 255, 0.4);
+}
+
+
+/* --------------------------------
+   Experience cards
+--------------------------------- */
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+
+/* --------------------------------
+   Description card
+--------------------------------- */
+
+.experience-description-card {
+  padding-top: 2px;
+  padding-bottom: 128px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+
+/* --------------------------------
+   Experience label card
+--------------------------------- */
+
+.experience-label-card {
+  padding: 2px 16px;
+}
+
+
+/* --------------------------------
+   Connected hover state
+--------------------------------- */
+
+.experience-hovered {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.2);
+
+  border-color: rgba(24, 144, 255, 0.25);
+}
+
+
+/* --------------------------------
+   Experience title
+--------------------------------- */
+
+.experience-title {
+  margin-top: 8px;
+  margin-bottom: 8px;
+
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.3;
+
+  transition:
+    transform 0.35s ease,
+    color 0.35s ease;
+}
+
+.experience-hovered .experience-title {
+  transform: translateX(5px);
+
+  color: #1890ff;
+}
+
+
+/* --------------------------------
+   Experience description
+--------------------------------- */
+
+.experience-description {
+  margin-top: 0;
+  margin-bottom: 12px;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+
+  color: #555;
+
+  text-align: justify;
+  text-justify: inter-word;
+
+  transition:
+    color 0.35s ease,
+    transform 0.35s ease;
+}
+
+.experience-description:last-child {
+  margin-bottom: 0;
+}
+
+.experience-hovered .experience-description {
+  color: #444;
+
+  transform: translateX(2px);
+}
+
+
+/* --------------------------------
+   Description link
+--------------------------------- */
+
+.experience-description-link {
+  font-weight: 500;
+
+  transition:
+    color 0.3s ease,
+    text-decoration-color 0.3s ease;
+}
+
+
+/* --------------------------------
+   Start / End dates
+--------------------------------- */
+
+.experience-dates {
+  display: inline-block;
+
+  margin-top: 4px;
+  padding: 4px 10px;
+
+  border-radius: 4px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  color: #54595e;
+
+  background: rgba(47, 57, 65, 0.12);
+
+  border: 1px solid rgba(47, 57, 65, 0.12);
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.experience-hovered .experience-dates {
+  transform: translateX(5px);
+
+  background: rgba(47, 57, 65, 0.24);
+
+  box-shadow:
+    0 2px 8px rgba(24, 144, 255, 0.10);
+}
+
+
+/* --------------------------------
+   Experience duration
+--------------------------------- */
+
+.experience-duration {
+  display: inline-block;
+
+  margin-top: 6px;
+  padding: 4px 10px;
+  margin-bottom: 8px;
+
+  border-radius: 4px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  color: #1890ff;
+
+  background: rgba(24, 144, 255, 0.08);
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.experience-hovered .experience-duration {
+  transform: translateX(5px);
+
+  background: rgba(24, 144, 255, 0.15);
+
+  box-shadow:
+    0 2px 8px rgba(24, 144, 255, 0.12);
+}
+
+
+/* --------------------------------
+   Custom timeline dot
+--------------------------------- */
+
+.experience-timeline-dot {
+  display: block;
+
+  width: 10px;
+  height: 10px;
+
+  border: 2px solid #1890ff;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  cursor: pointer;
+
+  transform: scale(1);
+
+  transition:
+    transform 0.35s ease,
+    background-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+/* --------------------------------
+   Timeline dot hover
+--------------------------------- */
+
+.experience-timeline-dot:hover,
+.experience-dot-hovered {
+  transform: scale(1.5);
+
+  background: #1890ff;
+
+  box-shadow:
+    0 0 0 4px rgba(24, 144, 255, 0.12),
+    0 0 12px rgba(24, 144, 255, 0.35);
+}
+
+
+/* --------------------------------
+   Timeline dot entrance animation
+--------------------------------- */
+
+.experience-timeline-dot {
+  animation: timelineDotAppear 0.6s ease both;
+}
+
+@keyframes timelineDotAppear {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* --------------------------------
+   Page title entrance animation
+--------------------------------- */
+
+@keyframes titleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* --------------------------------
+   Page title underline animation
+--------------------------------- */
+
+@keyframes titleUnderline {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+
+/* --------------------------------
+   Accessibility
+--------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .experiences-title,
+  .experiences-title::after,
+  .experience-title,
+  .experience-dates,
+  .experience-duration,
+  .experience-description,
+  .experience-label-card,
+  .experience-description-card,
+  .experience-timeline-dot {
+    animation: none;
+    transition: none;
+  }
+}

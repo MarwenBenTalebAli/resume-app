@@ -1,45 +1,163 @@
 @if (isAdmin()) {
-<ng-container>
-  <app-experience-list></app-experience-list>
-</ng-container>
+  <ng-container>
+    <app-experience-list></app-experience-list>
+  </ng-container>
 }
 @else {
-<section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="experience">
-  <div class="w-100">
-    <h2 class="mb-5">{{ pageName | translate }}</h2>
-    <nz-timeline [nzMode]="'left'">
+  <section
+    class="resume-section p-3 p-lg-5 d-flex justify-content-center"
+    id="experience"
+  >
+    <div class="w-100">
 
-      @for(experience of experiences; track $index){
+      <!-- Page title -->
+      <h2 class="experiences-title">
+        {{ pageName | translate }}
+      </h2>
 
-      <nz-timeline-item [nzLabel]="label" id="$index">
-        <div class="card" style="padding-top: 2px;padding-bottom: 60px;padding-left: 16px;padding-right: 16px;">
-          @for (item of (experience.description | translateField).split('-'); track $index) {
-            <p style="white-space: pre-line;text-align: justify;text-justify: inter-word;"> {{ item.length > 1 ? '-' : null }} {{ item }} </p>
-          }
-          @if((experience.urlDescription | translateField) != null && (experience.urlDescription | translateField) != '')
-          {
-            <p>
-                - <a  target="_blank" [attr.href]="'//' + (experience.urlDescription | translateField).split('https:')[1]">Description</a>
-            </p>
-          }
-        </div>
-      </nz-timeline-item>
+      <nz-timeline [nzMode]="'left'">
 
-      <ng-template #label id="label_$index">
-        <div class="card"  style="padding: 2px 16px;">
-          <div class="resume-content">
-            <h3 class="mb-0">{{ experience.nomExperience | translateField }}</h3>
-            <div class="subheading mb-3">{{ societyLabel | translate }}: {{ experience.societe }}</div>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">{{ addressLabel | translate }}: {{ experience.adresse }},&nbsp;</span><br/>
-            <span class="text-primary">{{ experience.dateDebut }} - {{ experience.dateFin ? experience.dateFin : 'Présent' }}</span><br/>
-            <span class="text-primary">{{ experienceLabel | translate }}: {{ calcDate(experience.dateDebut, experience.dateFin)?.result }}</span>
-          </div>
-        </div>
-      </ng-template>
-      }
-    </nz-timeline>
-  </div>
-</section>
+        @for (experience of experiences; track $index) {
+
+          <!-- =================================
+               Experience timeline item
+          ================================== -->
+
+          <nz-timeline-item
+            [nzLabel]="label"
+            [nzDot]="dot"
+          >
+
+            <!-- =================================
+                 Description card
+            ================================== -->
+
+            <div
+              class="card experience-description-card"
+              [class.experience-hovered]="hoveredExperience === $index"
+              (mouseenter)="hoveredExperience = $index"
+              (mouseleave)="hoveredExperience = null"
+            >
+
+              @for (
+                item of (experience.description | translateField).split('-');
+                track $index
+              ) {
+
+                <p class="experience-description">
+                  {{ item.length > 1 ? '-' : null }} {{ item }}
+                </p>
+
+              }
+
+              @if (
+                (experience.urlDescription | translateField) != null &&
+                (experience.urlDescription | translateField) != ''
+              ) {
+
+                <p class="experience-description">
+                  -
+                  <a
+                    class="experience-description-link"
+                    target="_blank"
+                    [attr.href]="
+                      '//' +
+                      (experience.urlDescription | translateField).split('https:')[1]
+                    "
+                  >
+                    Description
+                  </a>
+                </p>
+
+              }
+
+            </div>
+
+          </nz-timeline-item>
+
+
+          <!-- =================================
+               Experience title card
+          ================================== -->
+
+          <ng-template #label>
+
+            <div
+              class="card experience-label-card"
+              [class.experience-hovered]="hoveredExperience === $index"
+              (mouseenter)="hoveredExperience = $index"
+              (mouseleave)="hoveredExperience = null"
+            >
+
+              <div class="resume-content">
+
+                <!-- Experience title -->
+                <h3 class="experience-title">
+                  {{ experience.nomExperience | translateField }}
+                </h3>
+
+                <div class="subheading mb-3">
+                  {{ societyLabel | translate }}:
+                  {{ experience.societe }}
+                </div>
+
+              </div>
+
+
+              <div class="resume-date text-md-right">
+
+                <!-- Address -->
+                <span class="text-primary">
+                  {{ addressLabel | translate }}:
+                  {{ experience.adresse }},&nbsp;
+                </span>
+
+                <br />
+
+                <!-- Start / End dates -->
+                <span class="experience-dates">
+                  {{ experience.dateDebut }}
+                  -
+                  {{ experience.dateFin ? experience.dateFin : 'Présent' }}
+                </span>
+
+                <br />
+
+                <!-- Experience duration -->
+                <span class="experience-duration">
+                  {{ experienceLabel | translate }}:
+                  {{ calcDate(
+                    experience.dateDebut,
+                    experience.dateFin
+                  )?.result }}
+                </span>
+
+              </div>
+
+            </div>
+
+          </ng-template>
+
+
+          <!-- =================================
+               Custom timeline dot
+          ================================== -->
+
+          <ng-template #dot>
+
+            <span
+              class="experience-timeline-dot"
+              [class.experience-dot-hovered]="hoveredExperience === $index"
+              (mouseenter)="hoveredExperience = $index"
+              (mouseleave)="hoveredExperience = null"
+            ></span>
+
+          </ng-template>
+
+        }
+
+      </nz-timeline>
+
+    </div>
+  </section>
 }
