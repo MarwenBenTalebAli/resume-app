@@ -1,196 +1,509 @@
-// body {
-//     font-family: Muli, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-//     padding-top: 54px;
-//     color: #868e96
-//   }
-  
-//   @media (min-width:992px) {
-//     body {
-//       padding-top: 0;
-//       padding-left: 17rem
-//     }
-//   }
-  
-//   h1,
-//   h2,
-//   h3,
-//   h4,
-//   h5,
-//   h6 {
-//     font-family: 'Saira Extra Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-//     font-weight: 700;
-//     text-transform: uppercase;
-//     color: #343a40
-//   }
-  
-//   h1 {
-//     font-size: 6rem;
-//     line-height: 5.5rem
-//   }
-  
-//   h2 {
-//     font-size: 3.5rem
-//   }
-  
-//   h3 {
-//     font-size: 2rem
-//   }
-  
-//   p.lead {
-//     font-size: 1.15rem;
-//     font-weight: 400
-//   }
-  
-//   .subheading {
-//     text-transform: uppercase;
-//     font-weight: 500;
-//     font-family: 'Saira Extra Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-//     font-size: 1.5rem
-//   }
-  
-//   .social-icons a {
-//     display: inline-block;
-//     height: 3.5rem;
-//     width: 3.5rem;
-//     background-color: #495057;
-//     color: #fff !important;
-//     border-radius: 100%;
-//     text-align: center;
-//     font-size: 1.5rem;
-//     line-height: 3.5rem;
-//     margin-right: 1rem
-//   }
-  
-//   .social-icons a:last-child {
-//     margin-right: 0
-//   }
-  
-//   .social-icons a:hover {
-//     background-color: #bd5d38
-//   }
-  
-//   .dev-icons {
-//     font-size: 3rem
-//   }
-  
-//   .dev-icons .list-inline-item i:hover {
-//     color: #bd5d38
-//   }
-  
-//   #sideNav .navbar-nav .nav-item .nav-link {
-//     font-weight: 800;
-//     letter-spacing: .05rem;
-//     text-transform: uppercase
-//   }
-  
-//   #sideNav .navbar-toggler:focus {
-//     outline-color: #d48a6e
-//   }
-  
-//   @media (min-width:992px) {
-//     #sideNav {
-//       text-align: center;
-//       position: fixed;
-//       top: 0;
-//       left: 0;
-//       display: -webkit-box;
-//       display: -ms-flexbox;
-//       display: flex;
-//       -webkit-box-orient: vertical;
-//       -webkit-box-direction: normal;
-//       -ms-flex-direction: column;
-//       flex-direction: column;
-//       width: 17rem;
-//       height: 100vh
-//     }
-  
-//     #sideNav .navbar-brand {
-//       display: -webkit-box;
-//       display: -ms-flexbox;
-//       display: flex;
-//       margin: auto auto 0;
-//       padding: .5rem
-//     }
-  
-//     #sideNav .navbar-brand .img-profile {
-//       max-width: 10rem;
-//       max-height: 10rem;
-//       border: .5rem solid rgba(255, 255, 255, .2)
-//     }
-  
-//     #sideNav .navbar-collapse {
-//       display: -webkit-box;
-//       display: -ms-flexbox;
-//       display: flex;
-//       -webkit-box-align: start;
-//       -ms-flex-align: start;
-//       align-items: flex-start;
-//       -webkit-box-flex: 0;
-//       -ms-flex-positive: 0;
-//       flex-grow: 0;
-//       width: 100%;
-//       margin-bottom: auto
-//     }
-  
-//     #sideNav .navbar-collapse .navbar-nav {
-//       -webkit-box-orient: vertical;
-//       -webkit-box-direction: normal;
-//       -ms-flex-direction: column;
-//       flex-direction: column;
-//       width: 100%
-//     }
-  
-//     #sideNav .navbar-collapse .navbar-nav .nav-item {
-//       display: block
-//     }
-  
-//     #sideNav .navbar-collapse .navbar-nav .nav-item .nav-link {
-//       display: block
-//     }
-//   }
-  
-//   section.resume-section {
-//     padding-top: 5rem !important;
-//     padding-bottom: 5rem !important;
-//     max-width: 75rem
-//   }
-  
-//   section.resume-section .resume-item .resume-date {
-//     min-width: none
-//   }
-  
-//   @media (min-width:768px) {
-//     section.resume-section {
-//       min-height: 100vh
-//     }
-  
-//     section.resume-section .resume-item .resume-date {
-//       min-width: 18rem
-//     }
-//   }
-  
-//   @media (min-width:992px) {
-//     section.resume-section {
-//       padding-top: 3rem !important;
-//       padding-bottom: 3rem !important
-//     }
-//   }
-  
-//   .bg-primary {
-//     background-color: #bd5d38 !important
-//   }
-  
-//   .text-primary {
-//     color: #bd5d38 !important
-//   }
-  
-//   a {
-//     color: #bd5d38
-//   }
-  
-//   a:active,
-//   a:focus,
-//   a:hover {
-//     color: #824027
-//   }
-  
+/* --------------------------------
+   Educations page title
+--------------------------------- */
+
+.educations-title {
+  position: relative;
+
+  display: inline-block;
+
+  margin-bottom: 48px;
+
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+
+  cursor: default;
+
+  animation: titleFadeIn 0.7s ease both;
+}
+
+
+/* --------------------------------
+   Educations title underline
+--------------------------------- */
+
+.educations-title::after {
+  content: '';
+
+  position: absolute;
+
+  left: 0;
+  bottom: -10px;
+
+  width: 45px;
+  height: 3px;
+
+  border-radius: 3px;
+
+  background: #40a9ff;
+
+  transform-origin: left;
+
+  animation: titleUnderline 0.7s ease 0.3s both;
+
+  transition:
+    width 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.educations-title:hover::after {
+  width: 100%;
+
+  box-shadow:
+    0 2px 8px rgba(64, 169, 255, 0.4);
+}
+
+
+/* --------------------------------
+   Education item
+--------------------------------- */
+
+.education-item {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  gap: 18px;
+
+  margin-bottom: 32px;
+
+  padding: 20px 22px;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.12);
+
+  border-left: 4px solid transparent;
+
+  opacity: 0;
+
+  transform: translateY(15px);
+
+  animation: educationFadeIn 0.6s ease forwards;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+
+/* --------------------------------
+   Education item hover
+--------------------------------- */
+
+.education-item:hover {
+  transform: translateY(-5px);
+
+  border-left-color: #40a9ff;
+
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+
+/* --------------------------------
+   Education content
+--------------------------------- */
+
+.education-content {
+  transition:
+    transform 0.35s ease;
+}
+
+.education-item:hover .education-content {
+  transform: translateX(4px);
+}
+
+
+/* --------------------------------
+   Institution
+--------------------------------- */
+
+.education-institution {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-top: 0;
+  margin-bottom: 8px;
+
+  font-size: 24px;
+  font-weight: 600;
+
+  line-height: 1.3;
+
+  transition:
+    color 0.35s ease,
+    transform 0.35s ease;
+}
+
+.education-item:hover .education-institution {
+  color: #1890ff;
+
+  transform: translateX(3px);
+}
+
+
+/* --------------------------------
+   Institution icon
+--------------------------------- */
+
+.education-institution-icon {
+  font-size: 22px;
+
+  color: #1890ff;
+
+  transition:
+    transform 0.35s ease;
+}
+
+.education-item:hover .education-institution-icon {
+  transform:
+    translateY(-2px)
+    rotate(-5deg);
+}
+
+
+/* --------------------------------
+   General education icon
+--------------------------------- */
+
+.education-icon {
+  margin-right: 8px;
+
+  font-size: 16px;
+
+  color: #1890ff;
+
+  transition:
+    transform 0.35s ease;
+}
+
+.education-item:hover .education-icon {
+  transform: translateX(2px);
+}
+
+
+/* --------------------------------
+   Diploma
+--------------------------------- */
+
+.education-diploma {
+  display: flex;
+
+  align-items: center;
+
+  margin-bottom: 10px;
+
+  font-size: 17px;
+  font-weight: 500;
+
+  line-height: 1.5;
+
+  color: #555;
+
+  transition:
+    color 0.35s ease;
+}
+
+.education-item:hover .education-diploma {
+  color: #444;
+}
+
+
+/* --------------------------------
+   Address
+--------------------------------- */
+
+.education-address {
+  display: flex;
+
+  align-items: center;
+
+  font-size: 15px;
+  font-weight: 400;
+
+  color: #666;
+
+  transition:
+    color 0.35s ease;
+}
+
+.education-item:hover .education-address {
+  color: #444;
+}
+
+
+/* --------------------------------
+   Date container
+--------------------------------- */
+
+.education-date-container {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-start;
+}
+
+
+/* --------------------------------
+   Date information
+--------------------------------- */
+
+.education-date-info {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 8px;
+}
+
+
+/* --------------------------------
+   Education dates
+--------------------------------- */
+
+.education-dates {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 5px 11px;
+
+  border-radius: 4px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  color: #1890ff;
+
+  background: rgba(64, 169, 255, 0.12);
+
+  border: 1px solid rgba(64, 169, 255, 0.12);
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+/* --------------------------------
+   Dates hover
+--------------------------------- */
+
+.education-item:hover .education-dates {
+  transform: translateX(4px);
+
+  background: rgba(64, 169, 255, 0.20);
+
+  box-shadow:
+    0 2px 8px rgba(24, 144, 255, 0.12);
+}
+
+
+/* --------------------------------
+   Date icon
+--------------------------------- */
+
+.education-date-icon {
+  font-size: 15px;
+
+  transition:
+    transform 0.35s ease;
+}
+
+.education-item:hover .education-date-icon {
+  transform:
+    rotate(-8deg)
+    scale(1.1);
+}
+
+
+/* --------------------------------
+   Education duration
+--------------------------------- */
+
+.education-duration {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 4px 10px;
+
+  border-radius: 4px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  color: #1890ff;
+
+  background: rgba(24, 144, 255, 0.08);
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+/* --------------------------------
+   Duration hover
+--------------------------------- */
+
+.education-item:hover .education-duration {
+  transform: translateX(4px);
+
+  background: rgba(24, 144, 255, 0.15);
+
+  box-shadow:
+    0 2px 8px rgba(24, 144, 255, 0.12);
+}
+
+
+/* --------------------------------
+   Duration icon
+--------------------------------- */
+
+.education-duration-icon {
+  font-size: 15px;
+
+  transition:
+    transform 0.35s ease;
+}
+
+.education-item:hover .education-duration-icon {
+  transform:
+    rotate(15deg)
+    scale(1.1);
+}
+
+
+/* --------------------------------
+   Education entrance animation
+--------------------------------- */
+
+@keyframes educationFadeIn {
+
+  from {
+    opacity: 0;
+
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+
+}
+
+
+/* --------------------------------
+   Page title entrance animation
+--------------------------------- */
+
+@keyframes titleFadeIn {
+
+  from {
+    opacity: 0;
+
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+
+}
+
+
+/* --------------------------------
+   Page title underline animation
+--------------------------------- */
+
+@keyframes titleUnderline {
+
+  from {
+    opacity: 0;
+
+    transform: scaleX(0);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scaleX(1);
+  }
+
+}
+
+
+/* --------------------------------
+   Responsive
+--------------------------------- */
+
+@media (min-width: 768px) {
+
+  .education-item {
+    flex-direction: row;
+
+    align-items: flex-start;
+
+    gap: 30px;
+  }
+
+  .education-date-container {
+    justify-content: flex-end;
+
+    min-width: 210px;
+  }
+
+}
+
+
+/* --------------------------------
+   Accessibility
+--------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .educations-title,
+  .educations-title::after,
+  .education-item,
+  .education-content,
+  .education-institution,
+  .education-institution-icon,
+  .education-icon,
+  .education-diploma,
+  .education-address,
+  .education-dates,
+  .education-date-icon,
+  .education-duration,
+  .education-duration-icon {
+
+    animation: none;
+
+    transition: none;
+  }
+
+}
