@@ -1,196 +1,468 @@
-// body {
-//     font-family: Muli, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-//     padding-top: 54px;
-//     color: #868e96
-//   }
-  
-//   @media (min-width:992px) {
-//     body {
-//       padding-top: 0;
-//       padding-left: 17rem
-//     }
-//   }
-  
-//   h1,
-//   h2,
-//   h3,
-//   h4,
-//   h5,
-//   h6 {
-//     font-family: 'Saira Extra Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-//     font-weight: 700;
-//     text-transform: uppercase;
-//     color: #343a40
-//   }
-  
-//   h1 {
-//     font-size: 6rem;
-//     line-height: 5.5rem
-//   }
-  
-//   h2 {
-//     font-size: 3.5rem
-//   }
-  
-//   h3 {
-//     font-size: 2rem
-//   }
-  
-//   p.lead {
-//     font-size: 1.15rem;
-//     font-weight: 400
-//   }
-  
-//   .subheading {
-//     text-transform: uppercase;
-//     font-weight: 500;
-//     font-family: 'Saira Extra Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-//     font-size: 1.5rem
-//   }
-  
-//   .social-icons a {
-//     display: inline-block;
-//     height: 3.5rem;
-//     width: 3.5rem;
-//     background-color: #495057;
-//     color: #fff !important;
-//     border-radius: 100%;
-//     text-align: center;
-//     font-size: 1.5rem;
-//     line-height: 3.5rem;
-//     margin-right: 1rem
-//   }
-  
-//   .social-icons a:last-child {
-//     margin-right: 0
-//   }
-  
-//   .social-icons a:hover {
-//     background-color: #bd5d38
-//   }
-  
-//   .dev-icons {
-//     font-size: 3rem
-//   }
-  
-//   .dev-icons .list-inline-item i:hover {
-//     color: #bd5d38
-//   }
-  
-//   #sideNav .navbar-nav .nav-item .nav-link {
-//     font-weight: 800;
-//     letter-spacing: .05rem;
-//     text-transform: uppercase
-//   }
-  
-//   #sideNav .navbar-toggler:focus {
-//     outline-color: #d48a6e
-//   }
-  
-//   @media (min-width:992px) {
-//     #sideNav {
-//       text-align: center;
-//       position: fixed;
-//       top: 0;
-//       left: 0;
-//       display: -webkit-box;
-//       display: -ms-flexbox;
-//       display: flex;
-//       -webkit-box-orient: vertical;
-//       -webkit-box-direction: normal;
-//       -ms-flex-direction: column;
-//       flex-direction: column;
-//       width: 17rem;
-//       height: 100vh
-//     }
-  
-//     #sideNav .navbar-brand {
-//       display: -webkit-box;
-//       display: -ms-flexbox;
-//       display: flex;
-//       margin: auto auto 0;
-//       padding: .5rem
-//     }
-  
-//     #sideNav .navbar-brand .img-profile {
-//       max-width: 10rem;
-//       max-height: 10rem;
-//       border: .5rem solid rgba(255, 255, 255, .2)
-//     }
-  
-//     #sideNav .navbar-collapse {
-//       display: -webkit-box;
-//       display: -ms-flexbox;
-//       display: flex;
-//       -webkit-box-align: start;
-//       -ms-flex-align: start;
-//       align-items: flex-start;
-//       -webkit-box-flex: 0;
-//       -ms-flex-positive: 0;
-//       flex-grow: 0;
-//       width: 100%;
-//       margin-bottom: auto
-//     }
-  
-//     #sideNav .navbar-collapse .navbar-nav {
-//       -webkit-box-orient: vertical;
-//       -webkit-box-direction: normal;
-//       -ms-flex-direction: column;
-//       flex-direction: column;
-//       width: 100%
-//     }
-  
-//     #sideNav .navbar-collapse .navbar-nav .nav-item {
-//       display: block
-//     }
-  
-//     #sideNav .navbar-collapse .navbar-nav .nav-item .nav-link {
-//       display: block
-//     }
-//   }
-  
-//   section.resume-section {
-//     padding-top: 5rem !important;
-//     padding-bottom: 5rem !important;
-//     max-width: 75rem
-//   }
-  
-//   section.resume-section .resume-item .resume-date {
-//     min-width: none
-//   }
-  
-//   @media (min-width:768px) {
-//     section.resume-section {
-//       min-height: 100vh
-//     }
-  
-//     section.resume-section .resume-item .resume-date {
-//       min-width: 18rem
-//     }
-//   }
-  
-//   @media (min-width:992px) {
-//     section.resume-section {
-//       padding-top: 3rem !important;
-//       padding-bottom: 3rem !important
-//     }
-//   }
-  
-//   .bg-primary {
-//     background-color: #bd5d38 !important
-//   }
-  
-//   .text-primary {
-//     color: #bd5d38 !important
-//   }
-  
-//   a {
-//     color: #bd5d38
-//   }
-  
-//   a:active,
-//   a:focus,
-//   a:hover {
-//     color: #824027
-//   }
-  
+/* --------------------------------
+   Interests container
+--------------------------------- */
+
+.interests-container {
+  width: 100%;
+}
+
+
+/* --------------------------------
+   Interests page title
+--------------------------------- */
+
+.interests-title {
+  position: relative;
+
+  display: inline-block;
+
+  margin-top: 0;
+  margin-bottom: 55px;
+
+  font-size: 32px;
+  font-weight: 600;
+
+  line-height: 1.2;
+
+  cursor: default;
+
+  animation: titleFadeIn 0.7s ease both;
+}
+
+
+/* --------------------------------
+   Interests title underline
+--------------------------------- */
+
+.interests-title::after {
+  content: '';
+
+  position: absolute;
+
+  left: 0;
+  bottom: -10px;
+
+  width: 45px;
+  height: 3px;
+
+  border-radius: 3px;
+
+  background: #40a9ff;
+
+  transform-origin: left;
+
+  animation: titleUnderline 0.7s ease 0.3s both;
+
+  transition:
+    width 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.interests-title:hover::after {
+  width: 100%;
+
+  box-shadow:
+    0 2px 8px rgba(64, 169, 255, 0.4);
+}
+
+
+/* --------------------------------
+   Interest section
+--------------------------------- */
+
+.interest-section {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 55px;
+
+  width: 100%;
+
+  margin-bottom: 70px;
+}
+
+
+/* --------------------------------
+   First section animation
+--------------------------------- */
+
+.interest-section-first {
+  opacity: 0;
+
+  animation:
+    interestSectionFadeIn 0.8s ease 0.2s forwards;
+}
+
+
+/* --------------------------------
+   Second section animation
+--------------------------------- */
+
+.interest-section-second {
+  opacity: 0;
+
+  animation:
+    interestSectionFadeIn 0.8s ease 0.45s forwards;
+}
+
+
+/* --------------------------------
+   Image container
+--------------------------------- */
+
+.interest-image-container {
+  flex: 1;
+
+  max-width: 520px;
+
+  overflow: hidden;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.12);
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+
+/* --------------------------------
+   Image hover
+--------------------------------- */
+
+.interest-image-container:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+
+/* --------------------------------
+   Image
+--------------------------------- */
+
+.interest-image {
+  display: block;
+
+  width: 100%;
+
+  height: 300px;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.6s ease;
+}
+
+
+/* --------------------------------
+   Image zoom on hover
+--------------------------------- */
+
+.interest-image-container:hover .interest-image {
+  transform: scale(1.05);
+}
+
+
+/* --------------------------------
+   Text container
+--------------------------------- */
+
+.interest-text-container {
+  flex: 1;
+
+  max-width: 650px;
+
+  padding: 10px 0;
+
+  transition:
+    transform 0.4s ease;
+}
+
+
+/* --------------------------------
+   Text container hover
+--------------------------------- */
+
+.interest-text-container:hover {
+  transform: translateX(5px);
+}
+
+
+/* --------------------------------
+   Interest icon
+--------------------------------- */
+
+.interest-icon {
+  margin-bottom: 14px;
+
+  font-size: 28px;
+
+  line-height: 1;
+
+  transition:
+    transform 0.35s ease;
+}
+
+
+/* --------------------------------
+   Icon hover
+--------------------------------- */
+
+.interest-text-container:hover .interest-icon {
+  transform:
+    translateY(-3px)
+    scale(1.1);
+}
+
+
+/* --------------------------------
+   Interest text
+--------------------------------- */
+
+.interest-text {
+  margin: 0;
+
+  font-size: 17px;
+
+  font-weight: 400;
+
+  line-height: 1.8;
+
+  color: #4a4a4a;
+
+  text-align: justify;
+}
+
+
+/* --------------------------------
+   Interest text first letter
+--------------------------------- */
+
+.interest-text::first-letter {
+  font-size: 22px;
+
+  font-weight: 600;
+
+  color: #1890ff;
+}
+
+
+/* --------------------------------
+   Section entrance animation
+--------------------------------- */
+
+@keyframes interestSectionFadeIn {
+
+  from {
+    opacity: 0;
+
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+
+}
+
+
+/* --------------------------------
+   Page title entrance animation
+--------------------------------- */
+
+@keyframes titleFadeIn {
+
+  from {
+    opacity: 0;
+
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+
+}
+
+
+/* --------------------------------
+   Page title underline animation
+--------------------------------- */
+
+@keyframes titleUnderline {
+
+  from {
+    opacity: 0;
+
+    transform: scaleX(0);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scaleX(1);
+  }
+
+}
+
+
+/* --------------------------------
+   Responsive - Tablet
+--------------------------------- */
+
+@media (max-width: 900px) {
+
+  .interest-section {
+    gap: 35px;
+  }
+
+  .interest-image {
+    height: 250px;
+  }
+
+  .interest-text {
+    font-size: 16px;
+
+    line-height: 1.7;
+  }
+
+}
+
+
+/* --------------------------------
+   Responsive - Mobile
+--------------------------------- */
+
+@media (max-width: 768px) {
+
+  .interests-title {
+    font-size: 28px;
+
+    margin-bottom: 45px;
+  }
+
+
+  .interest-section {
+    flex-direction: column;
+
+    gap: 25px;
+
+    margin-bottom: 55px;
+
+    align-items: stretch;
+  }
+
+
+  /*
+   * Keep the image above the text
+   * for both sections on mobile.
+   */
+
+  .interest-section-first .interest-image-container {
+    order: 1;
+  }
+
+  .interest-section-first .interest-text-container {
+    order: 2;
+  }
+
+  .interest-section-second .interest-image-container {
+    order: 1;
+  }
+
+  .interest-section-second .interest-text-container {
+    order: 2;
+  }
+
+
+  .interest-image-container {
+    width: 100%;
+
+    max-width: none;
+  }
+
+
+  .interest-image {
+    height: 240px;
+  }
+
+
+  .interest-text-container {
+    max-width: none;
+
+    padding: 0;
+  }
+
+
+  .interest-text {
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    text-align: left;
+  }
+
+}
+
+
+/* --------------------------------
+   Responsive - Small mobile
+--------------------------------- */
+
+@media (max-width: 576px) {
+
+  .interests-title {
+    font-size: 26px;
+  }
+
+
+  .interest-image {
+    height: 200px;
+  }
+
+
+  .interest-text {
+    font-size: 15px;
+
+    line-height: 1.7;
+  }
+
+
+  .interest-icon {
+    font-size: 25px;
+  }
+
+}
+
+
+/* --------------------------------
+   Accessibility
+--------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .interests-title,
+  .interests-title::after,
+  .interest-section,
+  .interest-image-container,
+  .interest-image,
+  .interest-text-container,
+  .interest-icon {
+
+    animation: none;
+
+    transition: none;
+  }
+
+}

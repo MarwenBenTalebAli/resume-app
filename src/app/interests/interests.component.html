@@ -1,8 +1,77 @@
-<section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="interests">
-  <div class="w-100">
-    <h2 class="mb-5">{{pageName | translate}}</h2>
-    <p>{{interest.description1 | translateField }}</p>
-    <p class="mb-0">{{interest.description2 | translateField }}</p>
+<section
+  class="resume-section p-3 p-lg-5 d-flex align-items-center"
+  id="interests"
+>
+  <div class="interests-container">
+
+    <!-- Page title -->
+    <h2 class="interests-title">
+      {{ pageName | translate }}
+    </h2>
+
+
+    <!-- =================================
+         Interest 1 - Mountain biking
+    ================================== -->
+
+    <div class="interest-section interest-section-first">
+
+      <!-- Image -->
+      <div class="interest-image-container">
+        <img
+          src="assets/images/interests/mountain-biking.png"
+          alt="Mountain biking"
+          class="interest-image"
+        />
+      </div>
+
+
+      <!-- Text -->
+      <div class="interest-text-container">
+
+        <div class="interest-icon">
+          🚵
+        </div>
+
+        <p class="interest-text">
+          {{ interest.description1 | translateField }}
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- =================================
+         Interest 2 - Technology & learning
+    ================================== -->
+
+    <div class="interest-section interest-section-second">
+
+      <!-- Text -->
+      <div class="interest-text-container">
+
+        <div class="interest-icon">
+          💻
+        </div>
+
+        <p class="interest-text">
+          {{ interest.description2 | translateField }}
+        </p>
+
+      </div>
+
+
+      <!-- Image -->
+      <div class="interest-image-container">
+        <img
+          src="assets/images/interests/technology-learning.png"
+          alt="Technology and continuous learning"
+          class="interest-image"
+        />
+      </div>
+
+    </div>
+
   </div>
 </section>
-<!-- <hr class="m-0"> -->
