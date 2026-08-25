@@ -1,144 +1,130 @@
-<!--  *ngIf="isAdmin; else defaultProjectTemplate" -->
 @if (isAdmin()) {
   <ng-container>
     <app-project-list></app-project-list>
   </ng-container>
 }
 @else {
-  <!-- <ng-template #defaultProjectTemplate> -->
-  <section
-    class="resume-section p-3 p-lg-5 d-flex justify-content-center"
-    id="project"
-  >
-    <div class="w-100">
-      <h2 class="mb-5">{{ pageName | translate }}</h2>
+  <section class="resume-section" id="project">
+    <div class="projects-content">
 
-      <div class="container">
-        <div nz-row [nzGutter]="[16, 16]">
+      <h2 class="projects-title">
+        {{ pageName | translate }}
+      </h2>
 
-          @for (project of projects; track $index) {
+      <div nz-row [nzGutter]="[16, 16]">
 
-            <div
-              nz-col
-              [nzXs]="24"
-              [nzSm]="12"
-              [nzMd]="8"
-              [nzLg]="6"
-              [style.--animation-delay]="($index * 100) + 'ms'"
+        @for (project of projects; track $index) {
+
+          <div
+            nz-col
+            [nzXs]="24"
+            [nzSm]="12"
+            [nzMd]="8"
+            [nzLg]="6"
+            [style.--animation-delay]="($index * 100) + 'ms'"
+          >
+
+            <nz-card
+              class="card"
+              [nzActions]="[actionSetting, actionEdit]"
             >
 
-              <nz-card
-                class="card"
-                style="width: 100%;"
-                [nzActions]="[actionSetting, actionEdit]"
+              <!-- Project image -->
+              <img
+                class="card-img-top"
+                [src]="project.urlImage"
+                [alt]="project.nomProjet + '-image'"
               >
 
-                <!-- Project image -->
-                <img
-                  class="card-img-top img-responsive"
-                  [src]="project.urlImage"
-                  [alt]="project.nomProjet + '-image'"
+              <!-- Project content -->
+              <div class="card-content">
+
+                <!-- Project title -->
+                <h3
+                  nz-typography
+                  class="card-title"
                 >
+                  {{ project.nomProjet }}
+                </h3>
 
-                <!-- Project content -->
-                <div class="card-body card-content">
+                <!-- Project dates -->
+                <nz-tag
+                  [nzColor]="'blue'"
+                  class="project-date"
+                >
+                  {{ project.dateDebut }} - {{ project.dateFin }}
+                </nz-tag>
 
-                  <!-- Project title -->
-                  <h3
-                    nz-typography
-                    class="card-title"
-                  >
-                    {{ project.nomProjet }}
-                  </h3>
+                <!-- Project description -->
+                <p class="project-description">
+                  {{ project.description | translateField }}
+                </p>
 
-                  <!-- Project dates -->
-                  <nz-tag
-                    [nzColor]="'blue'"
-                    class="project-date"
-                  >
-                    {{ project.dateDebut }} - {{ project.dateFin }}
-                  </nz-tag>
-
-                  <!-- Project description -->
-                  <p class="project-description">
-                    {{ project.description | translateField }}
-                  </p>
-
-                  <!-- Project tools -->
-                  <h5 class="project-tools">
-                    @for (outil of project.outils; track $index) {
-                      <nz-tag [nzColor]="'#2db7f5'">
-                        {{ outil }}
-                      </nz-tag>
-                    }
-                  </h5>
-
+                <!-- Project tools -->
+                <div class="project-tools">
+                  @for (outil of project.outils; track $index) {
+                    <nz-tag [nzColor]="'#2db7f5'">
+                      {{ outil }}
+                    </nz-tag>
+                  }
                 </div>
 
-                <!-- Footer -->
-                <div
-                  class="card-footer bg-transparent"
-                  style="border: none"
+              </div>
+
+            </nz-card>
+
+            <!-- GitHub button -->
+            <ng-template #actionSetting>
+              @if (project.urlCodeSorce != null) {
+                <a
+                  class="project-action"
+                  nz-button
+                  nzType="primary"
+                  [nzSize]="'default'"
+                  nzGhost
+                  [attr.href]="project.urlCodeSorce"
+                  target="_blank"
+                  [title]="'Mon profil github'"
                 >
-                </div>
+                  {{ sourceCodeBtnLabel | translate }}
 
-              </nz-card>
+                  <span
+                    nz-icon
+                    nzType="code"
+                    nzTheme="outline"
+                  ></span>
+                </a>
+              }
+            </ng-template>
 
-              <!-- GitHub button -->
-              <ng-template #actionSetting>
-                @if (project.urlCodeSorce != null) {
-                  <a
-                    class="project-action"
-                    nz-button
-                    nzType="primary"
-                    [nzSize]="'default'"
-                    nzGhost
-                    [attr.href]="project.urlCodeSorce"
-                    target="_blank"
-                    [title]="'Mon profil github'"
-                  >
-                    {{ sourceCodeBtnLabel | translate }}
+            <!-- Online demo button -->
+            <ng-template #actionEdit>
+              @if (project.urlDemoEnLigne != null) {
+                <a
+                  class="project-action"
+                  nz-button
+                  nzType="primary"
+                  [nzSize]="'default'"
+                  nzGhost
+                  [attr.href]="project.urlDemoEnLigne"
+                  target="_blank"
+                  [title]="'Demo enligne'"
+                >
+                  {{ onlineDemoBtnLabel | translate }}
 
-                    <span
-                      nz-icon
-                      nzType="code"
-                      nzTheme="outline"
-                    ></span>
-                  </a>
-                }
-              </ng-template>
+                  <span
+                    nz-icon
+                    nzType="link"
+                    nzTheme="outline"
+                  ></span>
+                </a>
+              }
+            </ng-template>
 
-              <!-- Online demo button -->
-              <ng-template #actionEdit>
-                @if (project.urlDemoEnLigne != null) {
-                  <a
-                    class="project-action"
-                    nz-button
-                    nzType="primary"
-                    [nzSize]="'default'"
-                    nzGhost
-                    [attr.href]="project.urlDemoEnLigne"
-                    target="_blank"
-                    [title]="'Demo enligne'"
-                  >
-                    {{ onlineDemoBtnLabel | translate }}
+          </div>
+        }
 
-                    <span
-                      nz-icon
-                      nzType="link"
-                      nzTheme="outline"
-                    ></span>
-                  </a>
-                }
-              </ng-template>
-
-            </div>
-          }
-
-        </div>
       </div>
     </div>
   </section>
-  <!-- <hr class="m-0"> -->
-  <!-- </ng-template> -->
 }

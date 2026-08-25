@@ -1,3 +1,16 @@
+.projects-content {
+  width: 100%;
+}
+
+.projects-title {
+  margin-bottom: 48px;
+}
+
+
+/* --------------------------------
+   Card
+--------------------------------- */
+
 .card {
   width: 100%;
   overflow: hidden;
@@ -13,10 +26,6 @@
   animation-delay: var(--animation-delay);
 }
 
-/* --------------------------------
-   Card hover
---------------------------------- */
-
 .card:hover {
   transform: translateY(-8px) scale(1.02);
 
@@ -30,6 +39,7 @@
 
 .card-img-top {
   display: block;
+
   width: 100%;
   height: 190px;
 
