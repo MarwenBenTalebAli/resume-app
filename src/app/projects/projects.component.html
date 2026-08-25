@@ -6,84 +6,139 @@
 }
 @else {
   <!-- <ng-template #defaultProjectTemplate> -->
-    <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="project">
-      <div class="w-100">
-        <h2 class="mb-5">{{ pageName  | translate }}</h2>
-        <div class="container">
-          <!--  class="row justify-content-md-center" -->
-          <div nz-row [nzGutter]="[16, 16]">
-            <!--  *ngFor="let project of projects" -->
-            @for(project of projects; track $index){
-              <!--  class="col col-lg-4" -->
-            <div nz-col nzSpan="6">
-              <!-- <div class="card mb-5 cardBorder" style="width: 100%; height: 31rem"> -->
-                <!--  [nzExtra]="extraTemplate" -->
-                <nz-card class="card" style="width:100%;" [nzActions]="[actionSetting, actionEdit]">
-                <img class="card-img-top img-responsive" style="object-fit: contain; max-height: 180px" [src]="project.urlImage"
-                  [alt]="project.nomProjet + '-image'">
-                <div class="card-body">
-                  <h3 nz-typography class="card-title mb-0">{{ project.nomProjet }}</h3>
-                  <!-- <p> -->
-                  <!-- <span class="text-primary text-muted"></span> -->
-                  <!-- </p> -->
-                    <nz-tag [nzColor]="'blue'" style="font-size: 14px;margin-bottom: 6px;" >
-                      <!--  class="card-title mb-0" -->
-                      {{ project.dateDebut }} - {{ project.dateFin }}
-                      </nz-tag>
-                    <!-- @if (languageService.currentLanguage === 'fr') {
-                      <p nz-typography nzEllipsis nzExpandable [nzEllipsisRows]="3">
-                        {{ project.description | translateField }}
-                      </p>
-                    }
+  <section
+    class="resume-section p-3 p-lg-5 d-flex justify-content-center"
+    id="project"
+  >
+    <div class="w-100">
+      <h2 class="mb-5">{{ pageName | translate }}</h2>
 
-                    @if (languageService.currentLanguage === 'en') {
-                      <p nz-typography nzEllipsis nzExpandable [nzEllipsisRows]="3">
-                        {{ project.description | translateField }}
-                      </p>
-                    } -->
+      <div class="container">
+        <div nz-row [nzGutter]="[16, 16]">
+
+          @for (project of projects; track $index) {
+
+            <div
+              nz-col
+              [nzXs]="24"
+              [nzSm]="12"
+              [nzMd]="8"
+              [nzLg]="6"
+              [style.--animation-delay]="($index * 100) + 'ms'"
+            >
+
+              <nz-card
+                class="card"
+                style="width: 100%;"
+                [nzActions]="[actionSetting, actionEdit]"
+              >
+
+                <!-- Project image -->
+                <img
+                  class="card-img-top img-responsive"
+                  [src]="project.urlImage"
+                  [alt]="project.nomProjet + '-image'"
+                >
+
+                <!-- Project content -->
+                <div class="card-body card-content">
+
+                  <!-- Project title -->
+                  <h3
+                    nz-typography
+                    class="card-title"
+                  >
+                    {{ project.nomProjet }}
+                  </h3>
+
+                  <!-- Project dates -->
+                  <nz-tag
+                    [nzColor]="'blue'"
+                    class="project-date"
+                  >
+                    {{ project.dateDebut }} - {{ project.dateFin }}
+                  </nz-tag>
+
+                  <!-- Project description -->
                   <p class="project-description">
                     {{ project.description | translateField }}
                   </p>
-                  <h5>
+
+                  <!-- Project tools -->
+                  <h5 class="project-tools">
                     @for (outil of project.outils; track $index) {
-                      <!-- <span calss="badge badge-info ml-2"></span> -->
-                      <nz-tag [nzColor]="'#2db7f5'" style="margin-bottom: 6px;">{{ outil }}</nz-tag>
+                      <nz-tag [nzColor]="'#2db7f5'">
+                        {{ outil }}
+                      </nz-tag>
                     }
                   </h5>
-                </div>
-                <div class="card-footer bg-transparent" style="border: none">
-
-                  
-                  
 
                 </div>
+
+                <!-- Footer -->
+                <div
+                  class="card-footer bg-transparent"
+                  style="border: none"
+                >
+                </div>
+
               </nz-card>
+
+              <!-- GitHub button -->
               <ng-template #actionSetting>
-                @if(project.urlCodeSorce != null)
-                { 
-                  <!-- class="card-link btn-outline-info" -->
-                  <a  nz-button nzType="primary" [nzSize]="'default'" nzGhost [attr.href]="project.urlCodeSorce" target="_blank" [title]="'Mon profil github'"
-                  style="padding-left: 6px;"
-                  >{{ sourceCodeBtnLabel | translate}} 
-                  <span nz-icon nzType="code" nzTheme="outline"></span>
-                </a>
+                @if (project.urlCodeSorce != null) {
+                  <a
+                    class="project-action"
+                    nz-button
+                    nzType="primary"
+                    [nzSize]="'default'"
+                    nzGhost
+                    [attr.href]="project.urlCodeSorce"
+                    target="_blank"
+                    [title]="'Mon profil github'"
+                  >
+                    {{ sourceCodeBtnLabel | translate }}
+
+                    <span
+                      nz-icon
+                      nzType="code"
+                      nzTheme="outline"
+                    ></span>
+                  </a>
                 }
               </ng-template>
+
+              <!-- Online demo button -->
               <ng-template #actionEdit>
-                @if(project.urlDemoEnLigne != null)
-                {
-                  <!-- class="card-link btn-outline-info" -->
-                  <a  nz-button nzType="primary" [nzSize]="'default'" nzGhost [attr.href]="project.urlDemoEnLigne" target="_blank" [title]="'Demo enligne'">
-                  {{ onlineDemoBtnLabel | translate}} <span nz-icon nzType="link" nzTheme="outline"></span>
-                  </a>}
+                @if (project.urlDemoEnLigne != null) {
+                  <a
+                    class="project-action"
+                    nz-button
+                    nzType="primary"
+                    [nzSize]="'default'"
+                    nzGhost
+                    [attr.href]="project.urlDemoEnLigne"
+                    target="_blank"
+                    [title]="'Demo enligne'"
+                  >
+                    {{ onlineDemoBtnLabel | translate }}
+
+                    <span
+                      nz-icon
+                      nzType="link"
+                      nzTheme="outline"
+                    ></span>
+                  </a>
+                }
               </ng-template>
-              <!-- </div> -->
+
             </div>
-            }
-          </div>
+          }
+
         </div>
       </div>
-    </section>
-    <!-- <hr class="m-0"> -->
+    </div>
+  </section>
+  <!-- <hr class="m-0"> -->
   <!-- </ng-template> -->
 }
