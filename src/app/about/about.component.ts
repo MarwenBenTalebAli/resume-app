@@ -7,6 +7,7 @@ import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { TranslateFieldPipe } from '../shared/translate-field.pipe';
 import { TranslatePipe } from '@ngx-translate/core';
+import { Analytics, logEvent } from '@angular/fire/analytics';
 
 @Component({
   selector: 'app-about',
@@ -21,6 +22,7 @@ export class AboutComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   private userService = inject(UserService);
   private dataStorageService = inject(DataStorageService);
+  private analytics = inject(Analytics);
   constructor() {} // private dataStorageService: DataStorageService // private userService: UserService,
   ngOnInit() {
     this.onFetchUserData();
@@ -33,6 +35,18 @@ export class AboutComponent implements OnInit, OnDestroy {
 
   onFetchUserData() {
     this.dataStorageService.getUser('email', 'marwen.bentaleb@gmail.com');
+  }
+
+  trackCvClick(): void {
+    logEvent(this.analytics, 'cv_button_click');
+  }
+
+  trackLinkedInClick(): void {
+    logEvent(this.analytics, 'linkedin_button_click');
+  }
+
+  trackGitHubClick(): void {
+    logEvent(this.analytics, 'github_button_click');
   }
 
   ngOnDestroy() {
